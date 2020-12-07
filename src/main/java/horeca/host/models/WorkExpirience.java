@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class WorkExpirience {
 
-    private UUID id;
+    private UUID workExperienceId;
 
     private String companyName;
 

@@ -14,7 +14,7 @@ public class Person {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private UUID personId;
     @Column
     @NotEmpty(message = "Morate popuniti polje!")
     @Size(max = 20, message = "Maksimalan broj karaktera je 20!")
