@@ -1,6 +1,7 @@
 package horeca.host.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.UUID;
 
 @Entity
@@ -12,15 +13,19 @@ public class Language {
     private UUID languageId;
 
     @Column
+    @Size(max = 30, message = "Maksimalan broj karaktera je 30.")
     private String languageName;
 
     @Column
+    @Size(max = 30, message = "Maksimalan broj karaktera je 30.")
     private String languageLevel;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Person personId;
 
-    public Language(String languageName, String languageLevel, Person personId) {
+    public Language(@Size(max = 30, message = "Maksimalan broj karaktera je 30.") String languageName,
+                    @Size(max = 30, message = "Maksimalan broj karaktera je 30.") String languageLevel,
+                    Person personId) {
         this.languageName = languageName;
         this.languageLevel = languageLevel;
         this.personId = personId;

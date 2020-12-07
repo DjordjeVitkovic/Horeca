@@ -1,6 +1,7 @@
 package horeca.host.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.UUID;
 
 @Entity
@@ -12,15 +13,19 @@ public class WorkExperience {
     private UUID workExperienceId;
 
     @Column
+    @Size(max = 50, message = "Maksimalan broj karaktera je 50.")
     private String companyName;
 
     @Column
-    private int startDate;
+    @Size(max = 20, message = "Maksimalan broj karaktera je 20.")
+    private String startDate;
 
     @Column
-    private int endDate;
+    @Size(max = 20, message = "Maksimalan broj karaktera je 20.")
+    private String endDate;
 
     @Column
+    @Size(max = 500, message = "Maksimalan broj karaktera je 500.")
     private String description;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -29,7 +34,12 @@ public class WorkExperience {
     public WorkExperience(){
 
     }
-    public WorkExperience(String companyName, int startDate, int endDate, String description, Person personId) {
+
+    public WorkExperience(@Size(max = 50, message = "Maksimalan broj karaktera je 50.") String companyName,
+                          @Size(max = 20, message = "Maksimalan broj karaktera je 20.") String startDate,
+                          @Size(max = 20, message = "Maksimalan broj karaktera je 20.") String endDate,
+                          @Size(max = 500, message = "Maksimalan broj karaktera je 500.") String description,
+                          Person personId) {
         this.companyName = companyName;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -53,19 +63,19 @@ public class WorkExperience {
         this.companyName = companyName;
     }
 
-    public int getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(int startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public int getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(int endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 

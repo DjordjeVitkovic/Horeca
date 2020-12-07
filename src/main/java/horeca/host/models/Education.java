@@ -1,6 +1,7 @@
 package horeca.host.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.UUID;
 
 @Entity
@@ -12,12 +13,15 @@ public class Education {
     private UUID educationId;
 
     @Column
+    @Size(max = 100, message = "Maksimalan broj karaktera je 100.")
     private String schoolName;
 
     @Column
+    @Size (max = 100, message = "Maksimalan broj karaktera je 100.")
     private String course;
 
-    public Education(String schoolName, String course) {
+    public Education(@Size(max = 100, message = "Maksimalan broj karaktera je 100.") String schoolName,
+                     @Size(max = 100, message = "Maksimalan broj karaktera je 100.") String course) {
         this.schoolName = schoolName;
         this.course = course;
     }

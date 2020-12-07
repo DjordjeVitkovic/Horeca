@@ -1,6 +1,7 @@
 package horeca.host.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.UUID;
 
 @Entity
@@ -12,9 +13,10 @@ public class Occupation {
     private UUID occupationId;
 
     @Column
+    @Size(max = 30, message = "Maksimalan broj karaktera je 30.")
     private String occupationName;
 
-    public Occupation(String occupationName) {
+    public Occupation(@Size(max = 30, message = "Maksimalan broj karaktera je 30.") String occupationName) {
         this.occupationName = occupationName;
     }
 
