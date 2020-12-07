@@ -1,20 +1,19 @@
 package horeca.host.models;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.UUID;
 
+@Entity
 public class Person {
 
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private UUID personId;
     @Column
     @NotEmpty(message = "Morate popuniti polje!")
     @Size(max = 20, message = "Maksimalan broj karaktera je 20!")
@@ -54,11 +53,172 @@ public class Person {
     @Size(max = 500, message = "Maksimalan broj karaktera je 500!")
     private String hobby;
 
+    @Valid
+    @JoinColumn(name = "educationId")
+    @OneToOne(cascade = CascadeType.ALL)
     private Education education;
 
+    @Valid
+    @JoinColumn(name = "occupaitonId")
+    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     private Occupation occupation;
 
-    private List<WorkExpirience> workExpirienceList;
+    @Valid
+    @OneToMany(mappedBy = "personId", cascade = CascadeType.ALL)
+    private List<WorkExperience> workExperienceList;
 
+    @Valid
+    @OneToMany(mappedBy = "personId", cascade = CascadeType.ALL)
     private List<Language> languageList;
+
+    public Person(@NotEmpty(message = "Morate popuniti polje!")
+                  @Size(max = 20, message = "Maksimalan broj karaktera je 20!") String firstName,
+                  @NotEmpty(message = "Morate popuniti polje!") @Size(max = 20, message = "Maksimalan broj karaktera je 20!") String lastName,
+                  @NotEmpty(message = "Morate popuniti polje!") @Size(max = 80, message = "Maksimalan broj karaktera je 80!") String email,
+                  String imageURL,
+                  @NotEmpty(message = "Morate popuniti polje!") @Size(max = 15, message = "Maksimalan broj karaktera je 15!") String dateOfBirth,
+                  @NotEmpty(message = "Morate popuniti polje!") @Size(max = 20, message = "Maksimalan broj karaktera je 20!") String citizenship,
+                  @NotEmpty(message = "Morate popuniti polje!") @Size(max = 20, message = "Maksimalan broj karaktera je 20!") String city,
+                  @NotEmpty(message = "Morate popuniti polje!") @Size(max = 20, message = "Maksimalan broj karaktera je 20!") String phoneNumber,
+                  @NotEmpty(message = "Morate popuniti polje!") @Size(max = 500, message = "Maksimalan broj karaktera je 500!") String about,
+                  @NotEmpty(message = "Morate popuniti polje!") @Size(max = 500, message = "Maksimalan broj karaktera je 500!") String hobby,
+                  @Valid Education education,
+                  @Valid Occupation occupation,
+                  @Valid List<WorkExperience> workExperienceList,
+                  @Valid List<Language> languageList) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.imageURL = imageURL;
+        this.dateOfBirth = dateOfBirth;
+        this.citizenship = citizenship;
+        this.city = city;
+        this.phoneNumber = phoneNumber;
+        this.about = about;
+        this.hobby = hobby;
+        this.education = education;
+        this.occupation = occupation;
+        this.workExperienceList = workExperienceList;
+        this.languageList = languageList;
+    }
+
+    public UUID getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(UUID personId) {
+        this.personId = personId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getCitizenship() {
+        return citizenship;
+    }
+
+    public void setCitizenship(String citizenship) {
+        this.citizenship = citizenship;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public String getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
+    }
+
+    public Education getEducation() {
+        return education;
+    }
+
+    public void setEducation(Education education) {
+        this.education = education;
+    }
+
+    public Occupation getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(Occupation occupation) {
+        this.occupation = occupation;
+    }
+
+    public List<WorkExperience> getWorkExperienceList() {
+        return workExperienceList;
+    }
+
+    public void setWorkExperienceList(List<WorkExperience> workExperienceList) {
+        this.workExperienceList = workExperienceList;
+    }
+
+    public List<Language> getLanguageList() {
+        return languageList;
+    }
+
+    public void setLanguageList(List<Language> languageList) {
+        this.languageList = languageList;
+    }
 }
