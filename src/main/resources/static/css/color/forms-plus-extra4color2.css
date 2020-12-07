@@ -1,0 +1,732 @@
+/*! Forms Plus: JS.1.5.1 - 2019-05-20 */
+.p-form-roundDark-extra4color2 .panel-fp {
+  border-color: #663d00;
+}
+.p-form-roundDark-extra4color2 .panel-fp > .panel-heading {
+  background-color: #3d2500;
+  border-color: #663d00;
+}
+.p-form-roundDark-extra4color2 .panel-fp > .panel-body {
+  background-color: #291800;
+}
+.p-form-roundDark-extra4color2 .progress-bar-fp {
+  background-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .btn {
+  background-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .btn.p-active-btn,
+.p-form-roundDark-extra4color2 .btn:hover,
+.p-form-roundDark-extra4color2 .btn:focus {
+  background-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .radio label a,
+.p-form-roundDark-extra4color2 .checkbox label a,
+.p-form-roundDark-extra4color2 .p-switch label a,
+.p-form-roundDark-extra4color2 .p-radioswitch label a {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-show-block-heading a {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-check-active-icon {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-check-block {
+  border-color: #544633;
+}
+.p-form-roundDark-extra4color2 .p-check-block:after {
+  background-color: #ffae35;
+  border-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-switch-icon {
+  background-color: #663d00;
+}
+.p-form-roundDark-extra4color2 .p-check-point:after {
+  background-color: #ffae35;
+  border-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-switch-icon:after {
+  border-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-check-bordered {
+  border-color: #5c3700;
+}
+.p-form-roundDark-extra4color2 .p-check-next:checked ~ .p-check-container .p-check-icon .p-check-middle,
+.p-form-roundDark-extra4color2 :checked ~ .p-check-icon .p-check-middle {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-check-next:checked ~ .p-check-container .p-switch-icon,
+.p-form-roundDark-extra4color2 :checked ~ .p-switch-icon {
+  background-color: #ffd79b;
+}
+.p-form-roundDark-extra4color2 .p-check-next:checked ~ .p-check-container .p-switch-icon:after,
+.p-form-roundDark-extra4color2 :checked ~ .p-switch-icon:after {
+  background-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-check-next:checked ~ .p-check-container .p-check-highlight,
+.p-form-roundDark-extra4color2 :checked ~ .p-check-highlight {
+  background-color: #4d2e00;
+}
+.p-form-roundDark-extra4color2 .p-check-next:checked ~ .p-check-container .p-check-bordered,
+.p-form-roundDark-extra4color2 :checked ~ .p-check-bordered {
+  border-color: #ffd79b;
+}
+.p-form-roundDark-extra4color2 label:hover .p-check-active-icon,
+.p-form-roundDark-extra4color2 .p-check-next ~ .p-check-container:hover .p-check-active-icon,
+.p-form-roundDark-extra4color2 label:hover .p-check-icon .p-check-middle,
+.p-form-roundDark-extra4color2 .p-check-next ~ .p-check-container:hover .p-check-icon .p-check-middle {
+  color: #ffc772;
+}
+.p-form-roundDark-extra4color2 label:hover .p-check-icon .p-check-block,
+.p-form-roundDark-extra4color2 .p-check-next ~ .p-check-container:hover .p-check-icon .p-check-block {
+  border-color: #ffc772;
+}
+.p-form-roundDark-extra4color2 label:hover .p-switch-icon,
+.p-form-roundDark-extra4color2 .p-check-next ~ .p-check-container:hover .p-switch-icon {
+  background-color: #3d2500;
+}
+.p-form-roundDark-extra4color2 label:hover .p-check-highlight,
+.p-form-roundDark-extra4color2 .p-check-next ~ .p-check-container:hover .p-check-highlight {
+  background-color: #3d2500;
+}
+.p-form-roundDark-extra4color2 label:hover .p-check-bordered,
+.p-form-roundDark-extra4color2 .p-check-next ~ .p-check-container:hover .p-check-bordered {
+  border-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-picture-pick .p-preview-name {
+  background-color: rgba(0,0,0,0.7);
+}
+.p-form-roundDark-extra4color2 .p-picture-pick :checked ~ .p-preview-name {
+  background-color: rgba(165,99,0,0.7);
+}
+.p-form-roundDark-extra4color2 .p-picture-pick:hover .p-preview-name {
+  background-color: rgba(255,158,12,0.7);
+}
+.p-form-roundDark-extra4color2 .p-show-block:checked + .p-show-block-heading:hover,
+.p-form-roundDark-extra4color2 .p-show-block-heading:hover {
+  color: #ffc772;
+}
+.p-form-roundDark-extra4color2 .p-show-block:checked + .p-show-block-heading {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-picture-pick .p-switch-icon,
+.p-form-roundDark-extra4color2 .p-picture-pick .p-check-block {
+  background-color: #291800;
+}
+.p-form-roundDark-extra4color2 .p-radio-color .p-color-block {
+  border-color: #5c3700;
+}
+.p-form-roundDark-extra4color2 .p-radio-color [type="checkbox"]:checked ~ .p-color-block,
+.p-form-roundDark-extra4color2 .p-radio-color [type="radio"]:checked ~ .p-color-block {
+  border-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-form-bg,
+.p-form-roundDark-extra4color2 .p-form {
+  background: #291800;
+}
+.p-form-roundDark-extra4color2 .p-colored-text {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-alt-colored-text {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-colored-link {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-colored-link:hover {
+  color: #f79400;
+}
+.p-form-roundDark-extra4color2 .p-action-link:hover {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 hr {
+  border-color: #663d00;
+}
+.p-form-roundDark-extra4color2 hr.p-flat {
+  border-color: #3d2500;
+}
+.p-form-roundDark-extra4color2 .p-table > thead > tr > td,
+.p-form-roundDark-extra4color2 .p-table > tbody > tr > td,
+.p-form-roundDark-extra4color2 .p-table > tfoot > tr > td,
+.p-form-roundDark-extra4color2 .p-table > thead > tr > th,
+.p-form-roundDark-extra4color2 .p-table > tbody > tr > th,
+.p-form-roundDark-extra4color2 .p-table > tfoot > tr > th {
+  border-color: #663d00;
+}
+.p-form-roundDark-extra4color2 .p-table.table-striped > thead {
+  background-color: #3d2500;
+  border-color: #663d00;
+}
+.p-form-roundDark-extra4color2 .p-table.table-striped > tbody > tr:nth-of-type(even) {
+  background-color: #3d2500;
+}
+.p-form-roundDark-extra4color2 .p-table.table-bordered {
+  border-color: #663d00;
+}
+.p-form-roundDark-extra4color2 .p-table.table-bordered > thead > tr > td,
+.p-form-roundDark-extra4color2 .p-table.table-bordered > tbody > tr > td,
+.p-form-roundDark-extra4color2 .p-table.table-bordered > tfoot > tr > td,
+.p-form-roundDark-extra4color2 .p-table.table-bordered > thead > tr > th,
+.p-form-roundDark-extra4color2 .p-table.table-bordered > tbody > tr > th,
+.p-form-roundDark-extra4color2 .p-table.table-bordered > tfoot > tr > th {
+  border-color: #663d00;
+}
+.p-form-roundDark-extra4color2 label {
+  color: rgba(255,223,174,1);
+}
+.p-form-roundDark-extra4color2 select.form-control option {
+  background-color: #291800;
+}
+.p-form-roundDark-extra4color2 .p-title .fa,
+.p-form-roundDark-extra4color2 .p-subtitle .fa {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-field-cb {
+  background-color: #544633;
+  border-color: #544633;
+}
+.p-form-roundDark-extra4color2 .form-control {
+  border-color: #544633;
+  background-color: #544633;
+}
+.p-form-roundDark-extra4color2 .form-control:focus,
+.p-form-roundDark-extra4color2 .form-control:hover,
+.p-form-roundDark-extra4color2 .input-group:hover .form-control,
+.p-form-roundDark-extra4color2 .p-file-wrap [type="file"]:hover ~ .input-group .form-control,
+.p-form-roundDark-extra4color2 .sp-input:focus,
+.p-form-roundDark-extra4color2 .sp-input:hover {
+  background-color: #291800;
+}
+.p-form-roundDark-extra4color2 .form-control:focus ~ .input-group-icon,
+.p-form-roundDark-extra4color2 .form-control:hover ~ .input-group-icon,
+.p-form-roundDark-extra4color2 .input-group:hover .input-group-icon,
+.p-form-roundDark-extra4color2 .p-file-wrap [type="file"]:hover ~ .input-group .input-group-icon,
+.p-form-roundDark-extra4color2 .sp-input:focus ~ .input-group-icon,
+.p-form-roundDark-extra4color2 .sp-input:hover ~ .input-group-icon,
+.p-form-roundDark-extra4color2 .form-control:focus ~ .p-select-arrow,
+.p-form-roundDark-extra4color2 .form-control:hover ~ .p-select-arrow,
+.p-form-roundDark-extra4color2 .input-group:hover .p-select-arrow,
+.p-form-roundDark-extra4color2 .p-file-wrap [type="file"]:hover ~ .input-group .p-select-arrow,
+.p-form-roundDark-extra4color2 .sp-input:focus ~ .p-select-arrow,
+.p-form-roundDark-extra4color2 .sp-input:hover ~ .p-select-arrow,
+.p-form-roundDark-extra4color2 .form-control:focus ~ .input-group-addon .p-addon-bg,
+.p-form-roundDark-extra4color2 .form-control:hover ~ .input-group-addon .p-addon-bg,
+.p-form-roundDark-extra4color2 .input-group:hover .input-group-addon .p-addon-bg,
+.p-form-roundDark-extra4color2 .p-file-wrap [type="file"]:hover ~ .input-group .input-group-addon .p-addon-bg,
+.p-form-roundDark-extra4color2 .sp-input:focus ~ .input-group-addon .p-addon-bg,
+.p-form-roundDark-extra4color2 .sp-input:hover ~ .input-group-addon .p-addon-bg {
+  border-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .form-control:focus ~ .p-field-cb,
+.p-form-roundDark-extra4color2 .form-control:hover ~ .p-field-cb,
+.p-form-roundDark-extra4color2 .input-group:hover .p-field-cb,
+.p-form-roundDark-extra4color2 .p-file-wrap [type="file"]:hover ~ .input-group .p-field-cb,
+.p-form-roundDark-extra4color2 .sp-input:focus ~ .p-field-cb,
+.p-form-roundDark-extra4color2 .sp-input:hover ~ .p-field-cb {
+  background-color: #291800;
+}
+.p-form-roundDark-extra4color2 .form-control::-webkit-input-placeholder {
+  color: #ffefd7;
+}
+.p-form-roundDark-extra4color2 .form-control::-moz-placeholder {
+  color: #ffefd7;
+}
+.p-form-roundDark-extra4color2 .form-control:-moz-placeholder {
+  color: #ffefd7;
+}
+.p-form-roundDark-extra4color2 .form-control:-ms-input-placeholder {
+  color: #ffefd7;
+}
+.p-form-roundDark-extra4color2 .p-custom-arrow .p-select-arrow {
+  background-color: #544633;
+}
+.p-form-roundDark-extra4color2 .input-group-btn .btn:hover,
+.p-form-roundDark-extra4color2 .input-group-btn .btn:focus,
+.p-form-roundDark-extra4color2 .p-file-wrap [type="file"]:hover ~ .input-group .input-group-btn .btn {
+  background-color: #ffae35;
+  -webkit-box-shadow: 0 3px 25px #ffae35;
+  box-shadow: 0 3px 25px #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-file-wrap ~ .input-group [type="text"] {
+  background-color: #544633;
+}
+.p-form-roundDark-extra4color2 .p-no-preview {
+  background-color: #a56300;
+  border-color: #8b5400;
+}
+.p-form-roundDark-extra4color2 .p-preview-wrap .p-preview-actions .p-preview-action:hover {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .ui-autocomplete {
+  background-color: #291800;
+  border-color: #544633;
+}
+.p-form-roundDark-extra4color2 .ui-autocomplete .ui-state-focus,
+.p-form-roundDark-extra4color2 .ui-autocomplete .ui-state-active {
+  color: #ffae35;
+  background-color: rgba(255,174,53,0.1);
+}
+.p-form-roundDark-extra4color2 .sp-container {
+  background-color: #663d00;
+}
+.p-form-roundDark-extra4color2 .sp-initial,
+.p-form-roundDark-extra4color2 .sp-clear,
+.p-form-roundDark-extra4color2 .sp-palette .sp-thumb-el {
+  border-color: #a36200;
+  color: #a36200;
+}
+.p-form-roundDark-extra4color2 .sp-clear:hover,
+.p-form-roundDark-extra4color2 .sp-palette .sp-thumb-el:hover,
+.p-form-roundDark-extra4color2 .sp-palette .sp-thumb-el.sp-thumb-active {
+  border-color: #291800;
+  color: #291800;
+}
+.p-form-roundDark-extra4color2 .sp-clear:hover:after,
+.p-form-roundDark-extra4color2 .sp-palette .sp-thumb-el:hover:after,
+.p-form-roundDark-extra4color2 .sp-palette .sp-thumb-el.sp-thumb-active:after {
+  border-color: #fff7eb;
+}
+.p-form-roundDark-extra4color2 .sp-input {
+  border-color: #544633;
+  background-color: #544633;
+}
+.p-form-roundDark-extra4color2 .sp-choose,
+.p-form-roundDark-extra4color2 .sp-cancel,
+.p-form-roundDark-extra4color2 .sp-palette-toggle {
+  color: #fff7eb;
+}
+.p-form-roundDark-extra4color2 .sp-choose:hover,
+.p-form-roundDark-extra4color2 .sp-cancel:hover,
+.p-form-roundDark-extra4color2 .sp-palette-toggle:hover,
+.p-form-roundDark-extra4color2 .sp-choose:focus,
+.p-form-roundDark-extra4color2 .sp-cancel:focus,
+.p-form-roundDark-extra4color2 .sp-palette-toggle:focus,
+.p-form-roundDark-extra4color2 .sp-choose:active,
+.p-form-roundDark-extra4color2 .sp-cancel:active,
+.p-form-roundDark-extra4color2 .sp-palette-toggle:active {
+  color: #ffc46b;
+}
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-alpha-inner,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-color,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-hue {
+  border-color: #663d00;
+}
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-initial,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-clear,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-palette .sp-thumb-el {
+  border-color: #663d00;
+  color: #663d00;
+}
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-clear:hover,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-palette .sp-thumb-el:hover,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-palette .sp-thumb-el.sp-thumb-active {
+  border-color: #a36200;
+  color: #a36200;
+}
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-dragger:after,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-alpha-handle:after,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-slider:after {
+  border-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-choose,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-cancel,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-palette-toggle {
+  background-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-choose:hover,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-cancel:hover,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-palette-toggle:hover,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-choose:focus,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-cancel:focus,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-palette-toggle:focus,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-choose:active,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-cancel:active,
+.p-form-roundDark-extra4color2 .p-colorpick-no-bg .sp-flat .sp-palette-toggle:active {
+  background-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget {
+  background-color: #663d00;
+}
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table thead tr:first-child th:hover {
+  color: #ffd391;
+  background-color: #3d2500;
+}
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table thead th {
+  background-color: #3d2500;
+}
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table td div:hover,
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table td span:hover {
+  background-color: #a36200;
+}
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table td a,
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table td .btn {
+  color: #ffdfaf;
+  background-color: transparent;
+}
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table td a:hover,
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table td .btn:hover,
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table td a span:hover,
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table td .btn span:hover {
+  color: #3d2500;
+}
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table .old,
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table .new {
+  color: #ffe0b3;
+}
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table td .active,
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table .active div {
+  background-color: #3d2500;
+}
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table .today div:before {
+  border-color: rgba(255,223,175,0);
+  border-bottom-color: #ffdfaf;
+}
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table span.disabled,
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table .disabled div,
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table span.disabled:hover,
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table .disabled div:hover {
+  color: #a36200;
+  background-color: #663d00;
+}
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table .disabled span,
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget table .disabled span:hover {
+  color: #a36200;
+}
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget .datepicker-days thead .picker-switch {
+  border-bottom-color: #7a4a00;
+}
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget.dropdown-menu.top:after {
+  border-top-color: #663d00;
+}
+.p-form-roundDark-extra4color2 .bootstrap-datetimepicker-widget.dropdown-menu.bottom:after {
+  border-bottom-color: #3d2500;
+}
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget table thead {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget table thead tr:first-child th:hover {
+  color: #ffdfaf;
+}
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget table thead .dow {
+  color: #ffdfaf;
+}
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget table td a,
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget table td .btn {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget table td a:hover,
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget table td .btn:hover,
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget table td a span:hover,
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget table td .btn span:hover {
+  color: #ffdfaf;
+}
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget table .today div:before {
+  border-color: rgba(255,199,114,0);
+  border-bottom-color: #ffc772;
+}
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget table span.disabled,
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget table .disabled div,
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget table span.disabled:hover,
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget table .disabled div:hover {
+  color: #663d00;
+}
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget table .disabled span,
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget table .disabled span:hover {
+  color: #663d00;
+}
+.p-form-roundDark-extra4color2 .p-datetime-no-bg .bootstrap-datetimepicker-widget .datepicker-days thead .picker-switch {
+  border-bottom-color: #3d2500;
+}
+.p-form-roundDark-extra4color2 .p-js-link:hover,
+.p-form-roundDark-extra4color2 .p-show-js-block .p-js-link:hover,
+.p-form-roundDark-extra4color2 .p-field-toggled .p-js-link:hover,
+.p-form-roundDark-extra4color2 .p-js-link:focus,
+.p-form-roundDark-extra4color2 .p-show-js-block .p-js-link:focus,
+.p-form-roundDark-extra4color2 .p-field-toggled .p-js-link:focus {
+  color: #ffbe5e;
+}
+.p-form-roundDark-extra4color2 .p-js-active-link,
+.p-form-roundDark-extra4color2 .p-show-js-block .p-js-link,
+.p-form-roundDark-extra4color2 .p-field-toggled .p-js-link {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .input-group .realperson-challenge .realperson-regen {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .input-group .realperson-challenge .realperson-regen:hover {
+  color: #f79400;
+}
+.p-form-roundDark-extra4color2 .input-group .realperson-challenge .realperson-text:hover {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-slider-block .p-js-value,
+.p-form-roundDark-extra4color2 .p-sl-tip {
+  background-color: #291800;
+  border-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-sl-tip:before {
+  border-color: rgba(255,174,53,0);
+}
+.p-form-roundDark-extra4color2 .ui-slider:before {
+  border-color: #663d00;
+  background-color: #291800;
+}
+.p-form-roundDark-extra4color2 .ui-slider-range {
+  background-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .ui-slider-handle:after {
+  background-color: #291800;
+  border-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .ui-slider-handle .p-sl-icon {
+  background-color: #ffae35;
+  color: #291800;
+}
+.p-form-roundDark-extra4color2 .ui-slider-handle.ui-state-focus:after,
+.p-form-roundDark-extra4color2 .ui-slider-handle.ui-state-active:after,
+.p-form-roundDark-extra4color2 .ui-slider-handle.ui-state-hover:after {
+  border-color: #ff9e0c;
+}
+.p-form-roundDark-extra4color2 .ui-slider-handle.ui-state-focus .p-sl-icon,
+.p-form-roundDark-extra4color2 .ui-slider-handle.ui-state-active .p-sl-icon,
+.p-form-roundDark-extra4color2 .ui-slider-handle.ui-state-hover .p-sl-icon {
+  background-color: #ff9e0c;
+}
+.p-form-roundDark-extra4color2 .ui-slider-horizontal .p-sl-tip:before {
+  border-bottom-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .ui-slider-vertical .p-sl-tip:before {
+  border-right-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .sl-v-simple .ui-slider:before {
+  background-color: #663d00;
+}
+.p-form-roundDark-extra4color2 .sl-v-modern .ui-slider:before,
+.p-form-roundDark-extra4color2 .sl-v-bordered .ui-slider:before {
+  border-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .sl-v-top .ui-slider:before {
+  background-color: #663d00;
+}
+.p-form-roundDark-extra4color2 .sl-v-flat .ui-slider:before {
+  background-color: #663d00;
+}
+.p-form-roundDark-extra4color2 .pt-form-panel,
+.p-form-roundDark-extra4color2 .pt-form-cross-panel {
+  border-color: #663d00;
+}
+.p-form-roundDark-extra4color2 .pt-form-cross-panel .p-check-icon .p-check-block {
+  background-color: #291800;
+}
+.p-form-roundDark-extra4color2 .p-rating .p-rating-active-icon {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-rating input[type="radio"] ~ label:hover .p-rating-icon,
+.p-form-roundDark-extra4color2 .p-rating input[type="radio"] ~ label:hover ~ label .p-rating-icon,
+.p-form-roundDark-extra4color2 .p-rating [type="radio"]:checked ~ label .p-rating-icon {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-rating input[type="radio"] ~ label.p-field-cancel:hover {
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-rating input[type="radio"] ~ label.p-field-cancel:hover ~ label .p-rating-icon,
+.p-form-roundDark-extra4color2 .p-rating .p-rating-cancel:checked ~ label .p-rating-icon,
+.p-form-roundDark-extra4color2 .p-rating *:hover [type="radio"] ~ label .p-rating-icon {
+  color: #999;
+}
+.p-form-roundDark-extra4color2 .input-group-state {
+  color: #ffefd7;
+}
+.p-form-roundDark-extra4color2 .form-control[readonly],
+.p-form-roundDark-extra4color2 .form-control[disabled] {
+  background-color: #382200;
+}
+.p-form-roundDark-extra4color2 .p-field-readonly .p-switch-icon,
+.p-form-roundDark-extra4color2 .p-field-disabled .p-switch-icon,
+.p-form-roundDark-extra4color2 .p-field-readonly .p-check-icon .p-check-block,
+.p-form-roundDark-extra4color2 .p-field-disabled .p-check-icon .p-check-block,
+.p-form-roundDark-extra4color2 .p-field-readonly .p-field-cb,
+.p-form-roundDark-extra4color2 .p-field-disabled .p-field-cb {
+  background-color: #382200;
+  border-color: #382200;
+}
+.p-form-roundDark-extra4color2 .p-field-readonly .p-no-preview,
+.p-form-roundDark-extra4color2 .p-field-disabled .p-no-preview {
+  background-color: #443929;
+  border-color: #382200;
+}
+.p-form-roundDark-extra4color2 .p-field-readonly .p-rating .p-rating-icon,
+.p-form-roundDark-extra4color2 .p-field-disabled .p-rating .p-rating-icon {
+  color: #443929;
+}
+.p-form-roundDark-extra4color2 .nav-tabs {
+  border-color: #5c3700;
+  background-color: #3d2500;
+}
+.p-form-roundDark-extra4color2 .nav-tabs > li > label:hover,
+.p-form-roundDark-extra4color2 .nav-tabs > li > label:focus {
+  background-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-tab-sel:nth-child(1):checked ~ .nav-tabs > li:nth-child(1) > label,
+.p-form-roundDark-extra4color2 .p-tab-sel:nth-child(2):checked ~ .nav-tabs > li:nth-child(2) > label,
+.p-form-roundDark-extra4color2 .p-tab-sel:nth-child(3):checked ~ .nav-tabs > li:nth-child(3) > label,
+.p-form-roundDark-extra4color2 .p-tab-sel:nth-child(4):checked ~ .nav-tabs > li:nth-child(4) > label,
+.p-form-roundDark-extra4color2 .p-tab-sel:nth-child(5):checked ~ .nav-tabs > li:nth-child(5) > label,
+.p-form-roundDark-extra4color2 .p-tab-sel:nth-child(1):checked ~ .nav-tabs > li:nth-child(1) > label:hover,
+.p-form-roundDark-extra4color2 .p-tab-sel:nth-child(2):checked ~ .nav-tabs > li:nth-child(2) > label:hover,
+.p-form-roundDark-extra4color2 .p-tab-sel:nth-child(3):checked ~ .nav-tabs > li:nth-child(3) > label:hover,
+.p-form-roundDark-extra4color2 .p-tab-sel:nth-child(4):checked ~ .nav-tabs > li:nth-child(4) > label:hover,
+.p-form-roundDark-extra4color2 .p-tab-sel:nth-child(5):checked ~ .nav-tabs > li:nth-child(5) > label:hover,
+.p-form-roundDark-extra4color2 .p-tab-sel:nth-child(1):checked ~ .nav-tabs > li:nth-child(1) > label:focus,
+.p-form-roundDark-extra4color2 .p-tab-sel:nth-child(2):checked ~ .nav-tabs > li:nth-child(2) > label:focus,
+.p-form-roundDark-extra4color2 .p-tab-sel:nth-child(3):checked ~ .nav-tabs > li:nth-child(3) > label:focus,
+.p-form-roundDark-extra4color2 .p-tab-sel:nth-child(4):checked ~ .nav-tabs > li:nth-child(4) > label:focus,
+.p-form-roundDark-extra4color2 .p-tab-sel:nth-child(5):checked ~ .nav-tabs > li:nth-child(5) > label:focus {
+  background-color: #291800;
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-title-line,
+.p-form-roundDark-extra4color2 .p-title-step-line,
+.p-form-roundDark-extra4color2 .p-title-side {
+  background-color: #a56300;
+}
+.p-form-roundDark-extra4color2 .p-tooltip .p-tooltip-content {
+  background-color: #f79400;
+}
+.p-form-roundDark-extra4color2 .p-tooltip .p-tooltip-content:after {
+  border-color: rgba(247,148,0,0);
+  border-top-color: #f79400;
+}
+.p-form-roundDark-extra4color2 .p-tooltip.p-tooltip-bottom .p-tooltip-content:after,
+.p-form-roundDark-extra4color2 .p-tooltip.p-tooltip-bottom-left .p-tooltip-content:after,
+.p-form-roundDark-extra4color2 .p-tooltip.p-tooltip-bottom-right .p-tooltip-content:after {
+  border-top-color: rgba(247,148,0,0);
+  border-bottom-color: #f79400;
+}
+.p-form-roundDark-extra4color2 .p-bordered {
+  border-color: #5c3700;
+}
+.p-form-roundDark-extra4color2 .p-shadowed.p-tabs-offset > .nav-tabs + .tab-content,
+.p-form-roundDark-extra4color2 .p-bordered.p-tabs-offset > .nav-tabs + .tab-content,
+.p-form-roundDark-extra4color2 .p-inset.p-tabs-offset > .nav-tabs + .tab-content {
+  background-color: #291800;
+}
+.p-form-roundDark-extra4color2 .p-tabs-offset > .nav-tabs > li > label {
+  background-color: #3d2500;
+}
+.p-form-roundDark-extra4color2 .p-tabs-offset > .nav-tabs > li > label:hover,
+.p-form-roundDark-extra4color2 .p-tabs-offset > .nav-tabs > li > label:focus {
+  background-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-tabs-offset .p-tab-sel:nth-child(1):checked ~ .nav-tabs > li:nth-child(1) > label,
+.p-form-roundDark-extra4color2 .p-tabs-offset .p-tab-sel:nth-child(2):checked ~ .nav-tabs > li:nth-child(2) > label,
+.p-form-roundDark-extra4color2 .p-tabs-offset .p-tab-sel:nth-child(3):checked ~ .nav-tabs > li:nth-child(3) > label,
+.p-form-roundDark-extra4color2 .p-tabs-offset .p-tab-sel:nth-child(4):checked ~ .nav-tabs > li:nth-child(4) > label,
+.p-form-roundDark-extra4color2 .p-tabs-offset .p-tab-sel:nth-child(5):checked ~ .nav-tabs > li:nth-child(5) > label,
+.p-form-roundDark-extra4color2 .p-tabs-offset .p-tab-sel:nth-child(1):checked ~ .nav-tabs > li:nth-child(1) > label:hover,
+.p-form-roundDark-extra4color2 .p-tabs-offset .p-tab-sel:nth-child(2):checked ~ .nav-tabs > li:nth-child(2) > label:hover,
+.p-form-roundDark-extra4color2 .p-tabs-offset .p-tab-sel:nth-child(3):checked ~ .nav-tabs > li:nth-child(3) > label:hover,
+.p-form-roundDark-extra4color2 .p-tabs-offset .p-tab-sel:nth-child(4):checked ~ .nav-tabs > li:nth-child(4) > label:hover,
+.p-form-roundDark-extra4color2 .p-tabs-offset .p-tab-sel:nth-child(5):checked ~ .nav-tabs > li:nth-child(5) > label:hover,
+.p-form-roundDark-extra4color2 .p-tabs-offset .p-tab-sel:nth-child(1):checked ~ .nav-tabs > li:nth-child(1) > label:focus,
+.p-form-roundDark-extra4color2 .p-tabs-offset .p-tab-sel:nth-child(2):checked ~ .nav-tabs > li:nth-child(2) > label:focus,
+.p-form-roundDark-extra4color2 .p-tabs-offset .p-tab-sel:nth-child(3):checked ~ .nav-tabs > li:nth-child(3) > label:focus,
+.p-form-roundDark-extra4color2 .p-tabs-offset .p-tab-sel:nth-child(4):checked ~ .nav-tabs > li:nth-child(4) > label:focus,
+.p-form-roundDark-extra4color2 .p-tabs-offset .p-tab-sel:nth-child(5):checked ~ .nav-tabs > li:nth-child(5) > label:focus {
+  background-color: #291800;
+  color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-tabs-offset.p-bordered > .nav-tabs {
+  border-color: #5c3700;
+}
+.p-form-roundDark-extra4color2 .p-tabs-offset.p-bordered > .nav-tabs > li > label {
+  border-bottom-color: #5c3700;
+}
+.p-form-roundDark-extra4color2 .p-tabs-offset.p-bordered > .nav-tabs + .tab-content {
+  border-color: #5c3700;
+}
+.p-form-roundDark-extra4color2 .p-tabs-offset.p-bordered .p-tab-sel:nth-child(1):checked ~ .nav-tabs > li:nth-child(1) > label,
+.p-form-roundDark-extra4color2 .p-tabs-offset.p-bordered .p-tab-sel:nth-child(2):checked ~ .nav-tabs > li:nth-child(2) > label,
+.p-form-roundDark-extra4color2 .p-tabs-offset.p-bordered .p-tab-sel:nth-child(3):checked ~ .nav-tabs > li:nth-child(3) > label,
+.p-form-roundDark-extra4color2 .p-tabs-offset.p-bordered .p-tab-sel:nth-child(4):checked ~ .nav-tabs > li:nth-child(4) > label,
+.p-form-roundDark-extra4color2 .p-tabs-offset.p-bordered .p-tab-sel:nth-child(5):checked ~ .nav-tabs > li:nth-child(5) > label {
+  border-color: #5c3700;
+}
+.p-form-roundDark-extra4color2 .p-tabs-offset.p-bordered .p-tab-sel:nth-child(1):checked ~ .nav-tabs > li:nth-child(1):last-child > label,
+.p-form-roundDark-extra4color2 .p-tabs-offset.p-bordered .p-tab-sel:nth-child(2):checked ~ .nav-tabs > li:nth-child(2):last-child > label,
+.p-form-roundDark-extra4color2 .p-tabs-offset.p-bordered .p-tab-sel:nth-child(3):checked ~ .nav-tabs > li:nth-child(3):last-child > label,
+.p-form-roundDark-extra4color2 .p-tabs-offset.p-bordered .p-tab-sel:nth-child(4):checked ~ .nav-tabs > li:nth-child(4):last-child > label,
+.p-form-roundDark-extra4color2 .p-tabs-offset.p-bordered .p-tab-sel:nth-child(5):checked ~ .nav-tabs > li:nth-child(5):last-child > label {
+  border-right-color: #5c3700;
+}
+.p-form-roundDark-extra4color2 .p-alt-back,
+.p-form-roundDark-extra4color2 .p-alt-back .p-form-bg {
+  background-color: #fffbf5;
+}
+.p-form-roundDark-extra4color2 .p-alt-back.p-tabs-offset > .nav-tabs + .tab-content {
+  background-color: #fffbf5;
+}
+.p-form-roundDark-extra4color2 .p-alt-back.p-tabs-offset .p-tab-sel:nth-child(1):checked ~ .nav-tabs > li:nth-child(1) > label,
+.p-form-roundDark-extra4color2 .p-alt-back.p-tabs-offset .p-tab-sel:nth-child(2):checked ~ .nav-tabs > li:nth-child(2) > label,
+.p-form-roundDark-extra4color2 .p-alt-back.p-tabs-offset .p-tab-sel:nth-child(3):checked ~ .nav-tabs > li:nth-child(3) > label,
+.p-form-roundDark-extra4color2 .p-alt-back.p-tabs-offset .p-tab-sel:nth-child(4):checked ~ .nav-tabs > li:nth-child(4) > label,
+.p-form-roundDark-extra4color2 .p-alt-back.p-tabs-offset .p-tab-sel:nth-child(5):checked ~ .nav-tabs > li:nth-child(5) > label,
+.p-form-roundDark-extra4color2 .p-alt-back.p-tabs-offset .p-tab-sel:nth-child(1):checked ~ .nav-tabs > li:nth-child(1) > label:hover,
+.p-form-roundDark-extra4color2 .p-alt-back.p-tabs-offset .p-tab-sel:nth-child(2):checked ~ .nav-tabs > li:nth-child(2) > label:hover,
+.p-form-roundDark-extra4color2 .p-alt-back.p-tabs-offset .p-tab-sel:nth-child(3):checked ~ .nav-tabs > li:nth-child(3) > label:hover,
+.p-form-roundDark-extra4color2 .p-alt-back.p-tabs-offset .p-tab-sel:nth-child(4):checked ~ .nav-tabs > li:nth-child(4) > label:hover,
+.p-form-roundDark-extra4color2 .p-alt-back.p-tabs-offset .p-tab-sel:nth-child(5):checked ~ .nav-tabs > li:nth-child(5) > label:hover,
+.p-form-roundDark-extra4color2 .p-alt-back.p-tabs-offset .p-tab-sel:nth-child(1):checked ~ .nav-tabs > li:nth-child(1) > label:focus,
+.p-form-roundDark-extra4color2 .p-alt-back.p-tabs-offset .p-tab-sel:nth-child(2):checked ~ .nav-tabs > li:nth-child(2) > label:focus,
+.p-form-roundDark-extra4color2 .p-alt-back.p-tabs-offset .p-tab-sel:nth-child(3):checked ~ .nav-tabs > li:nth-child(3) > label:focus,
+.p-form-roundDark-extra4color2 .p-alt-back.p-tabs-offset .p-tab-sel:nth-child(4):checked ~ .nav-tabs > li:nth-child(4) > label:focus,
+.p-form-roundDark-extra4color2 .p-alt-back.p-tabs-offset .p-tab-sel:nth-child(5):checked ~ .nav-tabs > li:nth-child(5) > label:focus {
+  background-color: #fffbf5;
+}
+.p-form-roundDark-extra4color2 .p-alt-back .p-table.table-striped > tbody > tr:nth-of-type(even),
+.p-form-roundDark-extra4color2 .p-alt-back .p-table.table-striped > thead {
+  background-color: #fff5e6;
+}
+.p-form-roundDark-extra4color2 .p-alt-back .panel-fp > .panel-heading {
+  background-color: #fff5e6;
+}
+.p-form-roundDark-extra4color2 .p-alt-back .panel-fp > .panel-body {
+  background-color: #fffbf5;
+}
+.p-form-roundDark-extra4color2 .p-alt-back hr.p-flat {
+  border-color: #fff5e6;
+}
+.p-form-roundDark-extra4color2 .p-alt-back .p-custom-arrow .p-select-arrow {
+  background-color: #544633;
+}
+.p-form-roundDark-extra4color2 .p-alt-back .p-picture-pick .p-switch-icon,
+.p-form-roundDark-extra4color2 .p-alt-back .p-picture-pick .p-check-block {
+  background-color: #fffbf5;
+}
+.p-form-roundDark-extra4color2 .btn.p-active-btn,
+.p-form-roundDark-extra4color2 .btn:hover,
+.p-form-roundDark-extra4color2 .btn:focus {
+  -webkit-box-shadow: 0 3px 25px #ffae35;
+  box-shadow: 0 3px 25px #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-hide-form {
+  background: #291800;
+}
+.p-form-roundDark-extra4color2 .p-form-steps > li.active .p-step:after {
+  background-color: #3d2500;
+}
+.p-form-roundDark-extra4color2 .p-form-steps > li.active:last-child .p-step:after {
+  background-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-form-steps > li.active ~ li .p-step:before,
+.p-form-roundDark-extra4color2 .p-form-steps > li.active ~ li .p-step:after {
+  background-color: #3d2500;
+}
+.p-form-roundDark-extra4color2 .p-step:before,
+.p-form-roundDark-extra4color2 .p-step:after {
+  background-color: #ffae35;
+}
+.p-form-roundDark-extra4color2 .p-step .p-step-text:before {
+  background-color: #ffc772;
+}

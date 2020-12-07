@@ -1,0 +1,290 @@
+/*! Forms Plus: JS.1.5.1 - 2019-05-20 */
+.roundDark-ao-form-rtl .input-group .form-control,
+.roundDark-ao-form-rtl .input-group-addon,
+.roundDark-ao-form-rtl .input-group-btn > .btn,
+.roundDark-ao-form-rtl .input-group-btn > .btn-group > .btn,
+.roundDark-ao-form-rtl .input-group-btn > .dropdown-toggle {
+  border-radius: 30px;
+}
+.roundDark-ao-form-rtl .radio label,
+.roundDark-ao-form-rtl .checkbox label,
+.roundDark-ao-form-rtl .p-switch label,
+.roundDark-ao-form-rtl .p-radioswitch label {
+  padding-right: 0;
+}
+.roundDark-ao-form-rtl .p-check-active-icon,
+.roundDark-ao-form-rtl .p-check-icon,
+.roundDark-ao-form-rtl .p-switch-icon {
+  margin-right: 0;
+  margin-left: 12px;
+}
+.roundDark-ao-form-rtl .p-check-big-icons .p-check-icon {
+  margin-right: 10px;
+  margin-left: 15px;
+}
+.roundDark-ao-form-rtl .p-switch-icon:before {
+  left: 0;
+}
+.roundDark-ao-form-rtl .p-switch-icon:after {
+  left: 36px;
+}
+.roundDark-ao-form-rtl .p-check-next:checked + .p-check-container .p-switch-icon:before,
+.roundDark-ao-form-rtl :checked ~ .p-switch-icon:before {
+  left: 30px;
+}
+.roundDark-ao-form-rtl .p-check-next:checked + .p-check-container .p-switch-icon:after,
+.roundDark-ao-form-rtl :checked ~ .p-switch-icon:after {
+  left: 0;
+}
+.roundDark-ao-form-rtl .pt-form-inline .p-radioswitch,
+.roundDark-ao-form-rtl .pt-form-inline .p-switch,
+.roundDark-ao-form-rtl .pt-form-inline .radio,
+.roundDark-ao-form-rtl .pt-form-inline .checkbox {
+  margin-left: 20px;
+  margin-right: 0;
+}
+.roundDark-ao-form-rtl .pt-form-inline .p-radioswitch:first-child,
+.roundDark-ao-form-rtl .pt-form-inline .p-switch:first-child,
+.roundDark-ao-form-rtl .pt-form-inline .radio:first-child,
+.roundDark-ao-form-rtl .pt-form-inline .checkbox:first-child {
+  margin-right: 0;
+}
+.roundDark-ao-form-rtl .p-picture-pick .p-check-icon {
+  left: auto;
+  right: 0;
+}
+.roundDark-ao-form-rtl .p-show-block-heading > .pull-left .p-check-icon,
+.roundDark-ao-form-rtl .p-show-block-heading > .pull-left .p-check-active-icon {
+  margin-right: 5px;
+  margin-left: 0;
+}
+.roundDark-ao-form-rtl .p-radio-color,
+.roundDark-ao-form-rtl .p-form-colorpick .p-radio-color {
+  float: right;
+}
+.roundDark-ao-form-rtl {
+  text-align: right;
+}
+.roundDark-ao-form-rtl .p-social-bar .p-social-btn,
+.roundDark-ao-form-rtl .p-total-block .p-price-column {
+  float: right;
+}
+.roundDark-ao-form-rtl .p-has-icon .form-control,
+.roundDark-ao-form-rtl .p-has-icon .p-slider-field,
+.roundDark-ao-form-rtl .p-has-icon .sp-replacer {
+  padding-left: 25px;
+  padding-right: 60px;
+}
+.roundDark-ao-form-rtl .p-has-icon .input-group-icon {
+  left: auto;
+  right: 0;
+}
+.roundDark-ao-form-rtl .p-custom-arrow .p-select-arrow {
+  right: auto;
+  left: 0;
+}
+.roundDark-ao-form-rtl .p-custom-arrow select {
+  padding-right: 25px;
+  padding-left: 0;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .roundDark-ao-form-rtl .p-custom-arrow select {
+    padding-left: 60px;
+  }
+}
+.roundDark-ao-form-rtl .form-inline > label + .p-rating,
+.roundDark-ao-form-rtl .form-inline .form-group > label + .p-rating {
+  margin-left: 0;
+  margin-right: 8px;
+}
+.roundDark-ao-form-rtl .sp-palette .sp-thumb-el,
+.roundDark-ao-form-rtl .sp-initial {
+  float: right;
+}
+.roundDark-ao-form-rtl .sp-palette-button-container,
+.roundDark-ao-form-rtl .sp-button-container {
+  float: left;
+}
+.roundDark-ao-form-rtl .sp-cancel {
+  margin-right: 0;
+  margin-left: 5px;
+}
+.roundDark-ao-form-rtl .sp-hue,
+.roundDark-ao-form-rtl .sp-clear-enabled .sp-clear {
+  left: 0;
+  right: 84%;
+}
+.roundDark-ao-form-rtl .sp-color {
+  right: 0;
+  left: 20%;
+}
+.roundDark-ao-form-rtl .bootstrap-datetimepicker-widget table thead .prev {
+  text-align: right;
+}
+.roundDark-ao-form-rtl .bootstrap-datetimepicker-widget table thead .next {
+  text-align: left;
+}
+.roundDark-ao-form-rtl .bootstrap-datetimepicker-widget table .today div:before {
+  border-left-width: 0;
+  border-right-width: 7px;
+  left: 2px;
+  right: auto;
+}
+.roundDark-ao-form-rtl .bootstrap-datetimepicker-widget table .dow:first-child,
+.roundDark-ao-form-rtl .bootstrap-datetimepicker-widget table td:first-child {
+  padding-right: 25px;
+  padding-left: 0;
+}
+.roundDark-ao-form-rtl .bootstrap-datetimepicker-widget table .dow:last-child,
+.roundDark-ao-form-rtl .bootstrap-datetimepicker-widget table td:last-child {
+  padding-right: 0;
+  padding-left: 25px;
+}
+.roundDark-ao-form-rtl .p-field-bottom-block,
+.roundDark-ao-form-rtl .p-field-top-block,
+.roundDark-ao-form-rtl .p-field-at-bottom-block,
+.roundDark-ao-form-rtl .p-field-at-top-block {
+  right: auto;
+  left: 0;
+}
+.roundDark-ao-form-rtl .input-group .realperson-challenge .realperson-text {
+  padding-left: 0;
+  padding-right: 12px;
+}
+.roundDark-ao-form-rtl .input-group .realperson-challenge .realperson-regen {
+  left: auto;
+  right: 8px;
+}
+.roundDark-ao-form-rtl .p-slider-field.p-slider-vertical .p-slider-wrap {
+  right: auto;
+  left: 16px;
+}
+.roundDark-ao-form-rtl .p-show-js-block .p-slider-field .p-slider-wrap {
+  margin-right: 0;
+  margin-left: -25px;
+}
+.roundDark-ao-form-rtl .p-show-js-block .p-slider-field.p-slider-vertical .p-slider-wrap {
+  margin-left: 0;
+}
+.roundDark-ao-form-rtl .p-table .p-min-cell:first-child {
+  padding-left: 4px;
+  padding-right: 0;
+}
+.roundDark-ao-form-rtl .p-table .p-min-cell:last-child {
+  padding-right: 4px;
+  padding-left: 0;
+}
+.roundDark-ao-form-rtl .pt-form-cross-panel {
+  margin-left: 9px;
+  margin-right: 9px;
+  padding-left: 19px;
+  padding-right: 0;
+}
+.roundDark-ao-form-rtl .pt-form-cross-panel .radio,
+.roundDark-ao-form-rtl .pt-form-cross-panel .checkbox,
+.roundDark-ao-form-rtl .pt-form-cross-panel .p-radioswitch,
+.roundDark-ao-form-rtl .pt-form-cross-panel .p-switch,
+.roundDark-ao-form-rtl .pt-form-cross-panel.p-form-sg {
+  margin-left: 0;
+}
+.roundDark-ao-form-rtl .pt-form-cross-panel .radio,
+.roundDark-ao-form-rtl .pt-form-cross-panel .checkbox {
+  margin-right: -9px;
+}
+.roundDark-ao-form-rtl .pt-form-cross-panel .p-radioswitch,
+.roundDark-ao-form-rtl .pt-form-cross-panel .p-switch {
+  margin-right: -33px;
+}
+.roundDark-ao-form-rtl .pt-form-cross-panel.p-form-sg {
+  margin-right: 33px;
+}
+.roundDark-ao-form-rtl .p-hide-form {
+  right: auto;
+  left: 10px;
+}
+.roundDark-ao-form-rtl .p-rating label {
+  float: left;
+}
+.roundDark-ao-form-rtl .p-value-label {
+  margin-right: 0;
+  margin-left: 5px;
+  display: inline-block;
+}
+.roundDark-ao-form-rtl label.p-label-required:after {
+  margin-left: 0;
+  margin-right: 3px;
+}
+.roundDark-ao-form-rtl .input-group-state .p-position {
+  left: auto;
+  right: -5px;
+}
+.roundDark-ao-form-rtl .input-group-state .p-text {
+  right: auto;
+  left: 0;
+}
+.roundDark-ao-form-rtl .p-custom-arrow .input-group-state .p-position {
+  left: auto;
+  right: -64px;
+}
+.roundDark-ao-form-rtl .p-inset .p-form-steps-wrap .p-form-steps,
+.roundDark-ao-form-rtl .p-shadowed .p-form-steps-wrap .p-form-steps,
+.roundDark-ao-form-rtl .p-bordered .p-form-steps-wrap .p-form-steps {
+  padding-right: 20px;
+  padding-left: 0;
+}
+.roundDark-ao-form-rtl .p-inset .p-form-steps-wrap,
+.roundDark-ao-form-rtl .p-shadowed .p-form-steps-wrap {
+  margin-left: 0;
+  margin-right: -45px;
+}
+.roundDark-ao-form-rtl .p-bordered .p-form-steps-wrap {
+  margin-left: 0;
+  margin-right: -46px;
+}
+.roundDark-ao-form-rtl .p-tabs-offset > .nav-tabs,
+.roundDark-ao-form-rtl .p-steps-offset > .p-form-steps-wrap:first-child {
+  left: auto;
+  right: 0;
+}
+.roundDark-ao-form-rtl .p-steps-offset > .p-form-steps-wrap:first-child .p-form-steps {
+  padding-right: 20px;
+  padding-left: 0;
+}
+.roundDark-ao-form-rtl .p-steps-offset.p-shadowed > .p-form-steps-wrap:first-child {
+  padding-left: 20px;
+  padding-right: 0;
+}
+.roundDark-ao-form-rtl .p-steps-offset.p-bordered .p-form-steps-wrap {
+  margin-left: 0;
+  margin-right: -1px;
+}
+.roundDark-ao-form-rtl .input-group select.form-control[multiple],
+.roundDark-ao-form-rtl .input-group textarea.form-control {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 0;
+  border-top-width: 18px;
+  border-bottom-width: 18px;
+  border-right-width: 18px;
+  border-style: solid;
+  border-color: transparent;
+}
+.roundDark-ao-form-rtl .input-group select.form-control[multiple] {
+  border-right-width: 0;
+  border-left-width: 18px;
+  padding-right: 0;
+  padding-left: 0;
+}
+.roundDark-ao-form-rtl .input-group textarea.form-control {
+  border-right-width: 0;
+  border-left-width: 18px;
+  padding-right: 18px;
+  padding-left: 0;
+}
+.roundDark-ao-form-rtl select.form-control option:checked {
+  padding-left: 18px;
+  padding-right: 40px;
+}
+.roundDark-ao-form-rtl .p-has-icon textarea.form-control {
+  padding-right: 60px;
+}
