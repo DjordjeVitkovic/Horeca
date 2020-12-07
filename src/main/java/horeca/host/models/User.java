@@ -1,4 +1,4 @@
-package horeca.host;
+package horeca.host.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
