@@ -1,4 +1,9 @@
 package horeca.host.repository;
 
-public interface OccupationRepository {
+import horeca.host.models.Occupation;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface OccupationRepository extends JpaRepository<Occupation, UUID> {
 }
