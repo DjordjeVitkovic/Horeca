@@ -9,7 +9,7 @@ public class WorkExperience {
 
     @Id
     @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID workExperienceId;
 
     @Column

@@ -9,7 +9,7 @@ public class Occupation {
 
     @Id
     @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID occupationId;
 
     @Column

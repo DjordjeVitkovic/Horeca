@@ -12,7 +12,7 @@ public class Person {
 
     @Id
     @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID personId;
     @Column
     @NotEmpty(message = "Morate popuniti polje!")
