@@ -102,6 +102,10 @@ public class Person {
         this.languageList = languageList;
     }
 
+    public Person() {
+
+    }
+
     public UUID getPersonId() {
         return personId;
     }

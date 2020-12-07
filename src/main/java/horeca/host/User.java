@@ -43,8 +43,8 @@ public class User {
         return userId;
     }
 
-    public void setUserId(UUID userId) {
-        this.userId = userId;
+    public void setUserId(UUID id) {
+        this.userId = id;
     }
 
     public String getUsername() {

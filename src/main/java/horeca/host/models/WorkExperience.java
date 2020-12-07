@@ -26,6 +26,9 @@ public class WorkExperience {
     @ManyToOne(cascade = CascadeType.ALL)
     private Person personId;
 
+    public WorkExperience(){
+
+    }
     public WorkExperience(String companyName, int startDate, int endDate, String description, Person personId) {
         this.companyName = companyName;
         this.startDate = startDate;

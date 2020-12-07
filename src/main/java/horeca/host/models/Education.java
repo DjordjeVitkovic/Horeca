@@ -22,6 +22,10 @@ public class Education {
         this.course = course;
     }
 
+    public Education() {
+
+    }
+
     public UUID getEducationId() {
         return educationId;
     }

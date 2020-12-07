@@ -26,6 +26,10 @@ public class Language {
         this.personId = personId;
     }
 
+    public Language() {
+
+    }
+
     public UUID getLanguageId() {
         return languageId;
     }

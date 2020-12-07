@@ -18,6 +18,10 @@ public class Occupation {
         this.occupationName = occupationName;
     }
 
+    public Occupation() {
+
+    }
+
     public UUID getOccupationId() {
         return occupationId;
     }
