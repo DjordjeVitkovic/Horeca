@@ -25,4 +25,9 @@ public class OccupationService {
         return occupationRepository.getOne(occupationId);
     }
 
+    public void deleteOccupationById(String occupationId){
+
+        occupationRepository.deleteById(occupationId);
+    }
+
 }

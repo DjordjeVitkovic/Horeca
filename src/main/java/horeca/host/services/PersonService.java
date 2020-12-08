@@ -32,7 +32,18 @@ public class PersonService {
         return personRepository.getOne(personId);
     }
 
+    public void deletePerson(String personId){
+        personRepository.deleteById(personId);
+    }
+
+    //Save person with image
     public void savePerson(Person person, MultipartFile multipartFile) throws Exception {
+
+        if(multipartFile == null){
+            personRepository.save(person);
+            return;
+        }
+
         if (multipartFile.getSize() == 0) {
 
             personRepository.save(person);
@@ -68,6 +79,7 @@ public class PersonService {
         }
     }
 
+    //Convert MultipartFile in File
     public File convertMultipartFileToFile(MultipartFile multipartFile) {
 
         File convFile = new File(multipartFile.getOriginalFilename());

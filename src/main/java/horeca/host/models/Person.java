@@ -56,13 +56,13 @@ public class Person {
     private String hobby;
 
     @Valid
-    @JoinColumn(name = "educationId")
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "educationId")
     private Education education;
 
     @Valid
-    @JoinColumn(name = "occupaitonId")
-    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinColumn(name = "occupationId")
     private Occupation occupation;
 
     @Valid

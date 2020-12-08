@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("")
 public class FrontController {
 
@@ -38,7 +38,7 @@ public class FrontController {
     }
 
     @PostMapping("/person-save")
-    private String savePerson(@ModelAttribute Person person,
+    private String savePerson(@RequestBody Person person,
                                @RequestParam(name = "file", required = false) MultipartFile multipartFile
     ) throws Exception {
 

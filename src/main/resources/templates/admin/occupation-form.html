@@ -13,9 +13,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>Hosst</title>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="..//plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="..//dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -41,9 +41,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <a href="user-profile" class="dropdown-item">
             <!-- Message Start -->
             <span class="media align-items-center">
-              <img th:src="*{'data:image/jpeg;base64,'+user.image.base64Encoded}" alt="User Avatar" class="img-brand-50 mr-3 img-circle" style="width: 128px;">
+              <img  alt="User Avatar" class="img-brand-50 mr-3 img-circle" style="width: 128px;">
               <span class="media-body">
-                <strong th:text="${user.username}" class="dropdown-item-title" style="display: flex;justify-content: center;">
+                <strong  class="dropdown-item-title" style="display: flex;justify-content: center;">
                 </strong>
               </span>
             </span>
@@ -54,7 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <i class="fas fa-user"></i> Izmeni profil
           </a>
           <div class="dropdown-divider"></div>
-          <a th:href="@{/loginPage?logout}" class="dropdown-item">
+          <a  class="dropdown-item">
               <i class="fas fa-sign-out-alt"></i> Odjavi se
           </a>
         </div>
@@ -64,127 +64,127 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #001A35;">
-    <!-- Product Logo -->
-    <a href="person-list" class="brand-link">
-      <img src="./images/backgrounds/hosst.jpg" alt="Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">HOSST</span>
-    </a>
+<!--  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #001A35;">-->
+<!--    &lt;!&ndash; Product Logo &ndash;&gt;-->
+<!--    <a href="person-list" class="brand-link">-->
+<!--      <img src="./images/backgrounds/hosst.jpg" alt="Logo" class="brand-image img-circle elevation-3"-->
+<!--           style="opacity: .8">-->
+<!--      <span class="brand-text font-weight-light">HOSST</span>-->
+<!--    </a>-->
 
-    <!-- Sidebar Menu -->
-	<nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
-              <span>
-                Prikaz
-                <i class="right fas fa-angle-left" style="float: right;"></i>
-              </span>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="person-list" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>SVE</span>
-                </a>
-              </li>
-              <li th:each="occupation: ${occupationList}" class="nav-item">
-                <a th:href="@{occupation-list(id=${occupation.id})}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span th:text="${occupation.name}"></span>
-                </a>
-              </li>
-            </ul>
-          </li>
-    
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
-              <span>
-                Ostalo
-                <i class="right fas fa-angle-left" style="float: right;"></i>
-              </span>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="unseen-list" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>Nepregledani CV</span>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="person-favorite-list" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>Omiljena lista</span>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="successfully-employed-person" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>Uspenso zaposleni</span>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="occupation-form" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>Dodaj novo zanimanje</span>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="list-occupation" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>Lista svih zanimanja</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          
-          <li sec:authorize="hasRole('ROLE_SUPERADMIN')" class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
-              <span>
-                Korisnici
-                <i class="right fas fa-angle-left" style="float: right;"></i>
-              </span>
-            </a>
-          <ul class="nav nav-treeview">
-          	<li class="nav-item">
-                <a href="user-list" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>Lista</span>
-                </a>
-            </li>
-          	<li class="nav-item">
-                <a href="user-form" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>Dodaj novog korisnika</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="user-privilages" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>Promeni privilegije korisnika</span>
-                </a>
-            </li>  
-          </ul>
-          </li>
-          
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-  </aside> 
+<!--    &lt;!&ndash; Sidebar Menu &ndash;&gt;-->
+<!--	<nav class="mt-2">-->
+<!--        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">-->
+<!--          &lt;!&ndash; Add icons to the links using the .nav-icon class-->
+<!--               with font-awesome or any other icon font library &ndash;&gt;-->
+<!--          <li class="nav-item has-treeview">-->
+<!--            <a href="#" class="nav-link">-->
+<!--              <i class="nav-icon far fa-plus-square"></i>-->
+<!--              <span>-->
+<!--                Prikaz-->
+<!--                <i class="right fas fa-angle-left" style="float: right;"></i>-->
+<!--              </span>-->
+<!--            </a>-->
+<!--            <ul class="nav nav-treeview">-->
+<!--              <li class="nav-item">-->
+<!--                <a href="person-list" class="nav-link">-->
+<!--                  <i class="far fa-circle nav-icon"></i>-->
+<!--                  <span>SVE</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li class="nav-item">-->
+<!--                <a  class="nav-link">-->
+<!--                  <i class="far fa-circle nav-icon"></i>-->
+<!--                  <span ></span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </li>-->
+<!--    -->
+<!--          <li class="nav-item has-treeview">-->
+<!--            <a href="#" class="nav-link">-->
+<!--              <i class="nav-icon far fa-plus-square"></i>-->
+<!--              <span>-->
+<!--                Ostalo-->
+<!--                <i class="right fas fa-angle-left" style="float: right;"></i>-->
+<!--              </span>-->
+<!--            </a>-->
+<!--            <ul class="nav nav-treeview">-->
+<!--              <li class="nav-item">-->
+<!--                <a href="unseen-list" class="nav-link">-->
+<!--                  <i class="far fa-circle nav-icon"></i>-->
+<!--                  <span>Nepregledani CV</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--            <ul class="nav nav-treeview">-->
+<!--              <li class="nav-item">-->
+<!--                <a href="person-favorite-list" class="nav-link">-->
+<!--                  <i class="far fa-circle nav-icon"></i>-->
+<!--                  <span>Omiljena lista</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--            <ul class="nav nav-treeview">-->
+<!--              <li class="nav-item">-->
+<!--                <a href="successfully-employed-person" class="nav-link">-->
+<!--                  <i class="far fa-circle nav-icon"></i>-->
+<!--                  <span>Uspenso zaposleni</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--            <ul class="nav nav-treeview">-->
+<!--              <li class="nav-item">-->
+<!--                <a href="occupation-form" class="nav-link">-->
+<!--                  <i class="far fa-circle nav-icon"></i>-->
+<!--                  <span>Dodaj novo zanimanje</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--            <ul class="nav nav-treeview">-->
+<!--              <li class="nav-item">-->
+<!--                <a href="list-occupation" class="nav-link">-->
+<!--                  <i class="far fa-circle nav-icon"></i>-->
+<!--                  <span>Lista svih zanimanja</span>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </li>-->
+<!--          -->
+<!--          <li sec:authorize="hasRole('ROLE_SUPERADMIN')" class="nav-item has-treeview">-->
+<!--          <a href="#" class="nav-link">-->
+<!--              <i class="nav-icon far fa-plus-square"></i>-->
+<!--              <span>-->
+<!--                Korisnici-->
+<!--                <i class="right fas fa-angle-left" style="float: right;"></i>-->
+<!--              </span>-->
+<!--            </a>-->
+<!--          <ul class="nav nav-treeview">-->
+<!--          	<li class="nav-item">-->
+<!--                <a href="user-list" class="nav-link">-->
+<!--                  <i class="far fa-circle nav-icon"></i>-->
+<!--                  <span>Lista</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--          	<li class="nav-item">-->
+<!--                <a href="user-form" class="nav-link">-->
+<!--                  <i class="far fa-circle nav-icon"></i>-->
+<!--                  <span>Dodaj novog korisnika</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a href="user-privilages" class="nav-link">-->
+<!--                  <i class="far fa-circle nav-icon"></i>-->
+<!--                  <span>Promeni privilegije korisnika</span>-->
+<!--                </a>-->
+<!--            </li>  -->
+<!--          </ul>-->
+<!--          </li>-->
+<!--          -->
+<!--        </ul>-->
+<!--      </nav>-->
+<!--      &lt;!&ndash; /.sidebar-menu &ndash;&gt;-->
+<!--  </aside> -->
    
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -211,12 +211,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" th:method="PUT" th:action="@{occupation-save}" th:model="occupation">
-               <input type="hidden" th:field="${occupation.id}"/> 
+              <form role="form" th:method="PUT" th:action="@{save}" th:model="occupation">
+               <input type="hidden" th:field="${occupation.occupationId}"/>
                 <div class="card-body">
                   <div class="form-group">
                     <label>Unesi zanimanje</label>
-                    <input type="text" class="form-control" placeholder="Upisi novo zanimanje" th:field="${occupation.name}"/>
+                    <input type="text" class="form-control" placeholder="Upisi novo zanimanje" th:field="${occupation.occupationName}"/>
                   </div>
                                    
                 </div>
@@ -257,10 +257,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
+<script src="../dist/js/adminlte.min.js"></script>
 </body>
 </html>
