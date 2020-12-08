@@ -5,10 +5,11 @@ import horeca.host.models.Person;
 import horeca.host.services.OccupationService;
 import horeca.host.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class FrontController {
     @Autowired
     private OccupationService occupationService;
 
+
+
     @GetMapping({"","/"})
     public String getIndex(Model model){
 
@@ -32,5 +35,15 @@ public class FrontController {
         model.addAttribute("occupationList", occupationList);
 
         return "index";
+    }
+
+    @PostMapping("/person-save")
+    private String savePerson(@ModelAttribute Person person,
+                               @RequestParam(name = "file", required = false) MultipartFile multipartFile
+    ) throws Exception {
+
+        personService.savePerson(person, multipartFile);
+
+        return "success";
     }
 }
