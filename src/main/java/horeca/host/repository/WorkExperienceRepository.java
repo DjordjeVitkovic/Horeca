@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface WorkExperienceRepository extends JpaRepository<WorkExperience, UUID> {
+public interface WorkExperienceRepository extends JpaRepository<WorkExperience, String> {
 }

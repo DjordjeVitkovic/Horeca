@@ -1,5 +1,7 @@
 package horeca.host.models;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,8 +12,9 @@ import java.util.UUID;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID userId;
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String userId;
 
     @Column(nullable = false)
     private String username;
@@ -39,11 +42,11 @@ public class User {
         this.permissions = permissions;
     }
 
-    public UUID getUserId() {
+    public String  getUserId() {
         return userId;
     }
 
-    public void setUserId(UUID id) {
+    public void setUserId(String  id) {
         this.userId = id;
     }
 

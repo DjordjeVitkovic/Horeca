@@ -1,5 +1,7 @@
 package horeca.host.models;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.UUID;
@@ -8,9 +10,9 @@ import java.util.UUID;
 public class WorkExperience {
 
     @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID workExperienceId;
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String  workExperienceId;
 
     @Column
     @Size(max = 50, message = "Maksimalan broj karaktera je 50.")
@@ -47,11 +49,11 @@ public class WorkExperience {
         this.personId = personId;
     }
 
-    public UUID getWorkExperienceId() {
+    public String  getWorkExperienceId() {
         return workExperienceId;
     }
 
-    public void setWorkExperienceId(UUID workExperienceId) {
+    public void setWorkExperienceId(String  workExperienceId) {
         this.workExperienceId = workExperienceId;
     }
 

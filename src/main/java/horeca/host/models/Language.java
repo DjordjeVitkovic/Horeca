@@ -1,5 +1,7 @@
 package horeca.host.models;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.UUID;
@@ -8,9 +10,9 @@ import java.util.UUID;
 public class Language {
 
     @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID languageId;
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String  languageId;
 
     @Column
     @Size(max = 30, message = "Maksimalan broj karaktera je 30.")
@@ -35,11 +37,11 @@ public class Language {
 
     }
 
-    public UUID getLanguageId() {
+    public String getLanguageId() {
         return languageId;
     }
 
-    public void setLanguageId(UUID languageId) {
+    public void setLanguageId(String languageId) {
         this.languageId = languageId;
     }
 

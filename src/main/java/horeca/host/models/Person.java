@@ -1,5 +1,7 @@
 package horeca.host.models;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -11,9 +13,9 @@ import java.util.UUID;
 public class Person {
 
     @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID personId;
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String  personId;
     @Column
     @NotEmpty(message = "Morate popuniti polje!")
     @Size(max = 20, message = "Maksimalan broj karaktera je 20!")
@@ -106,11 +108,11 @@ public class Person {
 
     }
 
-    public UUID getPersonId() {
+    public String  getPersonId() {
         return personId;
     }
 
-    public void setPersonId(UUID personId) {
+    public void setPersonId(String  personId) {
         this.personId = personId;
     }
 

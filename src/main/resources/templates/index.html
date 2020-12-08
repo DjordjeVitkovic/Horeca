@@ -1,10 +1,1156 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org"> 
 
-</body>
+	<head>
+		<meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Kreiranje CV</title>
+        
+        <!-- Google / Search Engine Tags -->
+		<meta itemprop="name" content="HOSST Kreiranje CV">
+		<meta itemprop="description" content="Kreirajte Vas CV">
+		<meta itemprop="image" content="./images/ugostitelj.jpeg">
+
+		<!-- Facebook Meta Tags -->
+		<meta property="og:url" content="http://cvzaugostitelje.com">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Kreiraj CV - Ugostitelji">
+		<meta property="og:description" content="Kreirajte Vas CV">
+		<meta property="og:image" content="./images/ugostitelj.jpeg">
+        
+        <link href="https://fonts.googleapis.com/css?family=Roboto&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext" rel="stylesheet">
+        <link href="./font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+        <link href="./bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <!-- colorpicker: Spectrum plugin -->
+        <link href="./js/spectrum/spectrum.css" rel="stylesheet" type="text/css">
+        <!-- Bootstrap datetimepicker -->
+        <link href="./js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css">
+        <link href="./js/jquery-ui/css/core.css" rel="stylesheet" type="text/css">
+        <!-- Slider -->
+        <link href="./js/jquery-ui/css/slider.css" rel="stylesheet" type="text/css">
+        <!-- Autocomplete -->
+        <link href="./js/jquery-ui/css/menu.css" rel="stylesheet" type="text/css">
+        <link href="./js/jquery-ui/css/autocomplete.css" rel="stylesheet" type="text/css">
+        <link href="./css/forms-plus.css" rel="stylesheet" type="text/css">
+        <!-- Color style: remove or change to change coloring -->
+        <link href="./css/color/forms-plus-extra2color2.css" rel="stylesheet" type="text/css">
+        <!-- Custom styles for background (<1-6>.jpg), remove if not needed -->
+        <link href="./css/custom-styles.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="container"> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+        <script type="text/javascript">
+        var otkriveno = 0;
+		var otkriveno2 = 0;
+        window.onload = function(){
+
+            var otkri = function(){
+                let i = 0;
+               
+                for (var el of document.getElementsByClassName('p-block')){
+                    if (i < otkriveno){
+                        el.style.display = 'block';
+                    } else {
+                        el.style.display = 'none';
+                    }
+                    i++;
+                }
+
+                if (otkriveno == i){
+                    document.getElementById('plus').style.display = 'none';
+                } else {
+                    document.getElementById('plus').style.display = 'block';
+                }
+
+                if (otkriveno == 0){
+                    document.getElementById('minus').style.display = 'none';
+                } else {
+                    document.getElementById('minus').style.display = 'block';
+                }
+            };
+
+            otkri();
+
+            document.getElementById('plus').onclick = function(){
+                otkriveno++;
+                otkri();
+            };
+            document.getElementById('minus').onclick = function(){
+                otkriveno--;
+                otkri();
+            };
+            
+            var otkri2 = function(){
+                let i2 = 0;
+                for (var el2 of document.getElementsByClassName('jezici')){
+                    if (i2 < otkriveno2){
+                        el2.style.display = 'block';
+                    } else {
+                        el2.style.display = 'none';
+                    }
+                    i2++;
+                }
+
+                if (otkriveno2 == i2){
+                    document.getElementById('dodajJezik').style.display = 'none';
+                } else {
+                    document.getElementById('dodajJezik').style.display = 'block';
+                }
+
+                if (otkriveno2 == 0){
+                    document.getElementById('ukloniJezik').style.display = 'none';
+                } else {
+                    document.getElementById('ukloniJezik').style.display = 'block';
+                }
+            };
+
+            otkri2();
+
+            document.getElementById('dodajJezik').onclick = function(){
+                otkriveno2++;
+                otkri2();
+            };
+            document.getElementById('ukloniJezik').onclick = function(){
+                otkriveno2--;
+                otkri2();
+            };         
+        };
+        
+        function readURL(input) {
+      	  if (input.files && input.files[0]) {
+      	    var reader = new FileReader();
+      	    
+      	    reader.onload = function(e) {
+      	      $('#blah').attr('src', e.target.result);
+      	    }
+      	    document.getElementById('slika').style.display = 'block';
+      	    reader.readAsDataURL(input.files[0]); // convert to base64 string
+      	  }
+      	}
+
+      	$("#fileupload1").change(function() {
+      	  readURL(this);
+      	});
+    </script>
+
+               
+            <form enctype="multipart/form-data" class="roundDark-p-form p-form-roundDark-extra2color2" th:object="${person}" method="post" th:action="@{/person-save}" data-js-validate="true" data-js-highlight-state-msg="true" data-js-show-valid-msg="true">
+                <div class="p-form p-shadowed p-form-md" style="border-radius: 40px;">
+                    <!-- Start: title -->
+                   <div class="row" style="text-align: center">
+                    <div style="align-items:center;" >                    
+                    <img alt="loading..." align="middle" style="width:60%" src="${pageContext.request.contextPath}/images/backgrounds/host_transparent_pixel.png">
+                    </div>
+                   	
+                    <div style="align-items:center;" class="p-title">
+                    <p class="title-size" style="align-items:center;margin-top: 60px;font-size: 32px;">CV
+                    <i class="fa fa-pencil-square-o"></i></p>           
+                    </div>
+                   </div>
+                    
+                    <!-- End: title -->
+                    
+                    
+                   		
+                                <!-- Start: input Image  -->
+                                <div id="slika" style="display:none;">
+                                <div style="display: flex;justify-content: center;">
+                                
+                                <img style="display: flex; justify-content: center; align-items: center; width:100%; max-width: 150px;" id="blah" src="#" alt="" />
+                               
+                                </div>
+                                </div>
+                                <br><br>
+                                <div class="row">
+                           		 <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="p-file-wrap">
+                                        <input onchange="readURL(this);" type="file" id="fileupload1" name="file" placeholder="Institute marksheet" required="required">
+                                        <div class="input-group">
+                                            <span >
+                                                <button style="width: 100%;" type="button" class="btn">Izaberite sliku</button>
+                                            </span>
+                                            <span class="input-group-state">
+                                                <span class="p-position">
+                                                    <span class="p-text">
+                                                    	<span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                        <span class="p-valid-text"><i class="fa fa-check"></i></span>
+                                                        <span class="p-error-text"><i class="fa fa-times"></i></span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                       </div>
+                                       </div> 
+                                      
+                                    </div>
+                                    
+                                </div>
+                                
+                                
+                                <!-- End: input Image  -->
+                            
+                         
+                            
+                    <div data-js-block="formBlockName">
+    
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <!-- Start: name  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{name}" type="text" id="name" name="name" placeholder="Ime" required="required" class="form-control" />
+                                        
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-user"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: name  -->
+                            </div>
+                            <div class="col-sm-6">
+                                <!-- Start: name  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{surname}" type="text" id="surname" name="surname" placeholder="Prezime" required="required" class="form-control" />
+                                        <p th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-user"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: name  -->
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <!-- Start: dateBirth  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{dateOfBirth}" type="text" id="date-birth" name="dateBirth" placeholder="Datum rođenja" required="required" data-js-datetimepick="true" data-js-max-date="today" data-date-format="DD.MM.YYYY" class="form-control" aria-required="true"/>
+                                        <p th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: dateBirth  -->
+                            </div> 
+                            <div class="col-sm-6">
+                                <!-- Start: city  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{city}" type="text" id="city" name="city" placeholder="Grad" required="required" class="form-control" aria-required="true"/>
+                                        <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-home"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: city  -->
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                          <div class="col-sm-6">
+                                <!-- Start: address  -->
+                                <div class="form-group">
+                                    
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{adress}" type="text" id="address" name="address" placeholder="Državljanstvo" required="required" class="form-control" aria-required="true"/>
+                                        <p th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-flag"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: address  -->
+                            </div>
+                            <div class="col-sm-6" id="novo" style="display: block;">
+                                <!-- Start: email  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{email}" type="email" id="email" name="email" placeholder="Unesite Vašu e-mail adresu" required="required" class="form-control" aria-required="true" aria-invalid="false"/>
+                                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-envelope-o"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: email  -->
+                            </div> 
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <!-- Start: contactPhone  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{phoneNumber}" type="text" id="contact-phone" name="contactPhone" placeholder="Kontakt telefon" class="form-control" aria-required="true" required="required"/>
+                                        <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                	<span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                    <span class="p-valid-text"><i class="fa fa-check"></i></span>
+                                                    <span class="p-error-text"><i class="fa fa-times"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-phone"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: contactPhone  -->
+                            </div>	
+                        </div>
+                        
+                        <!-- Start: department  -->
+                        
+                        <div class="form-group">
+                                <label class="input-group  p-has-icon  p-custom-arrow">
+                                    <select th:field="*{occupation}" id="faculty" name="faculty" required="required" class="form-control" aria-required="true">
+                                        
+                                        
+                                           
+                                            <option th:each="i : ${occupationList}"
+                                            		th:value="${i.id}"
+                                            		th:text = "${i.name}">
+                                             </option>
+                                        
+                                    </select>
+                                    <span class="input-group-state">
+                                        <span class="p-position">
+                                            <span class="p-text">
+                                                <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="p-field-cb"></span>
+                                    <span class="p-select-arrow"><i class="fa fa-caret-down"></i></span>
+                                    <span class="input-group-icon"><i class="fa fa-user-secret"></i></span>
+                                </label>
+                            </div>
+                        <!-- End: department  -->
+                        
+                         <div class="p-subtitle text-center">Radno iskustvo</div>
+                          
+                        <div class="p-block">
+                            <h4 style="display: flex;justify-content: center;">Unesite Vase radno iskustvo</h4>
+                            <div class="form-group">                       
+                            <div class="input-group  p-has-icon">
+                                <input th:field="*{workExpirienceList[0].companyName}" type="text" id="search1" name="search1" placeholder="Ime firme" class="form-control"/>
+                                <p th:if="${#fields.hasErrors('workExpirienceList[0].companyName')}" th:errors="*{workExpirienceList[0].companyName}" class="fa fa-times p-error-text"/>
+                                <span class="input-group-state">
+                                    <span class="p-position">
+                                        <span class="p-text">
+                                            <span class="p-valid-text"><i class="fa fa-check"></i></span>
+                                            <span class="p-error-text"><i class="fa fa-times"></i></span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="p-field-cb"></span>
+                                <span class="input-group-icon"><i class="fa fa-briefcase"></i></span>
+                            </div>
+                           
+                        </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                <!-- Start: schoolPassingYear  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{workExpirienceList[0].start}" type="text" id="school-passing-year" name="schoolPassingYear" placeholder="Datum početka" data-date-format="DD.MM.YYYY" class="form-control"/>
+                                        <p th:if="${#fields.hasErrors('workExpirienceList[0].start')}" th:errors="*{workExpirienceList[0].start}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: schoolPassingYear  -->
+                            </div>
+                                <div class="col-sm-6">
+                                <!-- Start: schoolPassingYear  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{workExpirienceList[0].ended}" type="text" id="school-passing-year" name="schoolPassingYear" placeholder="Datum završetka" data-date-format="DD.MM.YYYY" class="form-control"/>
+                                        <p th:if="${#fields.hasErrors('workExpirienceList[0].ended')}" th:errors="*{workExpirienceList[0].ended}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: schoolPassingYear  -->
+                            </div>
+                            </div>
+                            <div class="form-group">
+                            <div class="input-group  p-has-icon">
+                                <textarea placeholder="Opis radne pozicije" th:field="*{workExpirienceList[0].description}" id="textarea" name="textarea" class="form-control"></textarea>
+                                <p th:if="${#fields.hasErrors('workExpirienceList[0].description')}" th:errors="*{workExpirienceList[0].description}" class="fa fa-times p-error-text"/>
+                                <span class="input-group-state">
+                                    <span class="p-position">
+                                        <span class="p-text">
+                                            <span class="p-valid-text"><i class="fa fa-check"></i></span>
+                                            <span class="p-error-text"><i class="fa fa-times"></i></span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="p-field-cb"></span>
+                                <span class="input-group-icon"><i class="fa fa-file-text-o"></i></span>
+                            </div>
+                        </div>
+                        
+					   </div> 
+                       
+                       <div class="p-block">
+                            <h4 style="display: flex;justify-content: center;">Unesite Vase radno iskustvo</h4>
+                            <div class="form-group">                       
+                            <div class="input-group  p-has-icon">
+                                <input th:field="*{workExpirienceList[1].companyName}" type="text" id="search1" name="search1" placeholder="Ime firme" class="form-control"/>
+                                <p th:if="${#fields.hasErrors('workExpirienceList[1].companyName')}" th:errors="*{workExpirienceList[1].companyName}" class="fa fa-times p-error-text"/>
+                                <span class="input-group-state">
+                                    <span class="p-position">
+                                        <span class="p-text">
+                                            <span class="p-valid-text"><i class="fa fa-check"></i></span>
+                                            <span class="p-error-text"><i class="fa fa-times"></i></span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="p-field-cb"></span>
+                                <span class="input-group-icon"><i class="fa fa-briefcase"></i></span>
+                            </div>
+                           
+                        </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                <!-- Start: schoolPassingYear  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{workExpirienceList[1].start}" type="text" id="school-passing-year" name="schoolPassingYear" placeholder="Datum početka" data-date-format="DD.MM.YYYY" class="form-control"/>
+                                        <p th:if="${#fields.hasErrors('workExpirienceList[1].start')}" th:errors="*{workExpirienceList[1].start}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: schoolPassingYear  -->
+                            </div>
+                                <div class="col-sm-6">
+                                <!-- Start: schoolPassingYear  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{workExpirienceList[1].ended}" type="text" id="school-passing-year" name="schoolPassingYear" placeholder="Datum završetka" data-date-format="DD.MM.YYYY" class="form-control"/>
+                                        <p th:if="${#fields.hasErrors('workExpirienceList[1].ended')}" th:errors="*{workExpirienceList[1].ended}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: schoolPassingYear  -->
+                            </div>
+                            </div>
+                            <div class="form-group">
+                            <div class="input-group  p-has-icon">
+                                <textarea placeholder="Opis radne pozicije" th:field="*{workExpirienceList[1].description}" id="textarea" name="textarea" class="form-control"></textarea>
+                                <p th:if="${#fields.hasErrors('workExpirienceList[1].description')}" th:errors="*{workExpirienceList[1].description}" class="fa fa-times p-error-text"/>
+                                <span class="input-group-state">
+                                    <span class="p-position">
+                                        <span class="p-text">
+                                            <span class="p-valid-text"><i class="fa fa-check"></i></span>
+                                            <span class="p-error-text"><i class="fa fa-times"></i></span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="p-field-cb"></span>
+                                <span class="input-group-icon"><i class="fa fa-file-text-o"></i></span>
+                            </div>
+                        </div>
+                        
+					   </div> 
+                        
+                         <div class="p-block">
+                            <h4 style="display: flex;justify-content: center;">Unesite Vase radno iskustvo</h4>
+                            <div class="form-group">                       
+                            <div class="input-group  p-has-icon">
+                                <input th:field="*{workExpirienceList[2].companyName}" type="text" id="search1" name="search1" placeholder="Ime firme" class="form-control"/>
+                                <p th:if="${#fields.hasErrors('workExpirienceList[2].companyName')}" th:errors="*{workExpirienceList[2].companyName}" class="fa fa-times p-error-text"/>
+                                <span class="input-group-state">
+                                    <span class="p-position">
+                                        <span class="p-text">
+                                            <span class="p-valid-text"><i class="fa fa-check"></i></span>
+                                            <span class="p-error-text"><i class="fa fa-times"></i></span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="p-field-cb"></span>
+                                <span class="input-group-icon"><i class="fa fa-briefcase"></i></span>
+                            </div>
+                           
+                        </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                <!-- Start: schoolPassingYear  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{workExpirienceList[2].start}" type="text" id="school-passing-year" name="schoolPassingYear" placeholder="Datum početka" data-date-format="DD.MM.YYYY" class="form-control"/>
+                                        <p th:if="${#fields.hasErrors('workExpirienceList[2].start')}" th:errors="*{workExpirienceList[2].start}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: schoolPassingYear  -->
+                            </div>
+                                <div class="col-sm-6">
+                                <!-- Start: schoolPassingYear  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{workExpirienceList[2].ended}" type="text" id="school-passing-year" name="schoolPassingYear" placeholder="Datum završetka" data-date-format="DD.MM.YYYY" class="form-control"/>
+                                        <p th:if="${#fields.hasErrors('workExpirienceList[2].ended')}" th:errors="*{workExpirienceList[2].ended}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: schoolPassingYear  -->
+                            </div>
+                            </div>
+                            <div class="form-group">
+                            <div class="input-group  p-has-icon">
+                                <textarea placeholder="Opis radne pozicije" th:field="*{workExpirienceList[2].description}" id="textarea" name="textarea" class="form-control"></textarea>
+                                <p th:if="${#fields.hasErrors('workExpirienceList[2].description')}" th:errors="*{workExpirienceList[2].description}" class="fa fa-times p-error-text"/>
+                                <span class="input-group-state">
+                                    <span class="p-position">
+                                        <span class="p-text">
+                                            <span class="p-valid-text"><i class="fa fa-check"></i></span>
+                                            <span class="p-error-text"><i class="fa fa-times"></i></span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="p-field-cb"></span>
+                                <span class="input-group-icon"><i class="fa fa-file-text-o"></i></span>
+                            </div>
+                        </div>
+                        
+					   </div>
+					   
+                        <div class="p-block">
+                            <h4 style="display: flex;justify-content: center;">Unesite Vase radno iskustvo</h4>
+                            <div class="form-group">                       
+                            <div class="input-group  p-has-icon">
+                                <input th:field="*{workExpirienceList[3].companyName}" type="text" id="search1" name="search1" placeholder="Ime firme" class="form-control"/>
+                                <p th:if="${#fields.hasErrors('workExpirienceList[3].companyName')}" th:errors="*{workExpirienceList[3].companyName}" class="fa fa-times p-error-text"/>
+                                <span class="input-group-state">
+                                    <span class="p-position">
+                                        <span class="p-text">
+                                            <span class="p-valid-text"><i class="fa fa-check"></i></span>
+                                            <span class="p-error-text"><i class="fa fa-times"></i></span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="p-field-cb"></span>
+                                <span class="input-group-icon"><i class="fa fa-briefcase"></i></span>
+                            </div>
+                           
+                        </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                <!-- Start: schoolPassingYear  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{workExpirienceList[3].start}" type="text" id="school-passing-year" name="schoolPassingYear" placeholder="Datum početka" data-date-format="DD.MM.YYYY" class="form-control"/>
+                                        <p th:if="${#fields.hasErrors('workExpirienceList[3].start')}" th:errors="*{workExpirienceList[3].start}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: schoolPassingYear  -->
+                            </div>
+                                <div class="col-sm-6">
+                                <!-- Start: schoolPassingYear  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{workExpirienceList[3].ended}" type="text" id="school-passing-year" name="schoolPassingYear" placeholder="Datum završetka" data-date-format="DD.MM.YYYY" class="form-control"/>
+                                        <p th:if="${#fields.hasErrors('workExpirienceList[3].ended')}" th:errors="*{workExpirienceList[3].ended}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: schoolPassingYear  -->
+                            </div>
+                            </div>
+                            <div class="form-group">
+                            <div class="input-group  p-has-icon">
+                                <textarea placeholder="Opis radne pozicije" th:field="*{workExpirienceList[3].description}" id="textarea" name="textarea" class="form-control"></textarea>
+                                <p th:if="${#fields.hasErrors('workExpirienceList[3].description')}" th:errors="*{workExpirienceList[3].description}" class="fa fa-times p-error-text"/>
+                                <span class="input-group-state">
+                                    <span class="p-position">
+                                        <span class="p-text">
+                                            <span class="p-valid-text"><i class="fa fa-check"></i></span>
+                                            <span class="p-error-text"><i class="fa fa-times"></i></span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="p-field-cb"></span>
+                                <span class="input-group-icon"><i class="fa fa-file-text-o"></i></span>
+                            </div>
+                        </div>
+                        
+					   </div>
+					  
+					   <div class="p-block">
+                            <h4 style="display: flex;justify-content: center;">Unesite Vase radno iskustvo</h4>
+                            <div class="form-group">                       
+                            <div class="input-group  p-has-icon">
+                                <input th:field="*{workExpirienceList[4].companyName}" type="text" id="search1" name="search1" placeholder="Ime firme" class="form-control"/>
+                                <p th:if="${#fields.hasErrors('workExpirienceList[4].companyName')}" th:errors="*{workExpirienceList[4].companyName}" class="fa fa-times p-error-text"/>
+                                <span class="input-group-state">
+                                    <span class="p-position">
+                                        <span class="p-text">
+                                            <span class="p-valid-text"><i class="fa fa-check"></i></span>
+                                            <span class="p-error-text"><i class="fa fa-times"></i></span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="p-field-cb"></span>
+                                <span class="input-group-icon"><i class="fa fa-briefcase"></i></span>
+                            </div>
+                           
+                        </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                <!-- Start: schoolPassingYear  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{workExpirienceList[4].start}" type="text" id="school-passing-year" name="schoolPassingYear" placeholder="Datum početka" data-date-format="DD.MM.YYYY" class="form-control"/>
+                                        <p th:if="${#fields.hasErrors('workExpirienceList[4].start')}" th:errors="*{workExpirienceList[4].start}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: schoolPassingYear  -->
+                            </div>
+                                <div class="col-sm-6">
+                                <!-- Start: schoolPassingYear  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{workExpirienceList[4].ended}" type="text" id="school-passing-year" name="schoolPassingYear" placeholder="Datum završetka" data-date-format="DD.MM.YYYY" class="form-control"/>
+                                        <p th:if="${#fields.hasErrors('workExpirienceList[4].ended')}" th:errors="*{workExpirienceList[4].ended}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: schoolPassingYear  -->
+                            </div>
+                            </div>
+                            <div class="form-group">
+                            <div class="input-group  p-has-icon">
+                                <textarea placeholder="Opis radne pozicije" th:field="*{workExpirienceList[4].description}" id="textarea" name="textarea" class="form-control"></textarea>
+                                <p th:if="${#fields.hasErrors('workExpirienceList[4].description')}" th:errors="*{workExpirienceList[4].description}" class="fa fa-times p-error-text"/>
+                                <span class="input-group-state">
+                                    <span class="p-position">
+                                        <span class="p-text">
+                                            <span class="p-valid-text"><i class="fa fa-check"></i></span>
+                                            <span class="p-error-text"><i class="fa fa-times"></i></span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="p-field-cb"></span>
+                                <span class="input-group-icon"><i class="fa fa-file-text-o"></i></span>
+                            </div>
+                        </div>
+                        
+					   </div>
+					    
+					   <div class="p-block">
+                            <h4 style="display: flex;justify-content: center;">Unesite Vase radno iskustvo</h4>
+                            <div class="form-group">                       
+                            <div class="input-group  p-has-icon">
+                                <input th:field="*{workExpirienceList[5].companyName}" type="text" id="search1" name="search1" placeholder="Ime firme" class="form-control"/>
+                                <p th:if="${#fields.hasErrors('workExpirienceList[5].companyName')}" th:errors="*{workExpirienceList[5].companyName}" class="fa fa-times p-error-text"/>
+                                <span class="input-group-state">
+                                    <span class="p-position">
+                                        <span class="p-text">
+                                            <span class="p-valid-text"><i class="fa fa-check"></i></span>
+                                            <span class="p-error-text"><i class="fa fa-times"></i></span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="p-field-cb"></span>
+                                <span class="input-group-icon"><i class="fa fa-briefcase"></i></span>
+                            </div>
+                           
+                        </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                <!-- Start: schoolPassingYear  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{workExpirienceList[5].start}" type="text" id="school-passing-year" name="schoolPassingYear" placeholder="Datum početka" data-date-format="DD.MM.YYYY" class="form-control"/>
+                                        <p th:if="${#fields.hasErrors('workExpirienceList[5].start')}" th:errors="*{workExpirienceList[5].start}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: schoolPassingYear  -->
+                            </div>
+                                <div class="col-sm-6">
+                                <!-- Start: schoolPassingYear  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{workExpirienceList[5].ended}" type="text" id="school-passing-year" name="schoolPassingYear" placeholder="Datum završetka" data-date-format="DD.MM.YYYY" class="form-control"/>
+                                        <p th:if="${#fields.hasErrors('workExpirienceList[5].ended')}" th:errors="*{workExpirienceList[5].ended}" class="fa fa-times p-error-text"/>
+                                        <span class="input-group-state">
+                                            <span class="p-position">
+                                                <span class="p-text">
+                                                    <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: schoolPassingYear  -->
+                            </div>
+                            </div>
+                            <div class="form-group">
+                            <div class="input-group  p-has-icon">
+                                <textarea placeholder="Opis radne pozicije" th:field="*{workExpirienceList[5].description}" id="textarea" name="textarea" class="form-control"></textarea>
+                                <p th:if="${#fields.hasErrors('workExpirienceList[5].description')}" th:errors="*{workExpirienceList[5].description}" class="fa fa-times p-error-text"/>
+                                <span class="input-group-state">
+                                    <span class="p-position">
+                                        <span class="p-text">
+                                            <span class="p-valid-text"><i class="fa fa-check"></i></span>
+                                            <span class="p-error-text"><i class="fa fa-times"></i></span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="p-field-cb"></span>
+                                <span class="input-group-icon"><i class="fa fa-file-text-o"></i></span>
+                            </div>
+                        </div>
+                        
+					   </div>
+					   
+					  
+                       <span class="btn btn-sm" id="minus"><i class="fa fa-minus"></i> Ukloni radno iskustvo</span>                                 
+                	<br>
+                    <span class="btn btn-sm" id="plus"><i class="fa fa-plus"></i> Dodaj radno iskustvo</span> 
+                   
+                     <div class="p-subtitle text-center">Obrazovanje</div>
+                     
+                     <div class="form-group">
+                            <label class="input-group  p-has-icon  p-custom-arrow">
+                                <select th:field="*{education.qualifications}" id="faculty" name="faculty" required="required" class="form-control" aria-required="true">
+                                    
+                                    <option class="p text-center" value="10">Status obrazovanja</option>
+                                           
+                                            <option th:each="i : ${qualificationsList}"
+                                            		th:value = "${i.id}"
+                                            		th:text = "${i.name}">
+                                             </option>
+                                             
+                                </select>
+                                <span class="input-group-state">
+                                    <span class="p-position">
+                                        <span class="p-text">
+                                            <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="p-field-cb"></span>
+                                <span class="p-select-arrow"><i class="fa fa-caret-down"></i></span>
+                                <span class="input-group-icon"><i class="fa fa-university"></i></span>
+                            </label>
+                        </div>
+                                             	
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <!-- Start: schoolName  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:path="*{education.schoolName}" type="text" id="school-name" name="schoolName" placeholder="Ime škole" class="form-control" aria-required="true"/>
+                                         <p th:if="${#fields.hasErrors('education.schoolName')}" th:errors="*{education.schoolName}" class="fa fa-times p-error-text"/>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-university"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: schoolName -->
+                            </div>
+                            <div class="col-sm-6">
+                                <!-- Start: schoolGrade  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:path="*{education.course}" type="text" id="school-grade" name="schoolGrade" placeholder="Smer" class="form-control" aria-required="true"/>
+                                        <p th:if="${#fields.hasErrors('education.course')}" th:errors="*{education.course}" class="fa fa-times p-error-text"/>
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-pencil"></i></span>
+                                    </div>
+                                </div>
+                                <!-- End: schoolGrade  -->
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="p-subtitle text-center">Poznavanje jezika</div>
+                        	
+                        	<div class="jezici">
+                        	<div class="row">
+                            <div class="col-sm-6">
+                                <!-- Start: name  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{languageList[0].name}" type="text"  name="name" placeholder="Jezik"  class="form-control" />                            
+                                        
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-flag"></i></span>
+                                    </div>
+                                    
+                                </div>
+                                <!-- End: name  -->
+                            </div>
+                            <div class="col-sm-6">
+                                <!-- Start: name  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{languageList[0].level}" type="text" name="level" placeholder="Upisi nivo"  class="form-control" />                      
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-arrow-up"></i></span>
+                                    </div>                                    
+                                </div>
+                                <!-- End: name  -->
+                            </div>
+                        </div>
+                        </div>
+                        <div class="jezici">
+                        	<div class="row">
+                            <div class="col-sm-6">
+                                <!-- Start: name  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{languageList[1].name}" type="text"  name="name" placeholder="Jezik"  class="form-control" />                            
+                                        
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-flag"></i></span>
+                                    </div>
+                                    
+                                </div>
+                                <!-- End: name  -->
+                            </div>
+                            <div class="col-sm-6">
+                                <!-- Start: name  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{languageList[1].level}" type="text" name="level" placeholder="Upisi nivo"  class="form-control" />                      
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-flag"></i></span>
+                                    </div>                                    
+                                </div>
+                                <!-- End: name  -->
+                            </div>
+                        </div>
+                        </div>
+                        <div class="jezici">
+                        	<div class="row">
+                            <div class="col-sm-6">
+                                <!-- Start: name  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{languageList[2].name}" type="text"  name="name" placeholder="Jezik"  class="form-control" />                            
+                                        
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-flag"></i></span>
+                                    </div>
+                                    
+                                </div>
+                                <!-- End: name  -->
+                            </div>
+                            <div class="col-sm-6">
+                                <!-- Start: name  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{languageList[2].level}" type="text" name="level" placeholder="Upisi nivo"  class="form-control" />                      
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-flag"></i></span>
+                                    </div>                                    
+                                </div>
+                                <!-- End: name  -->
+                            </div>
+                        </div>
+                        </div>
+                        <div class="jezici">
+                        	<div class="row">
+                            <div class="col-sm-6">
+                                <!-- Start: name  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{languageList[3].name}" type="text"  name="name" placeholder="Jezik"  class="form-control" />                            
+                                        
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-flag"></i></span>
+                                    </div>
+                                    
+                                </div>
+                                <!-- End: name  -->
+                            </div>
+                            <div class="col-sm-6">
+                                <!-- Start: name  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{languageList[3].level}" type="text" name="level" placeholder="Upisi nivo"  class="form-control" />                      
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-flag"></i></span>
+                                    </div>                                    
+                                </div>
+                                <!-- End: name  -->
+                            </div>
+                        </div>
+                        </div>
+                        <div class="jezici">
+                        	<div class="row">
+                            <div class="col-sm-6">
+                                <!-- Start: name  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{languageList[4].name}" type="text"  name="name" placeholder="Jezik"  class="form-control" />                            
+                                        
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-flag"></i></span>
+                                    </div>
+                                    
+                                </div>
+                                <!-- End: name  -->
+                            </div>
+                            <div class="col-sm-6">
+                                <!-- Start: name  -->
+                                <div class="form-group">
+                                    <div class="input-group  p-has-icon">
+                                        <input th:field="*{languageList[4].level}" type="text" name="level" placeholder="Upisi nivo"  class="form-control" />                      
+                                        <span class="p-field-cb"></span>
+                                        <span class="input-group-icon"><i class="fa fa-flag"></i></span>
+                                    </div>                                    
+                                </div>
+                                <!-- End: name  -->
+                            </div>
+                        </div>
+                        </div>
+                        <span class="btn btn-sm" id="ukloniJezik"><i class="fa fa-minus"></i> Ukloni</span>
+                    	<br>                       
+                   		<span class="btn btn-sm" id="dodajJezik"><i class="fa fa-plus"></i> Dodaj jezik</span>
+                        
+                        <div class="p-subtitle text-center">O sebi</div>
+                        
+                        <!-- Start: message  -->
+                        <div class="form-group">
+                            <div class="input-group  p-has-icon">
+                                <textarea placeholder="Sposobnosti i veštine" th:field="*{other.description}" id="message" name="message" class="form-control"></textarea>
+                                <span class="input-group-state">
+                                    <span class="p-position">
+                                        <span class="p-text">
+                                            <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="p-field-cb"></span>
+                                <span class="input-group-icon"><i class="fa fa-file-text-o"></i></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group  p-has-icon">
+                                <textarea placeholder="Hobi i interesovanja" th:field="*{hobby.description}" id="message" name="message" class="form-control"></textarea>
+                                <span class="input-group-state">
+                                    <span class="p-position">
+                                        <span class="p-text">
+                                            <span class="p-required-text"><i class="fa fa-star"></i></span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="p-field-cb"></span>
+                                <span class="input-group-icon"><i class="fa fa-file-text-o"></i></span>
+                            </div>
+                        </div>
+
+                        
+                        <br><br>
+                        
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" th:field="*{notifyMe}" class="form-check-input" id="exampleCheck1">
+                                    <span class="p-check-icon">
+                                        <span class="p-check-block"></span>
+                                    </span>
+                                    <span class="p-label">Želim da dobijam ponude i obaveštenja o novim poslovima.
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                  
+                        <div data-js-block="loadingBlockName" class="progress collapse">
+                            <div class="progress-bar progress-bar-fp progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                        </div>
+                        <div class="p-buttons text-right">
+                            <button class="btn" type="submit" name="confirm"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;Posalji CV</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+		<script src="./js/jquery.js" type="text/javascript"></script>
+        <!-- jquery ui -->
+        <script src="./js/jquery-ui/js/core.js"></script>
+        <script src="./js/jquery-ui/js/widget.js"></script>
+        <script src="./js/jquery-ui/js/mouse.js"></script>
+        <script src="./js/jquery-ui/js/position.js"></script>
+        <script src="./js/jquery-ui/js/menu.js"></script>
+        <script src="./js/jquery-ui/js/autocomplete.js"></script>
+        <script src="./js/jquery-ui/js/slider.js"></script>
+        <script src="./js/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+        <!-- Helpers -->
+        <script src="./js/moment/moment.js"></script>
+        <script src="./js/moment/locale/da.js"></script>
+        <!-- Validation plugin -->
+        <script src="./js/jquery-validation/jquery.validate.js"></script>
+        <script src="./js/jquery-validation/additional-methods.js"></script>
+        <!-- Field mask plugin -->
+        <script src="./js/jquery-masked-input/jquery.maskedinput.js"></script>
+        <!-- Bootstrap datetimepicker -->
+        <script src="./js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+        <!-- captcha: Realperson plugin -->
+        <script src="./js/jquery-realperson/jquery.plugin.js"></script>
+        <script src="./js/jquery-realperson/jquery.realperson.js"></script>
+        <!-- colorpicker: Spectrum plugin -->
+        <script src="./js/spectrum/spectrum.js"></script>
+        <!-- ajax: jQuery Form Plugin -->
+        <script src="./js/jquery-form-plugin/jquery.form.js"></script>
+        <!-- Forms Plus plugins/helpers -->
+        <script src="./js/forms-plus/forms-plus.js" type="text/javascript"></script>
+        <script src="./js/forms-plus/forms-plus-value.js" type="text/javascript"></script>
+        <script src="./js/forms-plus/forms-plus-field.js" type="text/javascript"></script>
+        <script src="./js/forms-plus/forms-plus-file.js" type="text/javascript"></script>
+        <script src="./js/forms-plus/forms-plus-spinner.js" type="text/javascript"></script>
+        <script src="./js/forms-plus/forms-plus-validation.js" type="text/javascript"></script>
+        <script src="./js/forms-plus/forms-plus-block.js" type="text/javascript"></script>
+        <script src="./js/forms-plus/forms-plus-elements.js" type="text/javascript"></script>
+        <script src="./js/forms-plus/forms-plus-sub-selection.js" type="text/javascript"></script>
+        <script src="./js/forms-plus/forms-plus-gelements.js" type="text/javascript"></script>
+        <script src="./js/forms-plus/forms-plus-slider.js" type="text/javascript"></script>
+        <script src="./js/forms-plus/forms-plus-autocomplete.js" type="text/javascript"></script>
+        <script src="./js/forms-plus/forms-plus-ajax.js" type="text/javascript"></script>
+        <script src="./js/forms-plus/forms-plus-steps.js" type="text/javascript"></script>
+        <!-- Forms Plus init -->
+        <script src="./js/script.js"></script>
+    </body>
 </html>
