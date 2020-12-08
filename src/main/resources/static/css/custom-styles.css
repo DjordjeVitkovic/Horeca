@@ -1,9 +1,0 @@
-html{
-    height: 100%;
-}
-body{
-    min-height: 100%;
-    margin: 20px 0;
-    background: url(../images/backgrounds/5.jpg) fixed; /* <1-6>.jpg */
-    background-size: 100% 100%;
-}
