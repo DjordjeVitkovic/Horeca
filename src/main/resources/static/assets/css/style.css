@@ -1,0 +1,995 @@
+/*
+Template Name: Blvck - Personal vCard & Resume Template
+Version: 1.0
+Author: PxlSolutions
+Author URI: http://themeforest.net/user/pxlsolutions
+Description: CV, Resume, vCard HTML Template
+
+[TABLE OF CONTENTS]
+
+01. Global Styles
+02. Preloader
+03. Layout
+04. Header
+05. Main Content
+08. Section Resume
+09. Section Works
+10. Section Testimonials
+11. Section Blog
+12. Section Customers
+13. Section Contact
+14. Other Elements
+15. Responsive
+*/
+/*-----------------------------------------------------------------*/
+/*                      GLOBAL STYLES                              */
+/*-----------------------------------------------------------------*/
+body {
+    color: #1a1a1a;
+    background-color: #5352d4;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+ul {
+    padding-left: 15px;
+}
+
+li {
+    padding: 0 0 10px;
+}
+
+/*-----------------------------------------------------------------*/
+/*                      PRELOADER                                  */
+/*-----------------------------------------------------------------*/
+.preloader-outer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #0C0C0C;
+    z-index: 6;
+    overflow: hidden;
+}
+
+.preloader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 60px;
+    margin: -30px 0 0 -40px;
+}
+
+.preloader .lines {
+    width: 80px;
+    height: 40px;
+    position: absolute;
+}
+
+.preloader .lines .line {
+    width: 80px;
+    height: 1px;
+    background-color: #fff;
+    position: absolute;
+    clip: rect(0,0,20px,0);
+}
+
+.preloader .lines .line.line-1 {
+    top: 0;
+    animation: slide 2s ease 0.1s infinite;
+}
+
+.preloader .lines .line.line-2 {
+    top: 15px;
+    animation: slide 2s ease .25s infinite;
+}
+
+.preloader .lines .line.line-3 {
+    top: 30px;
+    animation: slide 2s ease .5s infinite;
+}
+
+.preloader .loading-text {
+    position: absolute;
+    top: 50px;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+    line-height: 10px;
+    height: 10px;
+    text-transform: uppercase;
+}
+
+@keyframes slide {
+    0% {
+        clip: rect(0,0,20px,0);
+    }
+
+    30% {
+        clip: rect(0,80px,20px,0);
+    }
+
+    50% {
+        clip: rect(0,80px,20px,0);
+    }
+
+    80% {
+        clip: rect(0,80px,20px,80px);
+    }
+
+    100% {
+        clip: rect(0,80px,20px,80px);
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/*-----------------------------------------------------------------*/
+/*                      LAYOUT                                     */
+/*-----------------------------------------------------------------*/
+.wrapper {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+/*-----------------------------------------------------------------*/
+/*                      HEADER                                     */
+/*-----------------------------------------------------------------*/
+.header {
+    background: #5655da;
+    padding: 46px;
+
+    height: 1122px;
+    width: 260px;
+    z-index: 5;
+}
+
+.header .avatar {
+    overflow: hidden;
+    width: 165px;
+    height: 165px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.header .avatar img {
+    width: 100%;
+}
+
+.header .name {
+    margin: 34px 0;
+}
+
+.header .name h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #FFF;
+	letter-spacing: 1px;
+    margin: 0 0 5px;
+    
+}
+
+.header .name span {
+    color: #d8d8e9;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+}
+/* === Social Icons === */
+.header .social-icons {
+    margin: 0 0 34px;
+}
+
+.header .social-icons ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header .social-icons ul li {
+    display: inline-block;
+    padding: 0 20px 0 0;
+}
+
+.header .social-icons ul li a {
+    color: #FFF;
+}
+
+.header .social-icons ul li a i {
+    font-size: 16px;
+}
+
+.header .social-icons ul li:last-child {
+    padding-right: 0;
+}
+/* === Navigation === */
+.header .main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header .main-nav ul li {
+    padding-bottom: 15px;
+}
+
+.header .main-nav ul li a {
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+	letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.header .main-nav ul li a:hover,.header .main-nav ul li a:focus {
+    color: #FFF;
+    text-decoration: none;
+}
+
+
+
+/* === Copyright === */
+.header .copyright {
+    bottom: 20px;
+    position: absolute;
+}
+
+.header .copyright span {
+    color: #d8d8e9;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+/* === Mobile Menu Bar === */
+.header .mobile-bar {
+    background: rgba(12,12,12,0.75);
+    color: #FFF;
+    height: 60px;
+    right: -59px;
+    position: absolute;
+    width: 60px;
+    z-index: 3;
+}
+
+.header .hamburger-menu {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    bottom: 0;
+    margin: auto;
+    width: 30px;
+    height: 55px;
+    cursor: pointer;
+}
+
+.header .bar,.header .bar:after,.header .bar:before {
+    width: 30px;
+    height: 3px;
+}
+
+.header .bar {
+    position: relative;
+    transform: translateY(25px);
+    background: #fff;
+    transition: all 0 300ms;
+}
+
+.header .bar.animate {
+    background: rgba(255,255,255,0);
+}
+
+.header .bar:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    background: #fff;
+    transition: bottom 300ms 300ms cubic-bezier(0.23,1,0.32,1),transform 300ms cubic-bezier(0.23,1,0.32,1);
+}
+
+.header .bar:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    background: #fff;
+    transition: top 300ms 300ms cubic-bezier(0.23,1,0.32,1),transform 300ms cubic-bezier(0.23,1,0.32,1);
+}
+
+.header .bar.animate:after {
+    top: 0;
+    transform: rotate(45deg);
+    transition: top 300ms cubic-bezier(0.23,1,0.32,1),transform 300ms 300ms cubic-bezier(0.23,1,0.32,1);
+}
+
+.header .bar.animate:before {
+    bottom: 0;
+    transform: rotate(-45deg);
+    transition: bottom 300ms cubic-bezier(0.23,1,0.32,1),transform 300ms 300ms cubic-bezier(0.23,1,0.32,1);
+}
+
+/*-----------------------------------------------------------------*/
+/*                      MAIN CONTENT                               */
+/*-----------------------------------------------------------------*/
+.main-content {
+    background: #FFF;
+    width: 740px;
+    height: 1122px;
+}
+
+.main-content p {
+    color: #2c2c2c;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 28px;
+    margin: 0 0 0 0;
+}
+
+/* === Section Configure === */
+.main-content section {
+    padding: 15px 25px;
+    position: relative;
+    border-bottom: solid 1px #EEE;
+}
+
+/* === Section Header === */
+.main-content section .section-header {
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.main-content section .section-header h2 {
+    color: #f74470;
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+	letter-spacing: 3px;
+    margin: 0;
+    text-transform: uppercase;
+    position: relative;
+	
+}
+
+
+/* === Section Header Light === */
+.main-content section .section-header-light {
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 1;
+}
+
+.main-content section .section-header-light h2 {
+    color: #FFF !important;
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    text-transform: uppercase;
+    padding-left: 20px;
+    position: relative;
+}
+
+.main-content section .section-header-light h2:before {
+    content: '';
+    position: absolute;
+    background: transparent;
+    bottom: 10px;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    border-left: solid 3px #FFF !important;
+    border-top: solid 3px #FFF !important;
+}
+
+.main-content section .section-header-light h2:after {
+    content: '';
+    position: absolute;
+    background: transparent;
+    bottom: -10px;
+    right: -17px;
+    height: 16px;
+    width: 16px;
+    border-right: solid 3px #FFF !important;
+    border-bottom: solid 3px #FFF !important;
+}
+
+
+
+/*-----------------------------------------------------------------*/
+/*                      SECTION ABOUT                              */
+/*-----------------------------------------------------------------*/
+.about .intro ul.info {
+    margin-top: 40px;
+    padding: 0;
+    list-style: none;
+}
+
+.about .intro ul.info li {
+    
+    padding: 7px 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    color: #0C0C0C;
+    font-size: 14px;
+}
+
+
+
+.about .intro ul.info li:first-child {
+    padding-top: 0;
+}
+
+.about .intro p {
+    margin: 0;
+}
+
+.about .skills .item {
+    margin-top: 40px;
+}
+
+.about .skills .item .skill-info {
+    margin-bottom: 30px;
+}
+
+.about .skills .item .skill-info h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    margin: 0;
+}
+
+.about .skills .item .skill-info span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #9C9C9C;
+}
+.about .resume-download {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: -12px;
+    background: #5655da;
+	font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #FFF;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+/*-----------------------------------------------------------------*/
+/*                      SECTION RESUME                             */
+/*-----------------------------------------------------------------*/
+.resume .top-item {
+    margin-top: 0 !important;
+}
+
+.resume .resume-item {
+    background: #FFF;   
+    margin-top: 30px;
+    max-height: 140px;
+    overflow: hidden;
+}
+
+.resume .resume-item h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+
+.resume .resume-item span {
+    color: #666;
+    display: block;
+    font-size: 12px;
+    font-weight: 300;
+    margin: 0 0 10px;
+}
+
+.resume .resume-item p {
+    line-height: 20px;
+    margin-bottom: 0;
+    max-width:500px;
+}
+
+
+
+/*-----------------------------------------------------------------*/
+/*                      SECTION WORKS                              */
+/*-----------------------------------------------------------------*/
+.works .control {
+    margin-bottom: 30px;
+}
+
+.works .control ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.works .control ul li {
+    display: inline-block;
+    padding: 0 20px 0 0;
+}
+
+.works .control ul li a {
+    color: #9E9E9E;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+.works .control ul li a:hover {
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+.works .control ul li.active a {
+    color: #1a1a1a;
+}
+
+.works .control ul li:last-child {
+    padding-right: 0;
+}
+
+.works .item-outer {
+    list-style: none;
+    margin: 0 -1px;
+    overflow: hidden;
+    padding: 0;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.works .item-outer .filtr-item {
+    display: inline-block;
+    padding: 0 1px;
+}
+
+.works .item-outer .item {
+    margin-bottom: 2px;
+    overflow: hidden;
+    height: 193px;
+    position: relative;
+}
+
+.works .item-outer .item .title {
+    color: #FFF;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}
+
+.works .item-outer .item .title:before {
+
+    -ms-transform: translate(-45px,-45px);
+    -webkit-transform: translate(-45px,-45px);
+    transform: translate(-45px,-45px);
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.works .item-outer .item .title:after {
+    
+  
+    -ms-transform: translate(45px,45px);
+    -webkit-transform: translate(45px,45px);
+    transform: translate(45px,45px);
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.works .item-outer .item .title .inner {
+    text-align: center;
+    top: calc(50% - 30px);
+    width: 100%;
+    position: absolute;
+}
+
+.works .item-outer .item .title h2 {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin: 0 0 5px;
+    -ms-transform: translateY(-200px);
+    -webkit-transform: translateY(-200px);
+    transform: translateY(-200px);
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.works .item-outer .item .title span {
+    color: #DDD;
+    display: block;
+    font-size: 12px;
+    font-weight: 100;
+    -ms-transform: translateY(220px);
+    -webkit-transform: translateY(220px);
+    transform: translateY(220px);
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.works .item-outer .item img {
+    max-width: 100%;
+    height: auto;
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.works .item-outer .item .overlay {
+    background: rgba(248,85,125,0.85);
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    top: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.works .item-outer .item:hover h2 {
+    -ms-transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+}
+
+.works .item-outer .item:hover span {
+    -ms-transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+}
+
+.works .item-outer .item:hover .overlay {
+    opacity: 1;
+}
+
+.works .item-outer .item:hover img {
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.works .item-outer .item:hover .title:before {
+    -ms-transform: translate(0px);
+    -webkit-transform: translate(0px);
+    transform: translate(0px);
+}
+
+.works .item-outer .item:hover .title:after {
+    -ms-transform: translate(-45px,-45px);
+    -webkit-transform: translate(-45px,-45px);
+    transform: translate(-45px,-45px);
+}
+
+.works .item-outer .mix {
+    padding: 5px;
+}
+
+/*-----------------------------------------------------------------*/
+/*                      SECTION TESTIMONIALS                       */
+/*-----------------------------------------------------------------*/
+.testimonials .item .thumb {
+   
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.testimonials .item .text span.author {
+    color: #B1B1B1;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+}
+
+/*-----------------------------------------------------------------*/
+/*                      SECTION BLOG                               */
+/*-----------------------------------------------------------------*/
+.blog .item {
+    margin-bottom: 30px;
+}
+
+.blog .item .thumb {
+    height: 180px;
+    overflow: hidden;
+}
+
+.blog .item .thumb img {
+    width: 100%;
+    height: auto;
+}
+
+.blog .item .text h2 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0 0 15px;
+}
+
+.blog .item .text p {
+    margin: 0 0 15px;
+}
+
+.blog .blog-single img {
+    margin-bottom: 20px;
+}
+
+/* === Button === */
+.btn-default {
+    color: #FFF;
+    background-color: #5655da;
+    border: 0;
+    border-radius: 0;
+    font-size: 12px;
+    font-weight: 300;
+    padding: 8px 16px;
+	border-radius: 3px;
+    position: relative;
+}
+
+
+
+.btn-default:hover {
+    color: #FFF;
+    background-color: #5655da;
+    border: 0;
+}
+
+
+
+/* === Progress Bar === */
+.progress {
+    height: 4px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #E0E0E0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.progress-bar {
+    float: left;
+    width: 0;
+    height: 100%;
+    font-size: 12px;
+    line-height: 1px;
+    color: #fff;
+    text-align: center;
+    background-color: #f74470;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: width .6s ease;
+    -o-transition: width .6s ease;
+    transition: width .6s ease;
+}
+
+/* === Form Control === */
+.form-control {
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border-bottom: solid 1px #0C0C0C;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.form-control:focus {
+    border-color: #C7C7C7;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+/* === Owl Configure === */
+.owl-theme .owl-controls .owl-page span {
+    width: 10px;
+    height: 10px;
+    margin: 5px 3px;
+    filter: Alpha(Opacity=20);
+    opacity: .2;
+    background: #f8557d;
+}
+
+.owl-theme .owl-controls {
+    margin-top: 30px;
+}
+
+/*----------------------------------------------------------------- */
+/*                      RESPONSIVE                                  */
+/*----------------------------------------------------------------- */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .works .item-outer .mix {
+        width: 50%;
+    }
+    
+    .modal {
+		width: 350px;
+	}
+}
+
+@media only screen and (max-width: 991px) {
+/*     .wrapper { */
+/*         width: 100%; */
+/*     } */
+
+    .header {
+/*         -ms-transform: translateX(-260px); */
+/*         -webkit-transform: translateX(-260px); */
+/*         transform: translateX(-260px); */
+/*         -webkit-transition: all .3s ease-in-out; */
+/*         -moz-transition: all .3s ease-in-out; */
+/*         -o-transition: all .3s ease-in-out; */
+/*         transition: all .3s ease-in-out; */
+    }
+
+/*     .pushed { */
+/*         -ms-transform: translateX(0); */
+/*         -webkit-transform: translateX(0); */
+/*         transform: translateX(0); */
+/*     } */
+
+    .main-content {
+/*         width: 60%; */
+        -webkit-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        -o-transition: all .3s ease-in-out;
+        transition: all .3s ease-in-out;
+    }
+
+/*     .main-pushed { */
+/*         -ms-transform: translateX(260px); */
+/*         -webkit-transform: translateX(260px); */
+/*         transform: translateX(260px); */
+/*     } */
+/*     .works .item-outer .item { */
+/*         height: 280px; */
+/*     } */
+		.modal {
+			width: 600px;
+		}
+}
+
+@media only screen and (max-width: 767px) {
+    .welcome {
+        padding: 60px !important;
+    }
+
+    .welcome .quote {
+        width: initial;
+    }
+
+    .facts .fact-item {
+        margin-bottom: 20px;
+    }
+
+    .resume .resume-item {
+        margin-top: 30px !important;
+    }
+
+    .blog .item .text {
+        margin-top: 25px;
+    }
+    
+    .h2, h2 {
+    	font-size:20px;
+    }
+    
+    .header .name h1{
+    	font-size:20px;	
+    }
+    
+    .header .avatar {
+    	margin-left:-30px;
+    }
+    
+    .about .resume-download{
+    	top: -60px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .main-content section {
+        padding: 60px 30px;
+    }
+    .modal{
+    	width:300px;
+    }
+}
+
+@media only screen and (max-height: 600px) {
+    .header .name {
+        margin: 15px 0;
+    }
+
+    .header .main-nav ul li {
+        padding-bottom: 10px;
+    }
+
+    .header .social-icons {
+        margin: 0 0 15px;
+    }
+
+    .header .copyright {
+        bottom: -18px;
+        position: relative;
+    }
+}
