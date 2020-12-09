@@ -2,7 +2,10 @@ package horeca.host.services;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+
+import horeca.host.models.Language;
 import horeca.host.models.Person;
+import horeca.host.models.WorkExperience;
 import horeca.host.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -39,11 +42,19 @@ public class PersonService {
     //Save person with image
     public void savePerson(Person person, MultipartFile multipartFile) throws Exception {
 
-        if(multipartFile == null){
-            personRepository.save(person);
-            return;
-        }
+//        if(multipartFile == null){
+//            personRepository.save(person);
+//            return;
+//        }
 
+    	for(Language l: person.getLanguageList()) {
+    		l.setPersonId(person);
+    	}
+    	
+    	for(WorkExperience we: person.getWorkExperienceList()) {
+    		we.setPersonId(person);
+    	}
+    	
         if (multipartFile.getSize() == 0) {
 
             personRepository.save(person);

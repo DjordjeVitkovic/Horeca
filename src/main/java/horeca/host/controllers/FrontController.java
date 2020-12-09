@@ -38,10 +38,11 @@ public class FrontController {
     }
 
     @PostMapping("/person-save")
-    private String savePerson(@RequestBody Person person,
-                               @RequestParam(name = "file", required = false) MultipartFile multipartFile
+    private String savePerson(@ModelAttribute Person person,
+                               @RequestParam(name = "file") MultipartFile multipartFile
     ) throws Exception {
 
+    	System.out.println(person.getWorkExperienceList().size());
         personService.savePerson(person, multipartFile);
 
         return "success";
