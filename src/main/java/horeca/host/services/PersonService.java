@@ -35,10 +35,19 @@ public class PersonService {
         return personRepository.getOne(personId);
     }
 
-    public void deletePerson(String personId){
+    public void deletePerson(String personId) throws Exception {
+
+        Person person = personRepository.getOne(personId);
+        if (person.getImageURL() != null) {
+            Cloudinary cloudinary = new Cloudinary(CONFIG);
+            String public_id = person.getImageURL().substring(60, 80);
+
+            cloudinary.api().deleteResources(new ArrayList<>(
+                            Arrays.asList(public_id)),
+                    ObjectUtils.emptyMap());
+        }
         personRepository.deleteById(personId);
     }
-
     //Save person with image
     public void savePerson(Person person, MultipartFile multipartFile) throws Exception {
 

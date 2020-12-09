@@ -282,8 +282,8 @@
                     <label class="input-group  p-has-icon  p-custom-arrow">
                         <select th:field="*{occupation}" required="required" class="form-control" aria-required="true">
                             <option th:each="i : ${occupationList}"
-                                    th:value="${i.id}"
-                                    th:text="${i.name}">
+                                    th:value="${i.occupationId}"
+                                    th:text="${i.occupationName}">
                             </option>
                         </select>
                         <span class="input-group-state">

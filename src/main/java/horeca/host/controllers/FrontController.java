@@ -39,10 +39,12 @@ public class FrontController {
 
     @PostMapping("/person-save")
     private String savePerson(@ModelAttribute Person person,
-                               @RequestParam(name = "file") MultipartFile multipartFile
-    ) throws Exception {
+                               @RequestParam(name = "file") MultipartFile multipartFile)
+            throws Exception {
 
-    	System.out.println(person.getWorkExperienceList().size());
+        if(multipartFile == null){
+            return "redirect:";
+        }
         personService.savePerson(person, multipartFile);
 
         return "success";

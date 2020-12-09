@@ -24,7 +24,7 @@ public class PersonController {
     }
 
     @RequestMapping("/delete")
-    public String deletePerson(@RequestParam("personId") String personId){
+    public String deletePerson(@RequestParam("personId") String personId) throws Exception {
         personService.deletePerson(personId);
         return "redirect:/person/";
     }
