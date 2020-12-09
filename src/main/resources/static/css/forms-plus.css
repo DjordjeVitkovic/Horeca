@@ -170,9 +170,10 @@
   line-height: 52px;
 }
 .roundDark-p-form .btn-sm {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 32px;
   padding: 0 12px 0;
+  display: block;
 }
 .roundDark-p-form .btn-xs {
   font-size: 13px;

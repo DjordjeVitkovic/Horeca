@@ -45,22 +45,23 @@
 </head>
 <body>
 <div class="container">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">        
-        function readURL(input) {
-      	  if (input.files && input.files[0]) {
-      	    var reader = new FileReader();
-      	    
-      	    reader.onload = function(e) {
-      	      $('#blah').attr('src', e.target.result);
-      	    }
-      	    document.getElementById('slika').style.display = 'block';
-      	    reader.readAsDataURL(input.files[0]); // convert to base64 string
-      	  }
-      	}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    function readURL(input) {
+    	  if (input.files && input.files[0]) {
+    	    var reader = new FileReader();
+    	    
+    	    reader.onload = function(e) {
+    	      $('#blah').attr('src', e.target.result);
+    	    }
+    	    document.getElementById('slika').style.display = 'block';
+    	    reader.readAsDataURL(input.files[0]); // convert to base64 string
+    	  }
+    	}
 
-      	$("#fileupload1").change(function() {
-      	  readURL(this);
-      	});
+    	$("#fileupload1").change(function() {
+    	  readURL(this);
+    	});
     </script>
 
     <form enctype="multipart/form-data" class="roundDark-p-form p-form-roundDark-extra2color2" th:object="${person}"
@@ -70,8 +71,7 @@
             <!-- Start: title -->
             <div class="row" style="text-align: center">
                 <div style="align-items:center;">
-                    <img alt="loading..." align="middle" style="width:60%"
-                         src="#">
+<!--                     <img alt="loading..." align="middle" style="width:60%" src="wwww"> -->
                 </div>
 
                 <div style="align-items:center;" class="p-title">
@@ -301,15 +301,13 @@
                 <!-- End: occupation  -->
                 <!-- Start: work experience -->
                 <div class="p-subtitle text-center">Radno iskustvo</div>
-                	<span class="btn btn-sm" onclick="removeWorkExperience()"  style="display: none;" id="weMinus"><i class="fa fa-minus"></i> Ukloni radno iskustvo</span>
-                	<br>
-                	<span class="btn btn-sm" onclick="addWorkExperience()"><i class="fa fa-plus"></i> Dodaj radno iskustvo</span>
+
 				<div id="WE">
                 <div class="p-block" id="workExp-0">
                     <h4 style="display: flex; justify-content: center;">Unesite Vase radno iskustvo</h4>
-                    <div class="form-group">
+                    <div class="form-group"  id="companyName">
                         <div class="input-group  p-has-icon">
-                            <input th:field="*{workExperienceList[0].companyName}" id="companyName" type="text" placeholder="Ime firme" class="form-control"/>
+                            <input th:field="*{workExperienceList[0].companyName}" type="text" placeholder="Ime firme" class="form-control"/>
                             <p th:if="${#fields.hasErrors('workExperienceList[0].companyName')}"
                                th:errors="*{workExperienceList[0].companyName}" class="fa fa-times p-error-text"/>
                             <span class="input-group-state">
@@ -326,11 +324,11 @@
 
                     </div>
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-6" id="companyStartDate" >
                             <!-- Start: schoolPassingYear  -->
                             <div class="form-group">
                                 <div class="input-group  p-has-icon">
-                                    <input th:field="*{workExperienceList[0].startDate}" id="companyStartDate" type="text" placeholder="Datum početka"
+                                    <input th:field="*{workExperienceList[0].startDate}" type="text" placeholder="Datum početka"
                                            data-date-format="DD.MM.YYYY" class="form-control"/>
                                     <p th:if="${#fields.hasErrors('workExperienceList[0].startDate')}"
                                        th:errors="*{workExperienceList[0].startDate}" class="fa fa-times p-error-text"/>
@@ -347,11 +345,11 @@
                             </div>
                             <!-- End: schoolPassingYear  -->
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-6" id="companyEndDate" >
                             <!-- Start: schoolPassingYear  -->
                             <div class="form-group">
                                 <div class="input-group  p-has-icon">
-                                    <input th:field="*{workExperienceList[0].endDate}" id="companyEndDate" type="text"
+                                    <input th:field="*{workExperienceList[0].endDate}" type="text"
                                            placeholder="Datum završetka" data-date-format="DD.MM.YYYY"
                                            class="form-control"/>
                                     <p th:if="${#fields.hasErrors('workExperienceList[0].endDate')}"
@@ -370,10 +368,9 @@
                             <!-- End: schoolPassingYear  -->
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group"  id="companyDescription" >
                         <div class="input-group  p-has-icon">
-                            <textarea placeholder="Opis radne pozicije" th:field="*{workExperienceList[0].description}" id="companyDescription" 
-                                      class="form-control"></textarea>
+                            <textarea placeholder="Opis radne pozicije" th:field="*{workExperienceList[0].description}" class="form-control"></textarea>
                             <p th:if="${#fields.hasErrors('workExperienceList[0].description')}"
                                th:errors="*{workExperienceList[0].description}" class="fa fa-times p-error-text"/>
                             <span class="input-group-state">
@@ -391,6 +388,9 @@
                 </div>
                 <!-- Start: work experience -->
 				</div>
+	           	<span class="btn btn-sm" onclick="removeWorkExperience()"  style="display: none;" id="weMinus"><i class="fa fa-minus"></i> Ukloni radno iskustvo</span>
+   	            	<br>
+                <span class="btn btn-sm" onclick="addWorkExperience()"><i class="fa fa-plus"></i> Dodaj radno iskustvo</span>
 
                 <div class="p-subtitle text-center">Obrazovanje</div>
 
@@ -427,33 +427,27 @@
                 </div>
 
                 <div class="p-subtitle text-center">Poznavanje jezika</div>
-
-				   <span style="display:flex;justify-content: space-between;margin-bottom: 15px;">             				
-	                <span class="btn btn-sm" id="removeLanguage"><i class="fa fa-minus"></i> Ukloni</span>
-	                <br>
-	                <span class="btn btn-sm" id="addLanguage" onclick="addLanguage()"><i class="fa fa-plus"></i> Dodaj jezik</span>
-                   </span>
                 
                 <div id="lang">
                     <div class="row" id="languages">
-                        <div class="col-sm-6">
+                        <div class="col-sm-6"  id="languageName">
                             <!-- Start: language   -->
                             <div class="form-group">
                                 <div class="input-group  p-has-icon">
                                     <input th:field="*{languageList[0].languageName}" type="text" name="name"
-                                           placeholder="Jezik" class="form-control" id="languageName"/>
+                                           placeholder="Jezik" class="form-control"/>
                                     <span class="p-field-cb"></span>
                                     <span class="input-group-icon"><i class="fa fa-flag"></i></span>
                                 </div>
                             </div>
                             <!-- End: language  -->
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-6" id="languageLevel">
                             <!-- Start: language course  -->
                             <div class="form-group">
                                 <div class="input-group  p-has-icon">
                                     <input th:field="*{languageList[0].languageLevel}" type="text" name="level"
-                                           placeholder="Upisi nivo" class="form-control" id="languageLevel"/>
+                                           placeholder="Upisi nivo" class="form-control" />
                                     <span class="p-field-cb"></span>
                                     <span class="input-group-icon"><i class="fa fa-arrow-up"></i></span>
                                 </div>
@@ -462,6 +456,9 @@
                         </div>
                     </div>
                 </div>
+               	<span class="btn btn-sm" id="removeLanguage" onclick="removeLanguage()" style="display: none;"><i class="fa fa-minus"></i> Ukloni</span>
+	                <br>
+	            <span class="btn btn-sm" id="addLanguage" onclick="addLanguage()"><i class="fa fa-plus"></i> Dodaj jezik</span>
 
                 <div class="p-subtitle text-center">O sebi</div>
 
@@ -526,7 +523,7 @@
 <script type="text/javascript">
 var count = 0;
 function addWorkExperience(){
-	document.getElementById('weMinus').setAttribute('style','display:block;');
+
 	var workEx = document.getElementById("workExp-"+count);
 	var newWorkEx = workEx.cloneNode(true);
 
@@ -534,34 +531,27 @@ function addWorkExperience(){
 
 	newWorkEx.setAttribute('id',"workExp-"+count);
 
-	var newCompany = document.getElementById('companyName');
+	var newCompany = newWorkEx.children[1].children[0].children[0];
 	newCompany.setAttribute('name','workExperienceList['+count+'].companyName');
 	newCompany.value = '';
 	
-	var newStartDate = document.getElementById('companyStartDate');
+	var newStartDate = newWorkEx.children[2].children[0].children[0].children[0].children[0];
 	newStartDate.setAttribute('name','workExperienceList['+count+'].startDate');
 	newStartDate.value = '';
 	
-	var newEndDate = document.getElementById('companyEndDate');
+	var newEndDate = newWorkEx.children[2].children[1].children[0].children[0].children[0];
 	newEndDate.setAttribute('name','workExperienceList['+count+'].endDate');
 	newEndDate.value = '';
 	
-	var newDescription = document.getElementById('companyDescription');
+	var newDescription = newWorkEx.children[3].children[0].children[0];
 	newDescription.setAttribute('name','workExperienceList['+count+'].description');
 	newDescription.value = '';
 	
 	document.getElementById("WE").appendChild(newWorkEx);
-
-//	workEx.parentNode.insertBefore(newWorkEx, workEx);
-	
-	newWorkEx.replaceChild(newCompany, newWorkEx.querySelector('#companyName'));
-	newWorkEx.replaceChild(newStartDate, newWorkEx.querySelector('#companyStartDate'));
-	newWorkEx.replaceChild(newEndDate, newWorkEx.querySelector('#companyEndDate'));
-	newWorkEx.replaceChild(newDescription, newWorkEx.querySelector('#companyDescription'));
 		
-// 	var parentNode = document.getElementById("WE");
-	
-// 	newWorkEx.parentNode.appendChild(newWorkEx, workEx.nextSibling);
+	if(count>0){
+		document.getElementById('weMinus').setAttribute('style','display:block;');
+	}
 }
 
 function removeWorkExperience(){
@@ -580,27 +570,32 @@ function addLanguage(){
 	count++;
 	var languages = document.getElementById('languages');
 	var newLanguages = languages.cloneNode(true);
-	
-	var newLanguageName = document.getElementById('languageName');
-	newLanguageName.setAttribute('name','languageList['+count+'].languageName');
-	newLanguageName.value='';
-	
-	var newLanguageLevel = document.getElementById('languageLevel');
-	newLanguageLevel.setAttribute('name','languageList['+count+'].languageLevel');
-	newLanguageLevel.value='';
-	
-//	referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-	
-//	var parentNode = document.getElementById("lang");
-	
-//	languages.parentNode.insertBefore(newLanguages, languages);
-	document.getElementById('lang').appendChild(newLanguages);
-	
-	newLanguages.replaceChild(newLanguageName, languageName);
-	newLanguages.replaceChild(newLanguageLevel, languageLevel);
-	
+	newLanguages.setAttribute('id',"language-"+count);
 
+	var newLanguageName = newLanguages.querySelector('#languageName').children[0].children[0].children[0];
+ 	newLanguageName.setAttribute('name','languageList['+count+'].languageName');
+ 	newLanguageName.value='';
+
+ 	var newLanguageLevel = newLanguages.querySelector('#languageLevel').children[0].children[0].children[0];
+  	newLanguageLevel.setAttribute('name','languageList['+count+'].languageLevel');
+  	newLanguageLevel.value='';
 	
+	document.getElementById('lang').appendChild(newLanguages)
+	
+	if(count>0){
+		document.getElementById('removeLanguage').setAttribute('style','display:block;');
+	}
+	
+}
+
+function removeLanguage(){
+	var language = document.getElementById("language-"+count);
+	language.parentNode.removeChild(language);
+	count--;
+	
+	if(count === 0){
+		document.getElementById('removeLanguage').setAttribute('style','display:none;');
+	}
 }
 </script>
 <script src="./js/jquery.js" type="text/javascript"></script>
