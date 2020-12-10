@@ -35,6 +35,13 @@ public class PersonService {
         return personRepository.getOne(personId);
     }
 
+    public List<Person> getPersonByOccupation(String occupationId){
+        return personRepository.getPersonsByOccupation(occupationId);
+    }
+
+    public List<Person> searchPerson(String word){
+        return personRepository.searchPerson(word);
+    }
     public void deletePerson(String personId) throws Exception {
 
         Person person = personRepository.getOne(personId);

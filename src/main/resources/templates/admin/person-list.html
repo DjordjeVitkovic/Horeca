@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>HOSST CV lista</title>
+  <title>Horeca</title>
 
   <!-- summernote -->
   <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.css">
@@ -20,6 +20,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="../plugins/jquery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" href="../plugins/jquery-ui/jquery-ui.theme.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -32,6 +34,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
     </ul>
+
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
@@ -40,33 +44,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <i class="far fa-user"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="user-profile" class="dropdown-item">
+          <a href="#" class="dropdown-item">
             <!-- Message Start -->
-            <span class="media align-items-center">
-              <img  alt="User Avatar" class="img-brand-50 mr-3 img-circle" style="width: 128px;">
-              <span class="media-body">
-                <strong class="dropdown-item-title" style="display: flex;justify-content: center;">
-                </strong>
-              </span>
-            </span>
+            <div class="media align-items-center">
+              <img src="../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Brad Diesel
+                </h3>
+              </div>
+            </div>
             <!-- Message End -->
           </a>
           <div class="dropdown-divider"></div>
-          <a href="user-edit-profile" class="dropdown-item">
-            <i class="fas fa-user"></i> Izmeni profil
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-user"></i> Your Profile
           </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item">
-              <i class="fas fa-sign-out-alt"></i> Odjavi se
+          <a href="login.html" class="dropdown-item">
+            <i class="fas fa-sign-out-alt"></i> Log Out
           </a>
         </div>
       </li>
     </ul>
+    <form class="form-inline ml-3" th:action="@{search}" th:method="get">
+      <div class="input-group input-group-sm">
+        <input class="form-control form-control-navbar" name="word" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-navbar" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
   </nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
   <div th:replace="/admin/aside-component :: aside-component"> </div>
+
 <!--  </aside>-->
 
   <!-- Content Wrapper. Contains page content -->
@@ -76,19 +92,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-          <h1 th:text="'Lista:'" style="display: inline"></h1>
-          </div>
-          <div class="col-sm-6">
-          <form th:action="@{search}" th:method="get" style="display: flex;">
-       		 <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" name="search" id="search" style="width: 300px;">
-	          	 <select name="occupationId" class="form-control" style="width: 220px;">
-	          	 <option value="0">-- bez kategorije --</option>
-					  <option></option>
-					</select>
-	          	 <button class="btn btn-navbar" type="submit">
-			     <i class="fas fa-search"></i>
-			     </button>
-		  </form>
+          <h3 th:text="'Prikaz:'" style="display: inline"></h3>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -102,70 +106,54 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="card">
               <div class="card-header">
               
-                <h3 title="Rezultati:" th:text="${personList.size()}" class="card-title"></h3>
+                <h3 th:text="${'Rezultata: ' +  personList.size()}" class="card-title"></h3>
                 
               </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table class="table table-bordered">
-                  <thead>                  
-                    <tr>
-                      <th class="text-center">Ime</th>
-                      <th class="text-center">Prezime</th>
-                      <th class="text-center">Zanimanje</th>
-                      <th class="text-center">Grad</th>
-                      <th class="text-center">Datum rodjenja</th>
-                      <th class="text-center">Detaljnije</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                 
-                    <tr th:each="per: ${personList}">
-                      <td th:text="${per.firstName}"/>
-                      <td th:text="${per.lastName}"/>
-                      <td th:text="${per.occupation.occupationName}"/>
-                      <td th:text="${per.city}"/>
-                      <td th:text="${per.dateOfBirth}"/>
-                      <td class="text-center">
-                      <div class="btn-group">
-                        <a th:href="@{person-page(id=${per.personId})}">
-                        <button type="button" class="btn btn-block btn-primary">
-                        <i class="fas fa-align-left"></i>Prikazi
-                        </button>
-                        </a>
-                       </div>
-                       
-                       
-                           <div class="btn-group">												
-                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal" th:attr="data-target='#delete-modal'+${per.personId}">
-                            <i class="fas fa-trash"></i> OBRISI   
-                          </button>
-                          </div>
 
-                    <div class="modal fade" th:id="delete-modal+${per.personId}">
-					      <div class="modal-dialog">
-					        <div class="modal-content">
-					          <div class="modal-header">
-					            <h4 class="modal-title">Obrisi osobu</h4>
-					            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					              <span aria-hidden="true">&times;</span>
-					            </button>
-					          </div>
-					          <div class="modal-body">
-					            <p>Da li ste sigurni da zelite da obriste ovu osobu?</p>
-					          </div>
-					          <div class="modal-footer justify-content-between">
-					            <button type="button" class="btn btn-default" data-dismiss="modal">Odustani</button>
-					            <a th:method="delete" th:href="@{/person/delete(personId=${per.personId})}" class="btn btn-danger">Obrisi</a>
-					          </div>
-					        </div>
-					      </div>
-					    </div>
-                  
-                      </td>
-                    </tr>
-                    </tbody>
-                </table>
+              <div class="card collapsed-card" th:each="per,i: ${personList}">
+                <div class="callout callout-info">
+                <div class="card-header">
+                  <h3 class="card-title"  th:text="${i.count + '. ' + per.firstName + ' ' + per.lastName + '   -   ' + per.occupation.occupationName}"></h3>
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                </div>
+                <div class="card-body p-0" style="display: none;">
+                  <ul class="nav nav-pills flex-column">
+                    <li class="nav-item active">
+                      <a href="#" class="nav-link">
+                        <i class="fas fa-inbox"></i> Prikazi
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="" class="nav-link" data-toggle="modal" data-target="#delete-modal" th:attr="data-target='#delete-modal'+${per.personId}">
+                        <i class="fas fa-trash"></i> Obrisi
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="modal fade" th:id="delete-modal+${per.personId}">-->
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Obrisi osobu</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Da li ste sigurni da zelite da obriste ovu osobu?</p>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Odustani</button>
+                          <a th:method="delete" th:href="@{/person/delete(personId=${per.personId})}" class="btn btn-danger">Obrisi</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                                        <!-- /.card-body -->
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
@@ -199,16 +187,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 <!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
-<script>
-    $("[data-toggle='modal']").modal();
-</script>
+<!--&lt;!&ndash; REQUIRED SCRIPTS &ndash;&gt;-->
+<!--<script>-->
+<!--    $("[data-toggle='modal']").modal();-->
+<!--</script>-->
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
+<script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
+
 
 </body>
 </html>
