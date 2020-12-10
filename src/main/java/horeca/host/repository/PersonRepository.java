@@ -10,5 +10,9 @@ import java.util.UUID;
 public interface PersonRepository extends JpaRepository<Person, String> {
 
     @Query("select p from Person p where p.occupation.occupationId=:occupationId")
-    public List<Person> getPersonsByOccupation(UUID occupationId);
+     List<Person> getPersonsByOccupation(String occupationId);
+
+    @Query("select p from Person p where" + " p.firstName like %?1% OR p.lastName like %?1% OR p.citizenship like %?1% OR p.city like %?1% " +
+            "OR p.occupation.occupationName like %?1%")
+     List<Person> searchPerson(String word);
 }

@@ -7,101 +7,106 @@
 </head>
 <body>
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #001A35;" th:fragment="aside-component">
-   <!-- Product Logo -->
-    <a href="person-list" class="brand-link">
-      <img src="../images/backgrounds/hosst.jpg" alt="Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">HOSST</span>
-    </a>
+  <!-- Product Logo -->
+  <a href="/person/" class="brand-link">
+    <img src="../images/backgrounds/hosst.jpg" alt="Logo" class="brand-image img-circle elevation-3"
+         style="opacity: 0.8">
+    <span class="brand-text font-weight-light">HOSST</span>
+  </a>
 
-    <!-- Sidebar Menu -->
-	<nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
-              <span>
+  <!-- Sidebar Menu -->
+  <div class="sidebar">
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon far fa-plus-square"></i>
+            <span>
+              <i class="nav-icon far fa-arrow-circle-o-right"></i>
                 Prikaz
                 <i class="right fas fa-angle-left" style="float: right;"></i>
               </span>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="person-list" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>SVI</span>
-                </a>
-              </li>
-              <li th:each="occupation: ${occupationList}" class="nav-item">
-                <a th:href="@{occupation(occupationId=${occupation.occupationId})}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span th:text="${occupation.occupationName}"></span>
-                </a>
-              </li>
-            </ul>
-          </li>
-    
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
-              <span>
-                Ostalo
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/person/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <span>Svi</span>
+              </a>
+            </li>
+            <li th:each="occupation: ${occupationList}" class="nav-item">
+              <a th:href="@{/person/occupation(occupationId=${occupation.occupationId})}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <span th:text="${occupation.occupationName}"></span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon far fa-plus-square"></i>
+            <span>
+              <i class="nav-icon far fa-arrow-circle-o-right"></i>
+               Ostalo
                 <i class="right fas fa-angle-left" style="float: right;"></i>
               </span>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/occupation/form" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>Dodaj novo zanimanje</span>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/occupation/" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>Lista svih zanimanja</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          
-          <li sec:authorize="hasRole('ROLE_SUPERADMIN')" class="nav-item has-treeview">
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/occupation/form" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <span>Dodaj novo zanimanje</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/occupation/" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <span>Lista svih zanimanja</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
-              <span>
+            <i class="nav-icon far fa-plus-square"></i>
+            <span>
+              <i class="nav-icon far fa-arrow-circle-o-right"></i>
                 Korisnici
                 <i class="right fas fa-angle-left" style="float: right;"></i>
               </span>
-            </a>
+          </a>
           <ul class="nav nav-treeview">
-          	<li class="nav-item">
-                <a href="user-list" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>Lista</span>
-                </a>
-            </li>
-          	<li class="nav-item">
-                <a href="user-form" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>Dodaj novog korisnika</span>
-                </a>
+            <li class="nav-item">
+              <a href="user-list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <span>Lista</span>
+              </a>
             </li>
             <li class="nav-item">
-                <a href="user-privilages" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <span>Promeni privilegije korisnika</span>
-                </a>
-            </li>  
+              <a href="user-form" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <span>Dodaj novog korisnika</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="user-privilages" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <span>Promeni privilegije korisnika</span>
+              </a>
+            </li>
           </ul>
-          </li>
-          
-        </ul>
-      </nav>
-        
-  </aside> 
+        </li>
+
+      </ul>
+    </nav>
+  </div>
+
+</aside>
 </body>
 </html>
