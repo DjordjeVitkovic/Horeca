@@ -35,9 +35,9 @@
                 </a>
               </li>
               <li th:each="occupation: ${occupationList}" class="nav-item">
-                <a th:href="@{occupation-list(id=${occupation.id})}" class="nav-link">
+                <a th:href="@{occupation-list(occupationId=${occupation.occupationId})}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <span th:text="${occupation.name}"></span>
+                  <span th:text="${occupation.occupationName}"></span>
                 </a>
               </li>
             </ul>
