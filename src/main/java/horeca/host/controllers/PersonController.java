@@ -54,6 +54,34 @@ public class PersonController {
         return "redirect:/person/";
     }
 
+    @GetMapping("/pagination")
+    public String pagination(@RequestParam int page, @RequestParam(required = false) String type, Model model){
+
+        int count = personService.countAll();
+        int math = (count + 2 - 1) / 2;
+        int[] niz = new int[math];
+
+        if(type == null){
+            model.addAttribute("personList",personService.personPagination(page));
+            model.addAttribute("page", page);
+            model.addAttribute("count", count);
+            model.addAttribute("niz", niz);
+            return "admin/person-list";
+
+        }
+        if (type.equalsIgnoreCase("left")) {
+            page--;
+            model.addAttribute("personList",personService.personPagination(page));
+        } else if (type.equalsIgnoreCase("right")) {
+            page++;
+            model.addAttribute("personList",personService.personPagination(page));
+        }
+        model.addAttribute("page", page);
+        model.addAttribute("count", count);
+        model.addAttribute("niz", niz);
+        return "admin/person-list";
+
+    }
 
 
 
