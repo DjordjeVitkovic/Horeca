@@ -26,7 +26,7 @@ Description: CV, Resume, vCard HTML Template
 /*-----------------------------------------------------------------*/
 body {
     color: #1a1a1a;
-    background-color: rgb(0, 65, 135);
+    background-color: rgb(209, 231, 255);
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
 }
@@ -156,6 +156,7 @@ li {
 .wrapper {
     width: 1000px;
     margin: 0 auto;
+    background: rgb(227, 240, 255);
 }
 
 /*-----------------------------------------------------------------*/
@@ -163,8 +164,7 @@ li {
 /*-----------------------------------------------------------------*/
 .header {
     background: rgb(0, 20, 41);
-    padding: 46px;
-
+    padding: 15px;
     height: 1122px;
     width: 260px;
     z-index: 5;
@@ -517,6 +517,7 @@ li {
 }
 
 .resume .resume-item span {
+	max-width:500px;
     color: #666;
     display: block;
     font-size: 12px;
@@ -884,45 +885,24 @@ li {
     .modal {
 		max-width: 100%;
 	}
+	
+	.wrapper{
+		background: rgb(209, 231, 255);
+	}
 }
 
 @media only screen and (max-width: 991px) {
-/*     .wrapper { */
-/*         width: 100%; */
-/*     } */
-
-    .header {
-/*         -ms-transform: translateX(-260px); */
-/*         -webkit-transform: translateX(-260px); */
-/*         transform: translateX(-260px); */
-/*         -webkit-transition: all .3s ease-in-out; */
-/*         -moz-transition: all .3s ease-in-out; */
-/*         -o-transition: all .3s ease-in-out; */
-/*         transition: all .3s ease-in-out; */
-    }
-
-/*     .pushed { */
-/*         -ms-transform: translateX(0); */
-/*         -webkit-transform: translateX(0); */
-/*         transform: translateX(0); */
-/*     } */
 
     .main-content {
-/*         width: 60%; */
         -webkit-transition: all .3s ease-in-out;
         -moz-transition: all .3s ease-in-out;
         -o-transition: all .3s ease-in-out;
         transition: all .3s ease-in-out;
     }
 
-/*     .main-pushed { */
-/*         -ms-transform: translateX(260px); */
-/*         -webkit-transform: translateX(260px); */
-/*         transform: translateX(260px); */
-/*     } */
-/*     .works .item-outer .item { */
-/*         height: 280px; */
-/*     } */
+	.wrapper{
+		background: rgb(209, 231, 255);
+	}
 
 }
 
@@ -962,6 +942,10 @@ li {
     .about .resume-download{
     	top: -60px;
     }
+    
+    .wrapper{
+		background: rgb(209, 231, 255);
+	}
 }
 
 @media only screen and (max-width: 480px) {
@@ -971,6 +955,10 @@ li {
     .modal{
     	max-width:100%;
     }
+    
+    .wrapper{
+		background: rgb(209, 231, 255);
+	}
 }
 
 @media only screen and (max-height: 600px) {
@@ -990,4 +978,8 @@ li {
         bottom: -18px;
         position: relative;
     }
+    
+    .wrapper{
+		background: rgb(209, 231, 255);
+	}
 }

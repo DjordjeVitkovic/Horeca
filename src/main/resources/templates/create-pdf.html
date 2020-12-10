@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" style="background: rgb(209, 231, 255);">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>CV</title>
@@ -24,20 +24,20 @@
 	<!-- Header -->
 	<header id="header" class="header pull-left">
 
-		<div class="avatar" id="client-image-div"  style="margin-top:10px;">
+		<div class="avatar" id="client-image-div"  style="margin-top:10px;margin-left: 35px;">
 			<img id="client-image" th:src="*{'data:image/jpeg;base64,'+personImage}" alt="avatar">
 			<div id="imgTest"></div>
 		</div>
 
-		<div class="name">
-			<h1 th:text="${person.firstName}"></h1><h1 th:text="${person.lastName}"></h1>
-			<span th:text="${person.occupation.occupationName}"></span>
+		<div class="name" style="color:white;margin-bottom: 0;">
+			<h2 th:text="${person.firstName}"></h2><h2 th:text="${person.lastName}"></h2>
+			<span th:text="'Zanimanje: '+${person.occupation.occupationName}" style="font-size: 23px;"></span>
 		</div>
 		
 		<!-- Section About -->
 		<section id="about" class="about">
 			<div class="section-header">
-				<h2 style="color:white;">Lične informacije</h2>
+				<h3 style="color:white;">Lične informacije</h3>
 			</div>
 
 			<!-- Intro -->
@@ -83,7 +83,7 @@
 	<div id="main-content" class="main-content pull-right">	
 
 		<!-- Section Resume -->
-		<section id="experience" class="resume" style="margin-top:30px;">
+		<section id="experience" class="resume" style="margin-top:15px;">
 			<div class="section-header">
 				<h2>Obrazovanje</h2>
 				<button id="cmd" onclick="exportTableToPDF()" class="resume-download" data-html2canvas-ignore="true"><i class="fa fa-download"></i> Preuzmite Vas CV u PDF-u</button>
@@ -131,7 +131,7 @@
 						</div>
 			</div>
 		</section>
-		<section id="experience 1" class="resume" th:if="${person.workExperienceList.size()<5}">
+		<section id="experience 1" class="resume" th:if="${person.workExperienceList.size()<5}" style="padding-top: 0;">
 			<div class="section-header">
 				<h2>Sposobnosti i vestine</h2>
 			</div>
