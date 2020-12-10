@@ -111,12 +111,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
 
               <div class="card collapsed-card" th:each="per,i: ${personList}">
+                <div class="callout callout-info">
                 <div class="card-header">
                   <h3 class="card-title"  th:text="${i.count + '. ' + per.firstName + ' ' + per.lastName + '   -   ' + per.occupation.occupationName}"></h3>
                   <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
                     </button>
                   </div>
+                </div>
                 </div>
                 <div class="card-body p-0" style="display: none;">
                   <ul class="nav nav-pills flex-column">
