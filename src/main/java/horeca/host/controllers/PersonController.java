@@ -21,13 +21,13 @@ public class PersonController {
     private OccupationService occupationService;
 
     //Get all Persons from database
-    @GetMapping("/")
-    public String getAll(Model model){
-
-        model.addAttribute("personList", personService.getAll());
-        model.addAttribute("occupationList", occupationService.getAll());
-        return "admin/person-list";
-    }
+//    @GetMapping("/")
+//    public String getAll(Model model){
+//
+//        model.addAttribute("personList", personService.getAll());
+//        model.addAttribute("occupationList", occupationService.getAll());
+//        return "admin/person-list";
+//    }
 
     //Get all Persons by Occupation id
     @GetMapping("/occupation")
@@ -54,8 +54,8 @@ public class PersonController {
         return "redirect:/person/";
     }
 
-    @GetMapping("/pagination")
-    public String pagination(@RequestParam int page, @RequestParam(required = false) String type, Model model){
+    @GetMapping({"/", ""})
+    public String pagination(@RequestParam(defaultValue = "0") int page, @RequestParam(required = false) String type, Model model){
 
         int count = personService.countAll();
         int math = (count + 2 - 1) / 2;
@@ -63,8 +63,10 @@ public class PersonController {
 
         if(type == null){
             model.addAttribute("personList",personService.personPagination(page));
+            model.addAttribute("occupationList", occupationService.getAll());
             model.addAttribute("page", page);
             model.addAttribute("count", count);
+            model.addAttribute("math", math);
             model.addAttribute("niz", niz);
             return "admin/person-list";
 
@@ -78,7 +80,10 @@ public class PersonController {
         }
         model.addAttribute("page", page);
         model.addAttribute("count", count);
+        model.addAttribute("math", math);
         model.addAttribute("niz", niz);
+        model.addAttribute("occupationList", occupationService.getAll());
+
         return "admin/person-list";
 
     }

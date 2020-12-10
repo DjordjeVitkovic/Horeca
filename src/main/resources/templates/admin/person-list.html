@@ -158,9 +158,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- /.card-body -->
               <div class="card-footer clearfix">
                 <ul class="pagination pagination-sm m-0 float-right">
-                  <li th:if="${page>0}" class="page-item"><a class="page-link" th:href="@{/person/pagination(page=${page}, type= 'left')}">«</a></li>
-                  <li th:each="item,i : ${niz}" class="page-item"><a class="page-link" th:text="${i.count}" th:href="@{/person/pagination(page=${i.count-1})}"></a></li>
-                  <li th:if="${page<((count/2))}" class="page-item"><a th:href="@{/person/pagination(page=${page}, type= 'right')}" class="page-link">»</a></li>
+                  <li th:if="${page>0}" class="page-item"><a class="page-link" th:href="@{/person(page=${page}, type= 'left')}">«</a></li>
+                  <li th:each="item,i : ${niz}" class="page-item"><a class="page-link" th:text="${i.count}" th:href="@{/person(page=${i.count-1})}"></a></li>
+                  <li th:if="${page<math -1 }" class="page-item"><a th:href="@{/person(page=${page}, type= 'right')}" class="page-link">»</a></li>
                 </ul>
               </div>
             </div>

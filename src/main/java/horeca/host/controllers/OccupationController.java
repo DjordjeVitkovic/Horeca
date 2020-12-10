@@ -21,8 +21,10 @@ public class OccupationController {
     public String getForm(@RequestParam(required = false) String occupationId, Model model){
 
         if(occupationId != null){
+            model.addAttribute("occupationList", occupationService.getAll());
             model.addAttribute("occupation", occupationService.getOneById(occupationId));
         }else{
+            model.addAttribute("occupationList", occupationService.getAll());
             model.addAttribute("occupation", new Occupation());
         }
         return "admin/occupation-form";
