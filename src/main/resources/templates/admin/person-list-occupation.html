@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Horeca</title>
+
+    <!-- summernote -->
+    <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="../plugins/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="../plugins/jquery-ui/jquery-ui.theme.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
+
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Messages Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-user"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <a href="#" class="dropdown-item">
+                        <!-- Message Start -->
+                        <div class="media align-items-center">
+                            <img src="../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    Brad Diesel
+                                </h3>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-user"></i> Your Profile
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="login.html" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt"></i> Log Out
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline ml-3" th:action="@{search}" th:method="get">
+            <div class="input-group input-group-sm">
+                <input class="form-control form-control-navbar" name="word" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-navbar" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <div th:replace="/admin/aside-component :: aside-component"> </div>
+
+    <!--  </aside>-->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h3 th:text="'Prikaz:'" style="display: inline"></h3>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+
+                                <h3 th:text="${'Rezultata: ' +  count}" class="card-title"></h3>
+
+                            </div>
+
+                            <div class="card collapsed-card" th:each="per,i: ${personList}">
+                                <div class="callout callout-info">
+                                    <div class="card-header">
+                                        <h3 class="card-title"  th:text="${i.count + page*2 +  '. ' + per.firstName + ' ' + per.lastName + '   -   ' + per.occupation.occupationName}"></h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body p-0" style="display: none;">
+                                    <ul class="nav nav-pills flex-column">
+                                        <li class="nav-item active">
+                                            <a href="#" class="nav-link">
+                                                <i class="fas fa-inbox"></i> Prikazi
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="" class="nav-link" data-toggle="modal" data-target="#delete-modal" th:attr="data-target='#delete-modal'+${per.personId}">
+                                                <i class="fas fa-trash"></i> Obrisi
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="modal fade" th:id="delete-modal+${per.personId}">-->
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Obrisi osobu</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Da li ste sigurni da zelite da obriste ovu osobu?</p>
+                                                </div>
+                                                <div class="modal-footer justify-content-between">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Odustani</button>
+                                                    <a th:method="delete" th:href="@{/person/delete(personId=${per.personId})}" class="btn btn-danger">Obrisi</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer clearfix">
+                                <ul class="pagination pagination-sm m-0 float-right">
+                                    <li th:if="${page>0}" class="page-item"><a class="page-link" th:href="@{/person/byOccupation(page=${page}, type= 'left', occupationId= ${occupationID})}">«</a></li>
+                                    <li th:each="item,i : ${niz}" class="page-item"><a class="page-link" th:text="${i.count}" th:href="@{/person/byOccupation(page=${i.count-1}, occupationId= ${occupationID})}"></a></li>
+                                    <li th:if="${page<math -1 }" class="page-item"><a th:href="@{/person/byOccupation(page=${page}, type= 'right', occupationId= ${occupationID})}" class="page-link">»</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+
+
+    </div>
+    <!-- /.content-wrapper -->
+
+
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="float-right d-none d-sm-inline">
+            Java
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2020  Aca i Djole.</strong> All rights reserved.
+    </footer>
+</div>
+<!-- ./wrapper -->
+
+<!--&lt;!&ndash; REQUIRED SCRIPTS &ndash;&gt;-->
+<!--<script>-->
+<!--    $("[data-toggle='modal']").modal();-->
+<!--</script>-->
+<!-- jQuery -->
+<script src="../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.min.js"></script>
+<script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../dist/js/demo.js"></script>
+
+
+
+</body>
+</html>

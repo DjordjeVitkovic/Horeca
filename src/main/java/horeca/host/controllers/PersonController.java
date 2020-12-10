@@ -55,39 +55,90 @@ public class PersonController {
     }
 
     @GetMapping({"/", ""})
-    public String pagination(@RequestParam(defaultValue = "0") int page, @RequestParam(required = false) String type, Model model){
+    public String pagination(@RequestParam(defaultValue = "0") int page,
+                             @RequestParam(required = false) String type,
+                             @RequestParam(required = false, defaultValue = ("-")) String occupationId,
+                             Model model){
+            int count = personService.countAll();
+            int math = 0;
+            if (count % 2 == 1) {
+                math = (count + 2 - 1) / 2;
+            } else {
+                math = count / 2;
+            }
+            int[] niz = new int[math];
 
-        int count = personService.countAll();
-        int math = (count + 2 - 1) / 2;
+            if (type == null) {
+                model.addAttribute("personList", personService.personPagination(page));
+                model.addAttribute("occupationList", occupationService.getAll());
+                model.addAttribute("page", page);
+                model.addAttribute("count", count);
+                model.addAttribute("math", math);
+                model.addAttribute("niz", niz);
+                return "admin/person-list";
+
+            }
+            if (type.equalsIgnoreCase("left")) {
+                page--;
+                model.addAttribute("personList", personService.personPagination(page));
+            } else if (type.equalsIgnoreCase("right")) {
+                page++;
+                model.addAttribute("personList", personService.personPagination(page));
+            }
+            model.addAttribute("page", page);
+            model.addAttribute("count", count);
+            model.addAttribute("math", math);
+            model.addAttribute("niz", niz);
+            model.addAttribute("occupationList", occupationService.getAll());
+
+            return "admin/person-list";
+
+    }
+
+    @GetMapping("/byOccupation")
+    public String paginationByOccupation(@RequestParam(defaultValue = "0") int page,
+                                         @RequestParam(required = false) String type,
+                                         @RequestParam() String occupationId,
+                                         Model model) {
+
+        List<Person> personList = personService.personPaginationByOccupation(page,occupationId);
+        int count = personService.countAllByOccupation(occupationId);
+        int math = 0;
+        if(count%2 == 1) {
+             math = (count + 2 - 1) / 2;
+        }else{
+             math = count  / 2;
+        }
         int[] niz = new int[math];
 
-        if(type == null){
-            model.addAttribute("personList",personService.personPagination(page));
+        if (type == null) {
+            model.addAttribute("personList",personList);
             model.addAttribute("occupationList", occupationService.getAll());
             model.addAttribute("page", page);
             model.addAttribute("count", count);
             model.addAttribute("math", math);
             model.addAttribute("niz", niz);
-            return "admin/person-list";
+            model.addAttribute("occupationID", occupationId);
+            return "admin/person-list-occupation";
 
         }
         if (type.equalsIgnoreCase("left")) {
             page--;
-            model.addAttribute("personList",personService.personPagination(page));
+            model.addAttribute("personList", personService.personPaginationByOccupation(page,occupationId));
         } else if (type.equalsIgnoreCase("right")) {
             page++;
-            model.addAttribute("personList",personService.personPagination(page));
+            model.addAttribute("personList", personService.personPaginationByOccupation(page,occupationId));
         }
         model.addAttribute("page", page);
         model.addAttribute("count", count);
         model.addAttribute("math", math);
         model.addAttribute("niz", niz);
+        model.addAttribute("occupationID", occupationId);
         model.addAttribute("occupationList", occupationService.getAll());
 
-        return "admin/person-list";
-
+        return "admin/person-list-occupation";
     }
 
 
 
-}
+    }

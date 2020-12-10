@@ -33,12 +33,11 @@
                 <a href="/person/" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <span>
-                    <i class="nav-icon far fa-arrow-circle-o-right"></i>
                     Svi</span>
                 </a>
               </li>
               <li th:each="occupation: ${occupationList}" class="nav-item">
-                <a th:href="@{/person/occupation(occupationId=${occupation.occupationId})}" class="nav-link">
+                <a th:href="@{/person/byOccupation(occupationId=${occupation.occupationId})}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <span th:text="${occupation.occupationName}"></span>
                 </a>
