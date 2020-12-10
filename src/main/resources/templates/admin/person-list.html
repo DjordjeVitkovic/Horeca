@@ -106,66 +106,111 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 
               </div>
               <!-- /.card-header -->
-              <div class="card-body">
-                <table class="table table-bordered">
-                  <thead>                  
-                    <tr>
-                      <th class="text-center">Ime</th>
-                      <th class="text-center">Prezime</th>
-                      <th class="text-center">Zanimanje</th>
-                      <th class="text-center">Grad</th>
-                      <th class="text-center">Datum rodjenja</th>
-                      <th class="text-center">Detaljnije</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                 
-                    <tr th:each="per: ${personList}">
-                      <td th:text="${per.firstName}"/>
-                      <td th:text="${per.lastName}"/>
-                      <td th:text="${per.occupation.occupationName}"/>
-                      <td th:text="${per.city}"/>
-                      <td th:text="${per.dateOfBirth}"/>
-                      <td class="text-center">
-                      <div class="btn-group">
-                        <a th:href="@{person-page(id=${per.personId})}">
-                        <button type="button" class="btn btn-block btn-primary">
-                        <i class="fas fa-align-left"></i>Prikazi
-                        </button>
-                        </a>
-                       </div>
-                       
-                       
-                           <div class="btn-group">												
-                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal" th:attr="data-target='#delete-modal'+${per.personId}">
-                            <i class="fas fa-trash"></i> OBRISI   
-                          </button>
-                          </div>
+<!--              <div class="card-body">-->
+<!--                <table class="table table-bordered">-->
+<!--                  <thead>                  -->
+<!--                    <tr>-->
+<!--                      <th class="text-center">Ime</th>-->
+<!--                      <th class="text-center">Prezime</th>-->
+<!--                      <th class="text-center">Zanimanje</th>-->
+<!--                      <th class="text-center">Grad</th>-->
+<!--                      <th class="text-center">Datum rodjenja</th>-->
+<!--                      <th class="text-center">Detaljnije</th>-->
+<!--                    </tr>-->
+<!--                  </thead>-->
+<!--                  <tbody>-->
+<!--                 -->
+<!--                    <tr th:each="per: ${personList}">-->
+<!--                      <td th:text="${per.firstName}"/>-->
+<!--                      <td th:text="${per.lastName}"/>-->
+<!--                      <td th:text="${per.occupation.occupationName}"/>-->
+<!--                      <td th:text="${per.city}"/>-->
+<!--                      <td th:text="${per.dateOfBirth}"/>-->
+<!--                      <td class="text-center">-->
+<!--                      <div class="btn-group">-->
+<!--                        <a th:href="@{person-page(id=${per.personId})}">-->
+<!--                        <button type="button" class="btn btn-block btn-primary">-->
+<!--                        <i class="fas fa-align-left"></i>Prikazi-->
+<!--                        </button>-->
+<!--                        </a>-->
+<!--                       </div>-->
+<!--                       -->
+<!--                       -->
+<!--                           <div class="btn-group">												-->
+<!--                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal" th:attr="data-target='#delete-modal'+${per.personId}">-->
+<!--                            <i class="fas fa-trash"></i> OBRISI   -->
+<!--                          </button>-->
+<!--                          </div>-->
 
-                    <div class="modal fade" th:id="delete-modal+${per.personId}">
-					      <div class="modal-dialog">
-					        <div class="modal-content">
-					          <div class="modal-header">
-					            <h4 class="modal-title">Obrisi osobu</h4>
-					            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					              <span aria-hidden="true">&times;</span>
-					            </button>
-					          </div>
-					          <div class="modal-body">
-					            <p>Da li ste sigurni da zelite da obriste ovu osobu?</p>
-					          </div>
-					          <div class="modal-footer justify-content-between">
-					            <button type="button" class="btn btn-default" data-dismiss="modal">Odustani</button>
-					            <a th:method="delete" th:href="@{/person/delete(personId=${per.personId})}" class="btn btn-danger">Obrisi</a>
-					          </div>
-					        </div>
-					      </div>
-					    </div>
-                  
-                      </td>
-                    </tr>
-                    </tbody>
-                </table>
+<!--                    <div class="modal fade" th:id="delete-modal+${per.personId}">-->
+<!--					      <div class="modal-dialog">-->
+<!--					        <div class="modal-content">-->
+<!--					          <div class="modal-header">-->
+<!--					            <h4 class="modal-title">Obrisi osobu</h4>-->
+<!--					            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--					              <span aria-hidden="true">&times;</span>-->
+<!--					            </button>-->
+<!--					          </div>-->
+<!--					          <div class="modal-body">-->
+<!--					            <p>Da li ste sigurni da zelite da obriste ovu osobu?</p>-->
+<!--					          </div>-->
+<!--					          <div class="modal-footer justify-content-between">-->
+<!--					            <button type="button" class="btn btn-default" data-dismiss="modal">Odustani</button>-->
+<!--					            <a th:method="delete" th:href="@{/person/delete(personId=${per.personId})}" class="btn btn-danger">Obrisi</a>-->
+<!--					          </div>-->
+<!--					        </div>-->
+<!--					      </div>-->
+<!--					    </div>-->
+<!--                  -->
+<!--                      </td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--              </div>-->
+
+              <div class="card collapsed-card" th:each="per: ${personList}">
+                <div class="card-header">
+                  <h3 class="card-title"  th:text="${per.firstName + ' ' + per.lastName + '   -   ' + per.occupation.occupationName}"></h3>
+
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body p-0" style="display: none;">
+                  <ul class="nav nav-pills flex-column">
+                    <li class="nav-item active">
+                      <a href="#" class="nav-link">
+                        <i class="fas fa-inbox"></i> Prikazi
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="" class="nav-link" data-toggle="modal" data-target="#delete-modal" th:attr="data-target='#delete-modal'+${per.personId}">
+                        <i class="fas fa-trash"></i> Obrisi
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="modal fade" th:id="delete-modal+${per.personId}">-->
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Obrisi osobu</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Da li ste sigurni da zelite da obriste ovu osobu?</p>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Odustani</button>
+                          <a th:method="delete" th:href="@{/person/delete(personId=${per.personId})}" class="btn btn-danger">Obrisi</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                                        <!-- /.card-body -->
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
