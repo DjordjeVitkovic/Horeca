@@ -11,13 +11,13 @@ $(function(){
     /*=========================================================================
             One Page Nav
     =========================================================================*/
-    $(".navigation").onePageNav({
-        currentClass: 'current',
-        changeHash: false,
-        scrollSpeed: 700,
-        scrollThreshold: 0.5,
-        easing: 'easeInOutCubic'
-    });
+//    $(".navigation").onePageNav({
+//        currentClass: 'current',
+//        changeHash: false,
+//        scrollSpeed: 700,
+//        scrollThreshold: 0.5,
+//        easing: 'easeInOutCubic'
+//    });
 
     /*=========================================================================
             Portfolio filter

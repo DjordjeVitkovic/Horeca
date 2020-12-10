@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>CV</title>
+	<meta name="description" content="Blvck - Personal vCard & Resume Template">
+	<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+
+	<!-- STYLESHEETS -->
+	<link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" type="text/css" media="all">
+	<link rel="stylesheet" href="../assets/css/owl.carousel.css" type="text/css" media="all">
+	<link rel="stylesheet" href="../assets/css/owl.theme.css" type="text/css" media="all">
+	<link rel="stylesheet" href="../assets/css/font-awesome.min.css" type="text/css" media="all">
+	<link rel="stylesheet" href="../assets/css/magnific-popup.css" type="text/css" media="all">
+	<link rel="stylesheet" href="../assets/css/style.css" type="text/css" media="all">
+
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800" rel="stylesheet">
+</head>
+<body>
+<main class="wrapper" id="client">
+
+	<!-- Header -->
+	<header id="header" class="header pull-left">
+
+		<div class="avatar" id="client-image-div"  style="margin-top:10px;">
+			<img id="client-image" th:src="*{'data:image/jpeg;base64,'+personImage}" alt="avatar">
+			<div id="imgTest"></div>
+		</div>
+
+		<div class="name">
+			<h1 th:text="${person.firstName}"></h1><h1 th:text="${person.lastName}"></h1>
+			<span th:text="${person.occupation.occupationName}"></span>
+		</div>
+		
+		<!-- Section About -->
+		<section id="about" class="about">
+			<div class="section-header">
+				<h2 style="color:white;">Lične informacije</h2>
+			</div>
+
+			<!-- Intro -->
+			<div class="intro">
+				<ul class="info">
+					<li style="color:white;">
+						<strong>Državljanstvo:</strong> 
+						<span th:text="${person.citizenship}"></span>
+					</li>
+					<li style="color:white;">
+						<strong>Datum rođenja:</strong> 
+						<span th:text="${person.dateOfBirth}"></span>
+					</li>
+					<li style="color:white;">
+						<strong>Mesto prebivališta:</strong>
+						<span th:text="${person.city}"></span>	
+					</li>
+					<li style="color:white;">
+						<strong>E-mail:</strong> 
+						<span th:text="${person.email}"></span>
+					</li>
+					<li style="color:white;">
+						<strong>Telefon:</strong> 
+						<span th:text="${person.phoneNumber}"></span>
+					</li>
+					<li th:if="${person.workExperienceList.size()>=5}" style="color:white;">
+						<h4>Sposobnosti i veštine:</h4> 
+						<span th:text="${person.about}"></span>
+					</li> 
+					<li th:if="${person.workExperienceList.size()>=5}" style="color:white;">
+						<h4>Hobi i interesovanja:</h4> 
+						<span th:text="${person.hobby}"></span>
+					</li>
+				</ul>
+			</div>
+			<!-- Intro end -->
+		</section>
+		<!-- Section About end -->
+	</header>
+	<!-- Header end -->
+
+	<!-- Main Content -->
+	<div id="main-content" class="main-content pull-right">	
+
+		<!-- Section Resume -->
+		<section id="experience" class="resume" style="margin-top:30px;">
+			<div class="section-header">
+				<h2>Obrazovanje</h2>
+				<button id="cmd" onclick="exportTableToPDF()" class="resume-download" data-html2canvas-ignore="true"><i class="fa fa-download"></i> Preuzmite Vas CV u PDF-u</button>
+			</div>
+			<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="top-item resume-item">
+								<span th:text="${person.education.schoolName}"></span>
+								<p th:text="${person.education.course}"></p>
+							</div>
+						</div>
+			</div>
+		</section>
+		
+			<section id="education" class="resume">		
+			<div class="section-header">
+				<h2>Jezici</h2>
+			</div>
+						<!-- Skills -->
+			<div class="skills">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12"  th:each="language: ${person.languageList}">
+						<div class="skill-info clearfix">
+							<p th:text="${language.languageName}+': nivo '+${language.languageLevel}"></p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- Skills end -->
+			</section>
+		<!-- Section Resume end -->
+			
+		<section id="experience 0" class="resume">
+			<div class="section-header">
+				<h2>Radno iskustvo</h2>
+			</div>
+			<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12" th:each="ex: ${person.workExperienceList}" style="margin-bottom: 10px;">
+							<div class="top-item resume-item">
+								<h2 th:text="${ex.companyName}"></h2>
+								<span th:text="${ex.startDate}+' | '+${ex.endDate}"></span>
+								<p th:text="${ex.description}"></p>
+							</div>
+						</div>
+			</div>
+		</section>
+		<section id="experience 1" class="resume" th:if="${person.workExperienceList.size()<5}">
+			<div class="section-header">
+				<h2>Sposobnosti i vestine</h2>
+			</div>
+			<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="top-item resume-item">
+								<p th:text="${person.about}"></p>
+							</div>
+						</div>
+			</div>
+		</section>
+		<section id="experience 2" class="resume" th:if="${person.workExperienceList.size()<5}">
+			<div class="section-header">
+				<h2>Hobi i interesovanja</h2>
+			</div>
+			<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="top-item resume-item">
+								<p th:text="${person.hobby}"></p>
+							</div>
+						</div>
+			</div>
+		</section>
+		<div id="editor"></div>
+	</div>
+	<!-- Main Content end -->
+	
+</main>
+<!-- Main Wrapper end -->
+<div class="modal fade" id="dialog" data-html2canvas-ignore="true" data-toggle="modal" data-backdrop="static" data-keyboard="false" style="opacity: 1;" >
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Uspesno ste kreirali vas CV</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+			</div>
+			<div class="modal-body">
+				<p>Vas Cv mozete preuzeti klkom na dugme.</p>
+			</div>
+			<div class="modal-footer justify-content-between">
+				<button onclick="exportTableToPDF()" class="btn btn-block bg-gradient-info" style="background: #001A35;color: white;">Preuzmi CV</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- SCRIPTS -->
+<script type="text/javascript" src="../assets/js/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.onepage-scroll.min.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.filterizr.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="../assets/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../assets/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="../assets/js/custom.js"></script>
+<script type="text/javascript" src="../assets/js/smoothscroll.min.js"></script>
+<script src="../assets/html2pdf.bundle.min.js"></script>
+<script type="text/javascript">
+$("[data-toggle='modal']").modal();
+document.getElementById("dialog").open = true;
+var modalStyle = document.getElementsByClassName('modal-backdrop fade in');
+modalStyle[0].setAttribute('style','opacity:1; background:#001A35;');
+
+function exportTableToPDF() {	
+	var element = document.getElementById('client');
+
+	html2pdf(element, {
+		allowTaint : false,
+	    filename: 'myfile.pdf',
+	    image: {type: 'jpeg', quality: 1},
+	    html2canvas: {scale: 3, logging: true},
+	    jsPDF: {unit: 'in', format: 'a4', orientation: 'p'}
+	});
+	
+}
+</script>
+<!-- html2canvas -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.0/html2canvas.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</body>
+</html>
