@@ -330,7 +330,8 @@
                             <div class="form-group">
                                 <div class="input-group  p-has-icon">
                                     <input th:field="*{workExperienceList[0].startDate}" type="text" placeholder="Datum početka"
-                                           data-date-format="DD.MM.YYYY" class="form-control" maxlength="20"/>
+                                           class="form-control" maxlength="20" data-js-datetimepick="true" data-js-max-date="today" 
+                                           data-date-format="MM.YYYY"/>
                                     <p th:if="${#fields.hasErrors('workExperienceList[0].startDate')}"
                                        th:errors="*{workExperienceList[0].startDate}" class="fa fa-times p-error-text"/>
                                     <span class="input-group-state">
@@ -351,8 +352,8 @@
                             <div class="form-group">
                                 <div class="input-group  p-has-icon">
                                     <input th:field="*{workExperienceList[0].endDate}" type="text"
-                                           placeholder="Datum završetka" data-date-format="DD.MM.YYYY"
-                                           class="form-control" maxlength="20"/>
+                                           placeholder="Datum završetka" data-js-datetimepick="true" data-js-max-date="today" 
+                                           data-date-format="MM.YYYY" class="form-control" maxlength="20"/>
                                     <p th:if="${#fields.hasErrors('workExperienceList[0].endDate')}"
                                        th:errors="*{workExperienceList[0].endDate}" class="fa fa-times p-error-text"/>
                                     <span class="input-group-state">
@@ -513,7 +514,7 @@
                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                 </div>
                 <div class="p-buttons text-right">
-                    <button class="btn" type="submit" name="confirm"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;
+                    <button class="btn" onclick="preloader()" type="submit" name="confirm"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;
                         Posalji CV
                     </button>
                 </div>
@@ -545,6 +546,7 @@ function addWorkExperience(){
 	
 	var newStartDate = newWorkEx.children[2].children[0].children[0].children[0].children[0];
 	newStartDate.setAttribute('name','workExperienceList['+countWE+'].startDate');
+	newStartDate.setAttribute('data-js-datetimepick','true');
 	newStartDate.value = '';
 	
 	var newEndDate = newWorkEx.children[2].children[1].children[0].children[0].children[0];

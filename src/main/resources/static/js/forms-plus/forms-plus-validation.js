@@ -17,7 +17,7 @@
     
     $.validator.addMethod('dotmail', function(value, element) {
         return this.optional( element ) || /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])+)+$/.test( value );
-    }, $.validator.format("Please enter a valid email address."));
+    }, $.validator.format("Unesite validnu e-mail adresu"));
     $.validator.addMethod('filesize', function(value, element, maxSize) {
         if( this.optional( element ) ){
             return true;
@@ -40,7 +40,7 @@
             }
         }
         return !maxSize || (element.files[0].size <= maxSize);
-    }, $.validator.format("File size should be less than {0}."));
+    }, $.validator.format("Velicina slike treba biti manja od 5mb."));
     $.validator.addMethod("gtoday", function(value, element, format) {
         if( this.optional( element ) ){
             return true;
@@ -50,7 +50,7 @@
             return true;
         }
         if( typeof(format) !== 'string' ){
-            fp.log(element.name + ': wrong format!');
+            fp.log(element.name + ': los format!');
             return true;
         }
         if( !value || !format ){
@@ -62,7 +62,7 @@
             mDate.format(format) === value && mDate.unix() >= moment( moment(Date()).format(format), format).unix()
             : false
         ;
-    }, $.validator.format("Please enter valid date."));
+    }, $.validator.format("Unesite validan datum."));
     $.validator.addMethod("ltoday", function(value, element, format) {
         if( this.optional( element ) ){
             return true;
@@ -84,7 +84,7 @@
             mDate.format(format) === value && mDate.unix() <= moment( moment(Date()).format(format), format).unix()
             : false
         ;
-    }, $.validator.format("Please enter valid date."));
+    }, $.validator.format("Unesite validan datum."));
 
     $.validator.addMethod("captcha", function(value, element) {
         if( this.optional( element ) ){
@@ -111,7 +111,7 @@
         }
         
         return isValid;
-    }, $.validator.format("Please enter correct code."));
+    }, $.validator.format("Unesite validan kod."));
 
     $.validator.addMethod("grouprequire", function(value, element, opts) {
         var
@@ -173,10 +173,10 @@
         }
         
         return isValid;
-    }, $.validator.format("Please fill some of these fields."));
+    }, $.validator.format("Popunite neke od ovih polja."));
 
     $.fn.fpValidate                            = function(){
-        if( !fp.pluginCheck(this, "Forms Plus: validate - Nothing selected.") ){
+        if( !fp.pluginCheck(this, "validacija - nista nije selektovano.") ){
             return this;
         }
         var createStateMsg                          = function(){
