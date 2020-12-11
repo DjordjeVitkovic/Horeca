@@ -39,25 +39,59 @@ public class PersonController {
     }
 
     @GetMapping("/search")
-    public String searchPerson(@RequestParam ("word") String word, Model model){
+    public String searchPerson(@RequestParam(defaultValue = "0") int page,
+                               @RequestParam(required = false) String type,
+                               @RequestParam ("word") String word,
+                               Model model){
 
+        List<Person> personList = personService.personPaginationSearch(page,word);
+        int count = personService.countForSearch(word);
+        int math = 0;
+        if(count%2 == 1) {
+            math = (count + 2 - 1) / 2;
+        }else{
+            math = count  / 2;
+        }
+        int[] niz = new int[math];
+
+        if (type == null) {
+            model.addAttribute("personList",personList);
+            model.addAttribute("occupationList", occupationService.getAll());
+            model.addAttribute("page", page);
+            model.addAttribute("count", count);
+            model.addAttribute("math", math);
+            model.addAttribute("niz", niz);
+            model.addAttribute("word", word);
+            return "admin/person-list-search";
+
+        }
+        if (type.equalsIgnoreCase("left")) {
+            page--;
+            model.addAttribute("personList", personService.personPaginationSearch(page,word));
+        } else if (type.equalsIgnoreCase("right")) {
+            page++;
+            model.addAttribute("personList", personService.personPaginationSearch(page,word));
+        }
+        model.addAttribute("page", page);
+        model.addAttribute("count", count);
+        model.addAttribute("math", math);
+        model.addAttribute("niz", niz);
+        model.addAttribute("word", word);
         model.addAttribute("occupationList", occupationService.getAll());
-        model.addAttribute("personList", personService.searchPerson(word));
 
-        return "admin/person-list";
+        return "admin/person-list-search";
     }
 
     @RequestMapping("/delete")
     public String deletePerson(@RequestParam("personId") String personId) throws Exception {
 
         personService.deletePerson(personId);
-        return "redirect:/person/";
+        return "redirect:";
     }
 
     @GetMapping({"/", ""})
     public String pagination(@RequestParam(defaultValue = "0") int page,
                              @RequestParam(required = false) String type,
-                             @RequestParam(required = false, defaultValue = ("-")) String occupationId,
                              Model model){
             int count = personService.countAll();
             int math = 0;

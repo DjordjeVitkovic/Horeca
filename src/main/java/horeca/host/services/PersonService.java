@@ -58,6 +58,12 @@ public class PersonService {
         Page<Person> allPersons = personRepository.getAllWithPagination(pageable, occupationId);
         return allPersons.toList();
     }
+    public List<Person> personPaginationSearch(int page, String word){
+
+        Pageable pageable = PageRequest.of(page,2);
+        Page<Person> allPersons = personRepository.searchPerson(pageable, word);
+        return allPersons.toList();
+    }
 
     public int countAll(){
         return personRepository.countPeopleByPersonId();
@@ -65,9 +71,8 @@ public class PersonService {
     public int countAllByOccupation(String occupationId){
         return personRepository.countPeopleByOccupation(occupationId);
     }
-
-    public List<Person> searchPerson(String word){
-        return personRepository.searchPerson(word);
+    public int countForSearch(String word){
+        return personRepository.countForSearch(word);
     }
 
     public void deletePerson(String personId) throws Exception {
