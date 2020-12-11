@@ -47,12 +47,10 @@ public class Person {
     @Size(max = 20, message = "Maksimalan broj karaktera je 20!")
     private String phoneNumber;
     @Column
-    @NotEmpty(message = "Morate popuniti polje!")
-    @Size(max = 500, message = "Maksimalan broj karaktera je 500!")
+    @Size(max = 200, message = "Maksimalan broj karaktera je 200!")
     private String about;
     @Column
-    @NotEmpty(message = "Morate popuniti polje!")
-    @Size(max = 500, message = "Maksimalan broj karaktera je 500!")
+    @Size(max = 200, message = "Maksimalan broj karaktera je 200!")
     private String hobby;
 
     @Valid
@@ -74,7 +72,7 @@ public class Person {
     private List<Language> languageList;
 
     public Person(@NotEmpty(message = "Morate popuniti polje!")
-                  @Size(max = 20, message = "Maksimalan broj karaktera je 20!") String firstName,
+    			  @NotEmpty(message = "Morate popuniti polje!") @Size(max = 20, message = "Maksimalan broj karaktera je 20!") String firstName,
                   @NotEmpty(message = "Morate popuniti polje!") @Size(max = 20, message = "Maksimalan broj karaktera je 20!") String lastName,
                   @NotEmpty(message = "Morate popuniti polje!") @Size(max = 80, message = "Maksimalan broj karaktera je 80!") String email,
                   String imageURL,
@@ -82,8 +80,8 @@ public class Person {
                   @NotEmpty(message = "Morate popuniti polje!") @Size(max = 20, message = "Maksimalan broj karaktera je 20!") String citizenship,
                   @NotEmpty(message = "Morate popuniti polje!") @Size(max = 20, message = "Maksimalan broj karaktera je 20!") String city,
                   @NotEmpty(message = "Morate popuniti polje!") @Size(max = 20, message = "Maksimalan broj karaktera je 20!") String phoneNumber,
-                  @NotEmpty(message = "Morate popuniti polje!") @Size(max = 500, message = "Maksimalan broj karaktera je 500!") String about,
-                  @NotEmpty(message = "Morate popuniti polje!") @Size(max = 500, message = "Maksimalan broj karaktera je 500!") String hobby,
+                  @Size(max = 200, message = "Maksimalan broj karaktera je 500!") String about,
+                  @Size(max = 200, message = "Maksimalan broj karaktera je 500!") String hobby,
                   @Valid Education education,
                   @Valid Occupation occupation,
                   @Valid List<WorkExperience> workExperienceList,

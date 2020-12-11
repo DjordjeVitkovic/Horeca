@@ -334,7 +334,8 @@
                         <select th:field="*{occupation}" required="required" class="form-control" aria-required="true">
                             <option th:each="i : ${occupationList}"
                                     th:value="${i.occupationId}"
-                                    th:text="${i.occupationName}">
+                                    th:text="${i.occupationName}"
+                                    style="font-family: 'Helvetica Neue, Helvetica, Arial, sans-serif'">
                             </option>
                         </select>
                         <span class="input-group-state">
@@ -579,8 +580,20 @@
 <script>
 $("[data-toggle='modal']").modal('show');
 	function preloader(){
-		var a = document.getElementById('dialog');
-		a.setAttribute('style','display:block;');
+		var a = document.getElementById('firstName').getAttribute('aria-invalid');
+		var b = document.getElementById('lastName').getAttribute('aria-invalid');
+		var c = document.getElementById('city').getAttribute('aria-invalid'); 
+		var d = document.getElementById('dateOfBirth').getAttribute('aria-invalid');
+		var e = document.getElementById('citizenship').getAttribute('aria-invalid');
+		var f = document.getElementById('email').getAttribute('aria-invalid');
+		var g = document.getElementById('phoneNumber').getAttribute('aria-invalid');
+ 		var h = document.getElementById('fileupload1').getAttribute('aria-invalid');
+
+		if(a && b && c && d && e && f && g){
+			var a = document.getElementById('dialog');
+			a.setAttribute('style','display:block;');
+			console.log('usao u metoduuuu')
+		}
 	}
 </script>
 <script type="text/javascript">
