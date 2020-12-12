@@ -58,6 +58,8 @@ public class PersonService {
         Page<Person> allPersons = personRepository.getAllWithPagination(pageable, occupationId);
         return allPersons.toList();
     }
+
+    //Pagination for personList for Search
     public List<Person> personPaginationSearch(int page, String word){
 
         Pageable pageable = PageRequest.of(page,2);

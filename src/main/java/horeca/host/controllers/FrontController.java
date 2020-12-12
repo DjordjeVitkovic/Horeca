@@ -49,8 +49,7 @@ public class FrontController {
             return "redirect:";
         }
         personService.savePerson(person, multipartFile);
-        
-        
+
 		byte[] encodeBase64 = org.apache.tomcat.util.codec.binary.Base64.encodeBase64(multipartFile.getBytes());
 		String base64Encoded = new String(encodeBase64, StandardCharsets.UTF_8);
         
@@ -59,21 +58,5 @@ public class FrontController {
 
         return "create-pdf";
     }
-    
-    //Convert MultipartFile in File
-    public File convertMultipartFileToFile(MultipartFile multipartFile) {
 
-        File convFile = new File(multipartFile.getOriginalFilename());
-        try {
-            convFile.createNewFile();
-            FileOutputStream fos = new FileOutputStream(convFile);
-            fos.write(multipartFile.getBytes());
-            fos.close();
-
-        } catch (IOException e) {
-
-        }
-
-        return convFile;
-    }
 }
