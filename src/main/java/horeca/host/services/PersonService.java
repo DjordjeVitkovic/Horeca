@@ -124,6 +124,7 @@ public class PersonService {
             String url = (String) result.get("secure_url");
 
             person.setImageURL(url);
+            file.delete();
 
             personRepository.save(person);
 
@@ -136,6 +137,7 @@ public class PersonService {
             String url = (String) result.get("secure_url");
 
             person.setImageURL(url);
+            file.delete();
 
             personRepository.save(person);
         }
