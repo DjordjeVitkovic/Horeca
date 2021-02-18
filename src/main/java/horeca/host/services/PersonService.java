@@ -30,7 +30,6 @@ public class PersonService {
     @Value(value = "${com.cloudinary.full.path}")
     private String CONFIG;
 
-
     public List<Person> getAll(){
        return personRepository.findAll();
     }
@@ -46,7 +45,7 @@ public class PersonService {
     //Pagination for personList
     public List<Person> personPagination(int page){
 
-        Pageable pageable = PageRequest.of(page,2);
+        Pageable pageable = PageRequest.of(page,10);
         Page<Person> allPersons = personRepository.findAll(pageable);
         return allPersons.toList();
     }
@@ -54,7 +53,7 @@ public class PersonService {
     //Pagination for personList by Occupation
     public List<Person> personPaginationByOccupation(int page, String occupationId){
 
-        Pageable pageable = PageRequest.of(page,2);
+        Pageable pageable = PageRequest.of(page,10);
         Page<Person> allPersons = personRepository.getAllWithPagination(pageable, occupationId);
         return allPersons.toList();
     }
@@ -62,7 +61,7 @@ public class PersonService {
     //Pagination for personList for Search
     public List<Person> personPaginationSearch(int page, String word){
 
-        Pageable pageable = PageRequest.of(page,2);
+        Pageable pageable = PageRequest.of(page,10);
         Page<Person> allPersons = personRepository.searchPerson(pageable, word);
         return allPersons.toList();
     }
@@ -70,9 +69,11 @@ public class PersonService {
     public int countAll(){
         return personRepository.countPeopleByPersonId();
     }
+
     public int countAllByOccupation(String occupationId){
         return personRepository.countPeopleByOccupation(occupationId);
     }
+
     public int countForSearch(String word){
         return personRepository.countForSearch(word);
     }

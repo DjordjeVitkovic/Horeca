@@ -1,5 +1,6 @@
 package horeca.host.controllers;
 
+import horeca.host.models.AuthenticateResponse;
 import horeca.host.models.Occupation;
 import horeca.host.models.Person;
 import horeca.host.services.OccupationService;
@@ -47,10 +48,10 @@ public class PersonController {
         List<Person> personList = personService.personPaginationSearch(page,word);
         int count = personService.countForSearch(word);
         int math = 0;
-        if(count%2 == 1) {
-            math = (count + 2 - 1) / 2;
-        }else{
-            math = count  / 2;
+        if (count > 10) {
+            math = (count + 10 - 1) / 10;
+        }else {
+            math= 1;
         }
         int[] niz = new int[math];
 
@@ -95,10 +96,10 @@ public class PersonController {
                              Model model){
             int count = personService.countAll();
             int math = 0;
-            if (count % 2 == 1) {
-                math = (count + 2 - 1) / 2;
-            } else {
-                math = count / 2;
+            if (count > 10) {
+                math = (count + 10 - 1) / 10;
+            }else {
+                math= 1;
             }
             int[] niz = new int[math];
 
@@ -125,7 +126,8 @@ public class PersonController {
             model.addAttribute("niz", niz);
             model.addAttribute("occupationList", occupationService.getAll());
 
-            return "admin/person-list";
+
+        return "admin/person-list";
 
     }
 
@@ -138,10 +140,10 @@ public class PersonController {
         List<Person> personList = personService.personPaginationByOccupation(page,occupationId);
         int count = personService.countAllByOccupation(occupationId);
         int math = 0;
-        if(count%2 == 1) {
-             math = (count + 2 - 1) / 2;
-        }else{
-             math = count  / 2;
+        if (count > 10) {
+            math = (count + 10 - 1) / 10;
+        }else {
+            math= 1;
         }
         int[] niz = new int[math];
 

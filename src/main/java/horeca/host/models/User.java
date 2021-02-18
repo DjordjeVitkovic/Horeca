@@ -27,19 +27,13 @@ public class User {
     private String permissions = "";
 
     protected User(){
-
-
     }
-    public User(String username,
-                String password,
-                int active,
-                String roles,
-                String permissions) {
+    public User(String username, String password, String roles, String permissions) {
         this.username = username;
         this.password = password;
-        this.active = active;
         this.roles = roles;
         this.permissions = permissions;
+        this.active = 1;
     }
 
     public String  getUserId() {
