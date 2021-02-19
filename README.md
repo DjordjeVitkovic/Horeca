@@ -1,3 +1,15 @@
 # Horeca
-Sending resumes and making database with jobseekers. And admin panel for work with data.
-Application for client, full stack. Bootstrap template and Spring boot in back-end. I used MySql for storage data. Provided JWT security, error handlers, cloud storage 
+Resume application for making CV and store it in database and admin panel where is provided full data managing ability.
+# Application technologies and futures:
+  -Spring Boot  
+  -Hibernate  
+  -MySQL database  
+  -JavaScript  
+  -HTML & CSS  
+  -Thymeleaf  
+  -Cloud storage  
+  -Pagination  
+  -Exceptions handlers  
+  -JWT security  
+  -MVC pattern  
+  
