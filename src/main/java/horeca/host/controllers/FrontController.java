@@ -1,12 +1,17 @@
 package horeca.host.controllers;
 
+import horeca.host.exception.NotFoundException;
 import horeca.host.models.LoginViewModel;
 import horeca.host.models.Occupation;
 import horeca.host.models.Person;
+import horeca.host.models.User;
+import horeca.host.registration.EmailValidator;
+import horeca.host.registration.UserDto;
 import horeca.host.security.JwtUtil;
 import horeca.host.security.UserPrincipalDetailsService;
 import horeca.host.services.OccupationService;
 import horeca.host.services.PersonService;
+import horeca.host.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -14,12 +19,16 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -32,6 +41,18 @@ public class FrontController {
 
     @Autowired
     private OccupationService occupationService;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private UserPrincipalDetailsService userPrincipalDetailsService;
+
+    @Autowired
+    private JwtUtil jwtTokenUtil;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping({"", "/", "/index"})
     public String getIndex(Model model) {
@@ -70,6 +91,28 @@ public class FrontController {
         return "login";
     }
 
+    @GetMapping("registration-form")
+    public String registration(Model model){
+        model.addAttribute("user", new UserDto());
+        return "registration";
+    }
+    @PostMapping("/register")
+    public String register(@ModelAttribute("user") @Valid UserDto userDto,
+                           Errors bindingResult,
+                           Model model,
+                           HttpServletRequest httpServletRequest
+                           ){
+        if (bindingResult.hasErrors()){
+            return "registration";
+        }
+        try {
+            User registered = userService.registerNewUserAccount(userDto);
+        } catch (NotFoundException e) {
+            model.addAttribute("errorr", e.getMessage());
+            return "registration";
+        }
+        return "login";
+    }
     @GetMapping("/logoutHandler")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
 
@@ -81,13 +124,6 @@ public class FrontController {
 
         return "redirect:index";
     }
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
-    @Autowired
-    private UserPrincipalDetailsService userPrincipalDetailsService;
-    @Autowired
-    private JwtUtil jwtTokenUtil;
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public String createAuthenticationToken(@ModelAttribute LoginViewModel loginViewModel,

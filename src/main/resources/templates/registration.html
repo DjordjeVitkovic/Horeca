@@ -1,0 +1,45 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Registration</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+
+    <style>
+
+        body{
+            background-color: #3e3e3e;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <form class="form-signin" action="/register" th:object="${user}" method="POST" enctype="utf8">
+        <h2 class="form-signin-heading">Registration</h2>
+        <div th:if="${errorr}" class="alert alert-danger">
+            <p th:text="${errorr}"></p>
+        </div>
+            <label>First Name</label>
+            <input class="form-control" th:field="*{firstName}"/>
+            <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" style="color: red"/>
+        <label >Last Name</label>
+            <input class="form-control" th:field="*{lastName}"/>
+            <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" style="color: red"/>
+        <label>Email</label>
+            <input class="form-control" type="email" th:field="*{email}"/>
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"/>
+            <label>Password</label>
+            <input class="form-control" type="password" th:field="*{password}"/>
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red"/>
+            <label>Confirm Password</label>
+            <input class="form-control" type="password" th:field="*{matchingPassword}"/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+    </form>
+    <a class="btn btn-lg btn-link btn-block" th:href="@{/login}">login</a>
+</div>
+</body>
+</html>

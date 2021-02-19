@@ -16,24 +16,53 @@ public class User {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String userId;
 
+    @Column
+    private String firstName;
+
+    @Column
+    private String lastName;
+
     @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
     private String password;
 
+    @Column
+    private String email;
+
     private int active;
     private String roles = "";
     private String permissions = "";
 
-    protected User(){
+    public User(){
     }
-    public User(String username, String password, String roles, String permissions) {
+
+    public User(String firstName, String lastName, String username, String password, String email, String roles, String permissions) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.username = username;
         this.password = password;
+        this.email = email;
+        this.active = 1;
         this.roles = roles;
         this.permissions = permissions;
-        this.active = 1;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String  getUserId() {
@@ -58,6 +87,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getActive() {
