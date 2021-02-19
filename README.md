@@ -1,12 +1,15 @@
 # Horeca
-Spring boot
-Hibernate
-MySQL database
-JWT security
-Exception hanlders
-Cloud storage
-JavaScript
-Thymeleaf
-HTML
-CSS
-
+Resume application for making CV and store it in database and admin panel where is provided full data managing ability.
+# Application technologies and futures:
+  -Spring Boot  
+  -Hibernate  
+  -MySQL database  
+  -JavaScript  
+  -HTML & CSS  
+  -Thymeleaf  
+  -Cloud storage  
+  -Pagination  
+  -Exceptions handlers  
+  -JWT security  
+  -MVC pattern  
+  
