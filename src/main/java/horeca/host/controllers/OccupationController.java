@@ -1,6 +1,8 @@
 package horeca.host.controllers;
 
 
+import horeca.host.exception.NotFoundException;
+import horeca.host.exception.RestExceptionHandler;
 import horeca.host.models.Occupation;
 import horeca.host.services.OccupationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +19,20 @@ public class OccupationController {
     private OccupationService occupationService;
 
     @GetMapping("/form")
-    public String getForm(@RequestParam(required = false) String occupationId, Model model){
+    public String getForm(@RequestParam(required = false) String occupationId, Model model) throws RestExceptionHandler {
 
-        if(occupationId != null){
-            model.addAttribute("occupationList", occupationService.getAll());
-            model.addAttribute("occupation", occupationService.getOneById(occupationId));
-        }else{
+        if(occupationId == null){
             model.addAttribute("occupationList", occupationService.getAll());
             model.addAttribute("occupation", new Occupation());
+        }else{
+            if (occupationService.existsById(occupationId)){
+                model.addAttribute("occupationList", occupationService.getAll());
+                model.addAttribute("occupation", occupationService.getOneById(occupationId));
+            }else {
+                throw new NotFoundException("The ID is not valid! There is no object with this ID!");
+            }
         }
-        return "admin/occupation-form";
+            return "admin/occupation-form";
     }
 
     @PostMapping("/save")

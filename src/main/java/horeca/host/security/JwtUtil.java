@@ -1,17 +1,11 @@
 package horeca.host.security;
 
-import horeca.host.exception.MessageResponse;
-import horeca.host.exception.NotFoundException;
-import horeca.host.exception.RestExceptionHandler;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.HttpServerErrorException;
 
 import java.util.Date;
 import java.util.HashMap;

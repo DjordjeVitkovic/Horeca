@@ -30,4 +30,7 @@ public class OccupationService {
         occupationRepository.deleteById(occupationId);
     }
 
+    public boolean existsById(String occupationId){
+        return occupationRepository.existsById(occupationId);
+    }
 }

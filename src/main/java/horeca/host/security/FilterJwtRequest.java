@@ -67,13 +67,14 @@ public class FilterJwtRequest extends OncePerRequestFilter {
                 }
             }
             filterChain.doFilter(httpServletRequest, httpServletResponse);
-        }catch (RuntimeException e ){
+        } catch (RuntimeException e) {
             MessageResponse messageResponse = new MessageResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Unauthorized, try to login again!", System.currentTimeMillis());
 
             httpServletResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
             httpServletResponse.getWriter().write(convertObjectToJson(messageResponse));
         }
     }
+
     public String convertObjectToJson(Object object) throws JsonProcessingException {
         if (object == null) {
             return null;

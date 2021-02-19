@@ -3,6 +3,7 @@ package horeca.host.services;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 
+import horeca.host.exception.NotFoundException;
 import horeca.host.models.Language;
 import horeca.host.models.Person;
 import horeca.host.models.WorkExperience;
@@ -35,7 +36,11 @@ public class PersonService {
     }
 
     public Person getOneById(String personId){
-        return personRepository.getOne(personId);
+        boolean exists = personRepository.existsById(personId);
+        if(exists){
+            return personRepository.getOne(personId);
+        }else
+            throw new NotFoundException("Person with: " + personId + " does not exists." );
     }
 
     public List<Person> getPersonByOccupation(String occupationId){

@@ -1,7 +1,6 @@
 package horeca.host.exception;
 
 import com.auth0.jwt.exceptions.TokenExpiredException;
-import javassist.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.HttpServerErrorException;
 
 @ControllerAdvice
-public class RestExceptionHandler {
+public class RestExceptionHandler extends Throwable {
 
     @ExceptionHandler
     private ResponseEntity<MessageResponse> handleException(Exception exception){
@@ -19,7 +18,7 @@ public class RestExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler
+    @ExceptionHandler(value = {NotFoundException.class})
     private ResponseEntity<MessageResponse> handleException(NotFoundException exception){
 
         MessageResponse error = new MessageResponse(HttpStatus.NOT_FOUND.value(), exception.getMessage(), System.currentTimeMillis());
