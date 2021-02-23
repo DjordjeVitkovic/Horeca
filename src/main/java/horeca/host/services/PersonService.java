@@ -96,13 +96,9 @@ public class PersonService {
         }
         personRepository.deleteById(personId);
     }
+
     //Save person with image
     public void savePerson(Person person, MultipartFile multipartFile) throws Exception {
-
-//        if(multipartFile == null){
-//            personRepository.save(person);
-//            return;
-//        }
 
     	for(Language l: person.getLanguageList()) {
     		l.setPersonId(person);
