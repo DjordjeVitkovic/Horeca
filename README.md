@@ -10,6 +10,7 @@ Fullstack application for making CV and store it in database and admin panel whe
   - MySQL database   
   - Cloud storage  
   - Server side pagination  
+  - Server side Search
   - Custom Exceptions handlers   
   #### JWT security  
   - Registration   
