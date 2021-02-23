@@ -8,6 +8,8 @@ Resume application for making CV and store it in database and admin panel where 
   -HTML & CSS  
   -Thymeleaf  
   -Cloud storage  
+  -Registration  
+  -Login  
   -Pagination  
   -Exceptions handlers  
   -JWT security  
