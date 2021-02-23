@@ -23,7 +23,7 @@ Fullstack application for making CV and store it in database and admin panel whe
   - Server side Search
       - Queried search
   - Custom Exceptions handlers  
-      -Catching all types of errors
+      - Catching all types of errors
   #### JWT security  
   - Registration   
       - Check if user exists, validate parameters... 
