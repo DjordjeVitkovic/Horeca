@@ -4,8 +4,6 @@ import horeca.host.exception.NotFoundException;
 import horeca.host.models.LoginViewModel;
 import horeca.host.models.Occupation;
 import horeca.host.models.Person;
-import horeca.host.models.User;
-import horeca.host.registration.EmailValidator;
 import horeca.host.registration.UserDto;
 import horeca.host.security.JwtUtil;
 import horeca.host.security.UserPrincipalDetailsService;
@@ -14,14 +12,11 @@ import horeca.host.services.PersonService;
 import horeca.host.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -106,13 +101,20 @@ public class FrontController {
             return "registration";
         }
         try {
-            User registered = userService.registerNewUserAccount(userDto);
+            userService.registerNewUserAccount(userDto);
         } catch (NotFoundException e) {
             model.addAttribute("errorr", e.getMessage());
             return "registration";
         }
         return "login";
     }
+
+    @GetMapping("/confirm")
+    public String confirm(@RequestParam("token") String token){
+        userService.confirmToken(token);
+        return "login";
+    }
+
     @GetMapping("/logoutHandler")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
 
@@ -135,7 +137,7 @@ public class FrontController {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginViewModel.getUsername(), loginViewModel.getPassword()));
-        } catch (BadCredentialsException e) {
+        } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "login";
         }

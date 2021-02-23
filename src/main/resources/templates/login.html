@@ -21,7 +21,7 @@
     <form class="form-signin" method="post" action="/authenticate">
         <h2 class="form-signin-heading">Please login to Admin Panel</h2>
         <div th:if="${error}" class="alert alert-danger">
-            Invalid username and password.
+            <p th:text="${error}"></p>
         </div>
         <p>
             <label for="username" class="sr-only">Username</label>
@@ -37,6 +37,8 @@
         </p>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
     </form>
+    <a class="btn btn-lg btn-link btn-block" th:href="@{/registration-form}">Registration</a>
+
 </div>
 </body>
 </html>

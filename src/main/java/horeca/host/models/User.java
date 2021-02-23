@@ -2,11 +2,13 @@ package horeca.host.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 public class User {
@@ -32,13 +34,17 @@ public class User {
     private String email;
 
     private int active;
+
+    private String token;
+
     private String roles = "";
+
     private String permissions = "";
 
     public User(){
     }
 
-    public User(String firstName, String lastName, String username, String password, String email, String roles, String permissions) {
+    public User(String firstName, String lastName, String username, String password, String email, String roles, String permissions,String token) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -47,6 +53,7 @@ public class User {
         this.active = 1;
         this.roles = roles;
         this.permissions = permissions;
+        this.token = token;
     }
 
     public String getFirstName() {
@@ -119,6 +126,14 @@ public class User {
 
     public void setPermissions(String permissions) {
         this.permissions = permissions;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public List<String> getRoleList(){

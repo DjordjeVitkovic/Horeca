@@ -2,12 +2,10 @@ package horeca.host.controllers;
 
 import horeca.host.models.User;
 import horeca.host.repository.UserRepository;
+import horeca.host.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -15,6 +13,7 @@ public class UserController {
 
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
+    private UserService userService;
 
     public UserController(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
