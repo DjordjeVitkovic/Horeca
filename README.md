@@ -17,7 +17,7 @@ Fullstack application for making CV and store it in database and admin panel whe
   - MySQL database  
       - JDBC connection    
   - Cloud storage  
-      - Cloudinary application for storage images
+      - Cloudinary API for storage images
   - Server side pagination  
       - Pagination and Sorting using Spring Data JPA
   - Server side Search
