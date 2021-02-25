@@ -3,12 +3,11 @@ package horeca.host.services;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 
-import horeca.host.exception.NotFoundException;
+import horeca.host.exception.ApiRequestHandler;
 import horeca.host.models.Language;
 import horeca.host.models.Person;
 import horeca.host.models.WorkExperience;
 import horeca.host.repository.PersonRepository;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -40,7 +39,7 @@ public class PersonService {
         if(exists){
             return personRepository.getOne(personId);
         }else
-            throw new NotFoundException("Person with: " + personId + " does not exists." );
+            throw new ApiRequestHandler("Person with: " + personId + " does not exists." );
     }
 
     public List<Person> getPersonByOccupation(String occupationId){

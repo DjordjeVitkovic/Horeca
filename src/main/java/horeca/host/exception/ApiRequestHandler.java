@@ -1,28 +1,28 @@
 package horeca.host.exception;
 
-public class NotFoundException extends RuntimeException{
+public class ApiRequestHandler extends RuntimeException{
 
-    public NotFoundException() {
+    public ApiRequestHandler() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-    public NotFoundException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public ApiRequestHandler(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
         // TODO Auto-generated constructor stub
     }
 
-    public NotFoundException(String message, Throwable cause) {
+    public ApiRequestHandler(String message, Throwable cause) {
         super(message, cause);
         // TODO Auto-generated constructor stub
     }
 
-    public NotFoundException(String message) {
+    public ApiRequestHandler(String message) {
         super(message);
         // TODO Auto-generated constructor stub
     }
 
-    public NotFoundException(Throwable cause) {
+    public ApiRequestHandler(Throwable cause) {
         super(cause);
         // TODO Auto-generated constructor stub
     }

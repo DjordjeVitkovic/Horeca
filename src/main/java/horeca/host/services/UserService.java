@@ -1,6 +1,6 @@
 package horeca.host.services;
 
-import horeca.host.exception.NotFoundException;
+import horeca.host.exception.ApiRequestHandler;
 import horeca.host.models.User;
 import horeca.host.registration.EmailValidator;
 import horeca.host.registration.UserDto;
@@ -30,19 +30,19 @@ public class UserService{
 
     @Transactional
     public void registerNewUserAccount(UserDto userDto)
-            throws NotFoundException {
+            throws ApiRequestHandler {
 
         if (emailExist(userDto.getEmail())) {
-            throw new NotFoundException(
+            throw new ApiRequestHandler(
                     "There is an account with that email address: "
                             +  userDto.getEmail());
         }
         if(!userDto.getPassword().equalsIgnoreCase(userDto.getMatchingPassword())){
-            throw new NotFoundException(
+            throw new ApiRequestHandler(
                     "Passwords are not same, please try again.");
         }
         if(!emailValidator.test(userDto.getEmail())){
-            throw new NotFoundException(
+            throw new ApiRequestHandler(
                     "Email: " + userDto.getEmail() + " is not valid format, use: "
                             +  " example@example.com");
         }
@@ -71,7 +71,7 @@ public class UserService{
         User user = userRepository.findByToken(token);
 
         if(user == null) {
-            throw new NotFoundException("Token is not valid!");
+            throw new ApiRequestHandler("Token is not valid!");
         }
         user.setActive(1);
         user.setToken(null);

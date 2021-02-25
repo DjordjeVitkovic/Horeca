@@ -2,7 +2,7 @@ package horeca.host.security;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import horeca.host.exception.MessageResponse;
+import horeca.host.exception.ApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -68,10 +68,10 @@ public class FilterJwtRequest extends OncePerRequestFilter {
             }
             filterChain.doFilter(httpServletRequest, httpServletResponse);
         } catch (RuntimeException e) {
-            MessageResponse messageResponse = new MessageResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Unauthorized, try to login again!", System.currentTimeMillis());
+            ApiException apiException = new ApiException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Unauthorized, try to login again!", System.currentTimeMillis());
 
             httpServletResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-            httpServletResponse.getWriter().write(convertObjectToJson(messageResponse));
+            httpServletResponse.getWriter().write(convertObjectToJson(apiException));
         }
     }
 

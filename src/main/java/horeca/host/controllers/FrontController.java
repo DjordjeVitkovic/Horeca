@@ -1,6 +1,6 @@
 package horeca.host.controllers;
 
-import horeca.host.exception.NotFoundException;
+import horeca.host.exception.ApiRequestHandler;
 import horeca.host.models.LoginViewModel;
 import horeca.host.models.Occupation;
 import horeca.host.models.Person;
@@ -102,7 +102,7 @@ public class FrontController {
         }
         try {
             userService.registerNewUserAccount(userDto);
-        } catch (NotFoundException e) {
+        } catch (ApiRequestHandler e) {
             model.addAttribute("errorr", e.getMessage());
             return "registration";
         }
@@ -147,7 +147,7 @@ public class FrontController {
         Cookie cookie = new Cookie("token", jwt);
         response.addCookie(cookie);
 
-        return "redirect:/person";
+        return "redirect:/person/";
     }
 
 }

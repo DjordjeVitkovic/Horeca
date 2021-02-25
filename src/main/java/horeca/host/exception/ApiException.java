@@ -1,15 +1,15 @@
 package horeca.host.exception;
 
-public class MessageResponse {
+public class ApiException {
 
     public int code;
     public String message;
     public long time;
 
-    public MessageResponse() {
+    public ApiException() {
     }
 
-    public MessageResponse(int code, String message, long time) {
+    public ApiException(int code, String message, long time) {
         this.code = code;
         this.message = message;
         this.time = time;
