@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @PostMapping("/save")
-    public String save (@RequestBody User user){
+    public String save(@RequestBody User user) {
 
         user.setActive(1);
         user.setPermissions("ALL");

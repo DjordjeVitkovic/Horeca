@@ -1,6 +1,6 @@
 package horeca.host.services;
 
-import horeca.host.exception.ApiRequestHandler;
+import horeca.host.exception.ApiRequestException;
 import horeca.host.models.User;
 import horeca.host.registration.EmailValidator;
 import horeca.host.registration.UserDto;
@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
 import java.util.UUID;
 
 @Service
-public class UserService{
+public class UserService {
 
     @Autowired
     private UserRepository userRepository;
@@ -30,21 +30,21 @@ public class UserService{
 
     @Transactional
     public void registerNewUserAccount(UserDto userDto)
-            throws ApiRequestHandler {
+            throws ApiRequestException {
 
         if (emailExist(userDto.getEmail())) {
-            throw new ApiRequestHandler(
+            throw new ApiRequestException(
                     "There is an account with that email address: "
-                            +  userDto.getEmail());
+                            + userDto.getEmail());
         }
-        if(!userDto.getPassword().equalsIgnoreCase(userDto.getMatchingPassword())){
-            throw new ApiRequestHandler(
+        if (!userDto.getPassword().equalsIgnoreCase(userDto.getMatchingPassword())) {
+            throw new ApiRequestException(
                     "Passwords are not same, please try again.");
         }
-        if(!emailValidator.test(userDto.getEmail())){
-            throw new ApiRequestHandler(
+        if (!emailValidator.test(userDto.getEmail())) {
+            throw new ApiRequestException(
                     "Email: " + userDto.getEmail() + " is not valid format, use: "
-                            +  " example@example.com");
+                            + " example@example.com");
         }
         // Rest of the registration operation
         User user = new User();
@@ -59,8 +59,9 @@ public class UserService{
 
         //Send email
         String link = "http://localhost:8080/confirm?token=" + user.getToken();
-        emailSender.send(userDto.getEmail(), buildEmail(userDto.getFirstName(),link));
+        emailSender.send(userDto.getEmail(), buildEmail(userDto.getFirstName(), link));
     }
+
     private boolean emailExist(String email) {
         return userRepository.existsByEmail(email);
     }
@@ -70,8 +71,8 @@ public class UserService{
 
         User user = userRepository.findByToken(token);
 
-        if(user == null) {
-            throw new ApiRequestHandler("Token is not valid!");
+        if (user == null) {
+            throw new ApiRequestException("Token is not valid!");
         }
         user.setActive(1);
         user.setToken(null);

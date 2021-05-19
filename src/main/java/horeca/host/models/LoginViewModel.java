@@ -4,9 +4,10 @@ public class LoginViewModel {
     private String username;
     private String password;
 
-    public LoginViewModel(){
+    public LoginViewModel() {
 
     }
+
     public LoginViewModel(String username, String password) {
         this.username = username;
         this.password = password;

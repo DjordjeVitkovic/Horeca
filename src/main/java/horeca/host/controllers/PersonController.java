@@ -59,12 +59,12 @@ public class PersonController {
             page++;
             model.addAttribute("personList", personService.personPaginationSearch(page, word));
         }
-            model.addAttribute("page", page);
-            model.addAttribute("count", count);
-            model.addAttribute("math", math);
-            model.addAttribute("niz", niz);
-            model.addAttribute("word", word);
-            model.addAttribute("occupationList", occupationService.getAll());
+        model.addAttribute("page", page);
+        model.addAttribute("count", count);
+        model.addAttribute("math", math);
+        model.addAttribute("niz", niz);
+        model.addAttribute("word", word);
+        model.addAttribute("occupationList", occupationService.getAll());
 
         return "admin/person-list-search";
     }
@@ -101,11 +101,11 @@ public class PersonController {
             page++;
             model.addAttribute("personList", personService.personPagination(page));
         }
-            model.addAttribute("page", page);
-            model.addAttribute("count", count);
-            model.addAttribute("math", math);
-            model.addAttribute("niz", niz);
-            model.addAttribute("occupationList", occupationService.getAll());
+        model.addAttribute("page", page);
+        model.addAttribute("count", count);
+        model.addAttribute("math", math);
+        model.addAttribute("niz", niz);
+        model.addAttribute("occupationList", occupationService.getAll());
 
         return "admin/person-list";
 
@@ -140,23 +140,23 @@ public class PersonController {
             page++;
             model.addAttribute("personList", personService.personPaginationByOccupation(page, occupationId));
         }
-            model.addAttribute("page", page);
-            model.addAttribute("count", count);
-            model.addAttribute("math", math);
-            model.addAttribute("niz", niz);
-            model.addAttribute("occupationID", occupationId);
-            model.addAttribute("occupationList", occupationService.getAll());
+        model.addAttribute("page", page);
+        model.addAttribute("count", count);
+        model.addAttribute("math", math);
+        model.addAttribute("niz", niz);
+        model.addAttribute("occupationID", occupationId);
+        model.addAttribute("occupationList", occupationService.getAll());
 
         return "admin/person-list-occupation";
     }
 
-        private int getMath(int count) {
-            int math = 0;
-            if (count > 10) {
-                math = (count + 10 - 1) / 10;
-            } else {
-                math = 1;
-            }
-            return math;
+    private int getMath(int count) {
+        int math = 0;
+        if (count > 10) {
+            math = (count + 10 - 1) / 10;
+        } else {
+            math = 1;
         }
+        return math;
+    }
 }

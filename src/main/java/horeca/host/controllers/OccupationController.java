@@ -1,7 +1,7 @@
 package horeca.host.controllers;
 
 
-import horeca.host.exception.ApiRequestHandler;
+import horeca.host.exception.ApiRequestException;
 import horeca.host.exception.ApiExceptionHandler;
 import horeca.host.models.Occupation;
 import horeca.host.services.OccupationService;
@@ -29,7 +29,7 @@ public class OccupationController {
                 model.addAttribute("occupationList", occupationService.getAll());
                 model.addAttribute("occupation", occupationService.getOneById(occupationId));
             }else {
-                throw new ApiRequestHandler("The ID is not valid! There is no object with this ID!");
+                throw new ApiRequestException("The ID is not valid! There is no object with this ID!");
             }
         }
             return "admin/occupation-form";

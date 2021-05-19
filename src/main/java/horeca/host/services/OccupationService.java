@@ -13,24 +13,24 @@ public class OccupationService {
     @Autowired
     private OccupationRepository occupationRepository;
 
-    public void saveOccupation(Occupation occupation){
+    public void saveOccupation(Occupation occupation) {
         occupationRepository.save(occupation);
     }
 
-    public List<Occupation> getAll(){
+    public List<Occupation> getAll() {
         return occupationRepository.findAll();
     }
 
-    public Occupation getOneById(String occupationId){
+    public Occupation getOneById(String occupationId) {
         return occupationRepository.getOne(occupationId);
     }
 
-    public void deleteOccupationById(String occupationId){
+    public void deleteOccupationById(String occupationId) {
 
         occupationRepository.deleteById(occupationId);
     }
 
-    public boolean existsById(String occupationId){
+    public boolean existsById(String occupationId) {
         return occupationRepository.existsById(occupationId);
     }
 }

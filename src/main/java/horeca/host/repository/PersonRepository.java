@@ -12,18 +12,18 @@ import java.util.UUID;
 public interface PersonRepository extends JpaRepository<Person, String> {
 
     @Query("select p from Person p where p.occupation.occupationId=:occupationId")
-     List<Person> getPersonsByOccupation(String occupationId);
+    List<Person> getPersonsByOccupation(String occupationId);
 
     @Query("select p from Person p where" + " p.firstName like %?1% OR p.lastName like %?1% OR p.citizenship like %?1% OR p.city like %?1% " +
             "OR p.occupation.occupationName like %?1%")
-     Page<Person> searchPerson(Pageable pageable,String word);
+    Page<Person> searchPerson(Pageable pageable, String word);
 
     @Query("select count (*) from Person p where" + " p.firstName like %?1% OR p.lastName like %?1% OR p.citizenship like %?1% OR p.city like %?1% " +
             "OR p.occupation.occupationName like %?1%")
     int countForSearch(String word);
 
     @Query("select count (*) from Person")
-     int countPeopleByPersonId();
+    int countPeopleByPersonId();
 
     @Query("select count (*) from Person where occupation.occupationId = ?1")
     int countPeopleByOccupation(String occupationId);

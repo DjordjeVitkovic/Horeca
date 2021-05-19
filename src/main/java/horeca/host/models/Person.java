@@ -15,7 +15,7 @@ public class Person {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private String  personId;
+    private String personId;
     @Column
     @NotEmpty(message = "Morate popuniti polje!")
     @Size(max = 20, message = "Maksimalan broj karaktera je 20!")
@@ -59,7 +59,7 @@ public class Person {
     private Education education;
 
     @Valid
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "occupationId")
     private Occupation occupation;
 
@@ -72,7 +72,7 @@ public class Person {
     private List<Language> languageList;
 
     public Person(@NotEmpty(message = "Morate popuniti polje!")
-    			  @NotEmpty(message = "Morate popuniti polje!") @Size(max = 20, message = "Maksimalan broj karaktera je 20!") String firstName,
+                  @NotEmpty(message = "Morate popuniti polje!") @Size(max = 20, message = "Maksimalan broj karaktera je 20!") String firstName,
                   @NotEmpty(message = "Morate popuniti polje!") @Size(max = 20, message = "Maksimalan broj karaktera je 20!") String lastName,
                   @NotEmpty(message = "Morate popuniti polje!") @Size(max = 80, message = "Maksimalan broj karaktera je 80!") String email,
                   String imageURL,
@@ -106,11 +106,11 @@ public class Person {
 
     }
 
-    public String  getPersonId() {
+    public String getPersonId() {
         return personId;
     }
 
-    public void setPersonId(String  personId) {
+    public void setPersonId(String personId) {
         this.personId = personId;
     }
 

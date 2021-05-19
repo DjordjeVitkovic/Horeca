@@ -12,7 +12,7 @@ public class WorkExperience {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private String  workExperienceId;
+    private String workExperienceId;
 
     @Column
     @Size(max = 50, message = "Maksimalan broj karaktera je 50.")
@@ -33,7 +33,7 @@ public class WorkExperience {
     @ManyToOne(cascade = CascadeType.ALL)
     private Person personId;
 
-    public WorkExperience(){
+    public WorkExperience() {
 
     }
 
@@ -49,11 +49,11 @@ public class WorkExperience {
         this.personId = personId;
     }
 
-    public String  getWorkExperienceId() {
+    public String getWorkExperienceId() {
         return workExperienceId;
     }
 
-    public void setWorkExperienceId(String  workExperienceId) {
+    public void setWorkExperienceId(String workExperienceId) {
         this.workExperienceId = workExperienceId;
     }
 

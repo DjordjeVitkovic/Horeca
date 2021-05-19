@@ -12,7 +12,7 @@ public class Language {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private String  languageId;
+    private String languageId;
 
     @Column
     @Size(max = 30, message = "Maksimalan broj karaktera je 30.")

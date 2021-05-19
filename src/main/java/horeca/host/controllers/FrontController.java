@@ -1,6 +1,6 @@
 package horeca.host.controllers;
 
-import horeca.host.exception.ApiRequestHandler;
+import horeca.host.exception.ApiRequestException;
 import horeca.host.models.LoginViewModel;
 import horeca.host.models.Occupation;
 import horeca.host.models.Person;
@@ -102,7 +102,7 @@ public class FrontController {
         }
         try {
             userService.registerNewUserAccount(userDto);
-        } catch (ApiRequestHandler e) {
+        } catch (ApiRequestException e) {
             model.addAttribute("errorr", e.getMessage());
             return "registration";
         }

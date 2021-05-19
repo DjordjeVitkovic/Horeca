@@ -19,7 +19,7 @@ public class Education {
     private String schoolName;
 
     @Column
-    @Size (max = 100, message = "Maksimalan broj karaktera je 100.")
+    @Size(max = 100, message = "Maksimalan broj karaktera je 100.")
     private String course;
 
     public Education(@Size(max = 100, message = "Maksimalan broj karaktera je 100.") String schoolName,

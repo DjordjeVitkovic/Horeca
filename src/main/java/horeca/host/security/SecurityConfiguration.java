@@ -39,59 +39,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .csrf().disable()
-//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                .and()
-//                .addFilter(new JwtAuthenticationFilter(authenticationManager()))
-//                .addFilter(new JwtAuthorizationFilter(authenticationManager(), this.userRepository))
-//                .authorizeRequests()
-//                .antMatchers("/login", "/").permitAll()
-//                .antMatchers("/person*", "/person/**", "/occupation*", "/occupation/**").hasRole("ADMIN")
-//                .anyRequest()
-//                .authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .loginProcessingUrl("/login")
-//                .defaultSuccessUrl("/person", true)
-//                .failureUrl("/login.html?error=true")
-//                .and()
-//                .logout()
-//                .logoutUrl("/logout")
-//                .deleteCookies("JSESSIONID");
-
-//        http.cors().and().csrf().disable()
-//                .authorizeRequests().antMatchers("/person*", "/person/**").authenticated()
-//                .and()
-//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//
-//        http.addFilterBefore(new JwtAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
-//        http.headers().cacheControl().disable();
-//        http.requiresChannel()
-//                .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
-//                .requiresSecure();
-//http
-//                .csrf().disable()
-//
-//                .authorizeRequests()
-//                .antMatchers("/person/**", "occupation/**").hasRole("ADMIN")
-//                .antMatchers("/login*").permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .loginProcessingUrl("/login")
-//                .defaultSuccessUrl("/person", true)
-//                .failureUrl("/login.html?error=true")
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .logoutUrl("/logout")
-//                .deleteCookies("JSESSIONID");
         http
+                //turn off spring token
                 .csrf().disable()
-                .authorizeRequests().antMatchers("/authenticate", "/*", "/index", "/static/**" , "/js/**" , "/css/**", "/bootstrap/**", "/images/**","/font-awesome/**").permitAll()
+                .authorizeRequests().antMatchers("/authenticate", "/*", "/index", "/static/**", "/js/**", "/css/**", "/bootstrap/**", "/images/**", "/font-awesome/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -103,9 +54,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/")
                 .deleteCookies("JSESSIONID")
                 .and().sessionManagement()
+                //No session will be created or used by spring security
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(filterJwtRequest, UsernamePasswordAuthenticationFilter.class);
     }
+
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -113,7 +66,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-     DaoAuthenticationProvider authenticationProvider() {
+    DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         daoAuthenticationProvider.setUserDetailsService(userPrincipalDetailsService);
@@ -122,7 +75,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-     PasswordEncoder passwordEncoder() {
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }

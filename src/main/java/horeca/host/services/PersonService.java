@@ -3,7 +3,7 @@ package horeca.host.services;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 
-import horeca.host.exception.ApiRequestHandler;
+import horeca.host.exception.ApiRequestException;
 import horeca.host.models.Language;
 import horeca.host.models.Person;
 import horeca.host.models.WorkExperience;
@@ -30,55 +30,55 @@ public class PersonService {
     @Value(value = "${com.cloudinary.full.path}")
     private String CONFIG;
 
-    public List<Person> getAll(){
-       return personRepository.findAll();
+    public List<Person> getAll() {
+        return personRepository.findAll();
     }
 
-    public Person getOneById(String personId){
+    public Person getOneById(String personId) {
         boolean exists = personRepository.existsById(personId);
-        if(exists){
+        if (exists) {
             return personRepository.getOne(personId);
-        }else
-            throw new ApiRequestHandler("Person with: " + personId + " does not exists." );
+        } else
+            throw new ApiRequestException("Person with: " + personId + " does not exists.");
     }
 
-    public List<Person> getPersonByOccupation(String occupationId){
+    public List<Person> getPersonByOccupation(String occupationId) {
         return personRepository.getPersonsByOccupation(occupationId);
     }
 
     //Pagination for personList
-    public List<Person> personPagination(int page){
+    public List<Person> personPagination(int page) {
 
-        Pageable pageable = PageRequest.of(page,10);
+        Pageable pageable = PageRequest.of(page, 10);
         Page<Person> allPersons = personRepository.findAll(pageable);
         return allPersons.toList();
     }
 
     //Pagination for personList by Occupation
-    public List<Person> personPaginationByOccupation(int page, String occupationId){
+    public List<Person> personPaginationByOccupation(int page, String occupationId) {
 
-        Pageable pageable = PageRequest.of(page,10);
+        Pageable pageable = PageRequest.of(page, 10);
         Page<Person> allPersons = personRepository.getAllWithPagination(pageable, occupationId);
         return allPersons.toList();
     }
 
     //Pagination for personList for Search
-    public List<Person> personPaginationSearch(int page, String word){
+    public List<Person> personPaginationSearch(int page, String word) {
 
-        Pageable pageable = PageRequest.of(page,10);
+        Pageable pageable = PageRequest.of(page, 10);
         Page<Person> allPersons = personRepository.searchPerson(pageable, word);
         return allPersons.toList();
     }
 
-    public int countAll(){
+    public int countAll() {
         return personRepository.countPeopleByPersonId();
     }
 
-    public int countAllByOccupation(String occupationId){
+    public int countAllByOccupation(String occupationId) {
         return personRepository.countPeopleByOccupation(occupationId);
     }
 
-    public int countForSearch(String word){
+    public int countForSearch(String word) {
         return personRepository.countForSearch(word);
     }
 
@@ -99,14 +99,14 @@ public class PersonService {
     //Save person with image
     public void savePerson(Person person, MultipartFile multipartFile) throws Exception {
 
-    	for(Language l: person.getLanguageList()) {
-    		l.setPersonId(person);
-    	}
-    	
-    	for(WorkExperience we: person.getWorkExperienceList()) {
-    		we.setPersonId(person);
-    	}
-    	
+        for (Language l : person.getLanguageList()) {
+            l.setPersonId(person);
+        }
+
+        for (WorkExperience we : person.getWorkExperienceList()) {
+            we.setPersonId(person);
+        }
+
         if (multipartFile.getSize() == 0) {
 
             personRepository.save(person);
@@ -160,5 +160,6 @@ public class PersonService {
 
         return convFile;
     }
+
 
 }

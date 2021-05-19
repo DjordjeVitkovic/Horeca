@@ -12,7 +12,7 @@ public class Occupation {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private String  occupationId;
+    private String occupationId;
 
     @Column
     @Size(max = 30, message = "Maksimalan broj karaktera je 30.")
@@ -26,11 +26,11 @@ public class Occupation {
 
     }
 
-    public String  getOccupationId() {
+    public String getOccupationId() {
         return occupationId;
     }
 
-    public void setOccupationId(String  occupationId) {
+    public void setOccupationId(String occupationId) {
         this.occupationId = occupationId;
     }
 

@@ -2,7 +2,7 @@ package horeca.host.security;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import horeca.host.exception.ApiException;
+import horeca.host.exception.ApiRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -32,13 +32,11 @@ public class FilterJwtRequest extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest,
                                     HttpServletResponse httpServletResponse,
-                                    FilterChain filterChain)
-            throws ServletException, IOException {
+                                    FilterChain filterChain) throws ServletException, IOException {
         String username = null;
         String jwt = null;
 
         try {
-
             if (httpServletRequest.getCookies() != null) {
                 final Optional<String> authorizationHeader = Arrays.stream(httpServletRequest.getCookies())
                         .filter(c -> "token".equalsIgnoreCase(c.getName()))
@@ -51,14 +49,12 @@ public class FilterJwtRequest extends OncePerRequestFilter {
                     jwt = authorizationHeader.get();
                     username = jwtUtil.extractUsername(jwt);
                 }
-
             }
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
                 UserDetails userDetails = this.userPrincipalDetailsService.loadUserByUsername(username);
 
                 if (jwtUtil.validateToken(jwt, userDetails)) {
-
                     UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
                             userDetails, null, userDetails.getAuthorities());
                     usernamePasswordAuthenticationToken
@@ -67,8 +63,8 @@ public class FilterJwtRequest extends OncePerRequestFilter {
                 }
             }
             filterChain.doFilter(httpServletRequest, httpServletResponse);
-        } catch (RuntimeException e) {
-            ApiException apiException = new ApiException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Unauthorized, try to login again!", System.currentTimeMillis());
+        } catch (Exception e) {
+            ApiRequestException apiException =  new  ApiRequestException("Oops, unauthorized, go and login again!");
 
             httpServletResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
             httpServletResponse.getWriter().write(convertObjectToJson(apiException));

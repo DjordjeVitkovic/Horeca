@@ -1,41 +1,31 @@
 package horeca.host.exception;
 
+
+import org.springframework.http.HttpStatus;
+
+import java.time.ZonedDateTime;
+
 public class ApiException {
 
-    public int code;
-    public String message;
-    public long time;
+    private final String message;
+    private final HttpStatus httpStatus;
+    private final ZonedDateTime timestamp;
 
-    public ApiException() {
-    }
-
-    public ApiException(int code, String message, long time) {
-        this.code = code;
+    public ApiException(String message, HttpStatus httpStatus, ZonedDateTime timestamp) {
         this.message = message;
-        this.time = time;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
+        this.httpStatus = httpStatus;
+        this.timestamp = timestamp;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public HttpStatus getHttpStatus() {
+        return httpStatus;
     }
 
-    public long getTime() {
-        return time;
-    }
-
-    public void setTime(long time) {
-        this.time = time;
+    public ZonedDateTime getTimestamp() {
+        return timestamp;
     }
 }

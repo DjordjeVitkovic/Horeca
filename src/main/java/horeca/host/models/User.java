@@ -41,10 +41,10 @@ public class User {
 
     private String permissions = "";
 
-    public User(){
+    public User() {
     }
 
-    public User(String firstName, String lastName, String username, String password, String email, String roles, String permissions,String token) {
+    public User(String firstName, String lastName, String username, String password, String email, String roles, String permissions, String token) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -72,11 +72,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String  getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(String  id) {
+    public void setUserId(String id) {
         this.userId = id;
     }
 
@@ -136,14 +136,15 @@ public class User {
         this.token = token;
     }
 
-    public List<String> getRoleList(){
-        if(this.roles.length() >0){
+    public List<String> getRoleList() {
+        if (this.roles.length() > 0) {
             return Arrays.asList(this.roles.split(","));
         }
         return new ArrayList<>();
     }
-    public List<String> getPermissionList(){
-        if(this.permissions.length() >0){
+
+    public List<String> getPermissionList() {
+        if (this.permissions.length() > 0) {
             return Arrays.asList(this.permissions.split(","));
         }
         return new ArrayList<>();

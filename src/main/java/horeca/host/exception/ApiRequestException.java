@@ -1,28 +1,28 @@
 package horeca.host.exception;
 
-public class ApiRequestHandler extends RuntimeException{
+public class ApiRequestException extends RuntimeException {
 
-    public ApiRequestHandler() {
+    public ApiRequestException() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-    public ApiRequestHandler(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public ApiRequestException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
         // TODO Auto-generated constructor stub
     }
 
-    public ApiRequestHandler(String message, Throwable cause) {
+    public ApiRequestException(String message, Throwable cause) {
         super(message, cause);
         // TODO Auto-generated constructor stub
     }
 
-    public ApiRequestHandler(String message) {
+    public ApiRequestException(String message) {
         super(message);
         // TODO Auto-generated constructor stub
     }
 
-    public ApiRequestHandler(Throwable cause) {
+    public ApiRequestException(Throwable cause) {
         super(cause);
         // TODO Auto-generated constructor stub
     }
